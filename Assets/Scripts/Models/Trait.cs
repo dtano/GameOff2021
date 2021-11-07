@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Probably should be a ScriptableObject
 public class Trait : MonoBehaviour
 {
     // Start is called before the first frame update

@@ -7,6 +7,7 @@ using UnityEngine;
 public class CustomerData
 {
     private string _name;
+    private Sprite _sprite;
     
     // Customer's counting stats
     // POSSIBLE IMPROVEMENT: Make a CustomerStat class and make child classes that represent stats below
@@ -25,12 +26,14 @@ public class CustomerData
         _vitality = vitality;
         _perception = perception;
         _intelligence = intelligence;
+        // _sprite = sprite;
     }
 
     public int Strength { get => _strength; set => _strength = value; }
     public int Vitality { get => _vitality; set => _vitality = value; }
     public int Perception { get => _perception; set => _perception = value; }
     public int Intelligence { get => _intelligence; set => _intelligence = value; }
+    // public Sprite Sprite { get => _sprite; set => _sprite = value; }
 
     public bool AddTrait(Trait trait)
     {

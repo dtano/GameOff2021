@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  name: Water Bottle
-  sprite: {fileID: 0}
+  itemName: Water Bottle
+  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   description: 

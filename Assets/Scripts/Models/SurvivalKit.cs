@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SurvivalKit : MonoBehaviour
 {
+    // Maybe instead of a regular list, I could use an InventoryObject s
     [SerializeField] List<Item> _allItems = new List<Item>();
     [SerializeField] int maxSlots;
     
