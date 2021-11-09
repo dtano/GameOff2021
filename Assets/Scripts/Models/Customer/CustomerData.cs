@@ -38,12 +38,11 @@ public class CustomerData
     private float CalculateSurvivalProbability()
     {
         int maxStatValue = Stat.GetMaxStatValue();
-        Debug.Log("Max stat value: " + maxStatValue);
-
+        // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
         //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
+        
+        
         float prob = (_endurance.GetBaseValue() + _survivability.GetBaseValue() + _intelligence.GetBaseValue()) / (maxStatValue * 3);
-
-        //Debug.Log(_endurance.GetBaseValue()/maxStatValue);
 
         return prob;
     }

@@ -10,5 +10,7 @@ public class ItemObject : ScriptableObject
     [TextArea]
     public string description;
 
-    public List<int> statsToAffect;
+    public StatModifier enduranceModifier;
+    public StatModifier intelligenceModifier;
+    public StatModifier survivabilityModifier;
 }

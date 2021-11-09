@@ -16,8 +16,6 @@ public class Item : MonoBehaviour
         }
 
         itemImage.sprite = itemObject.sprite;
-
-        Debug.Log(itemObject.itemName);
     }
 
     // Update is called once per frame
