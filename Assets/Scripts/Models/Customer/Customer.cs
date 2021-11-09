@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
     [SerializeField] SurvivalKit _survivalKit;
 
     // Maybe CustomerData should be a mono
-    private CustomerData _data;
+    [SerializeField] private CustomerData _data;
     private float _survivabilityScore; // Will be a percentage in game
 
     // private string _name;
@@ -22,13 +22,11 @@ public class Customer : MonoBehaviour
     // Customer's counting stats
     // POSSIBLE IMPROVEMENT: Make a CustomerStat class and make child classes that represent stats below
     // [Range(1,5)]
-    // [SerializeField] int _strength;
-    // [Range(1,5)]
-    // [SerializeField] int _vitality;
-    // [Range(1,5)]
-    // [SerializeField] int _perception;
+    // [SerializeField] int _endurance;
     // [Range(1,5)]
     // [SerializeField] int _intelligence;
+    // [Range(1,5)]
+    // [SerializeField] int _survivability;
 
     // Start is called before the first frame update
     void Start()

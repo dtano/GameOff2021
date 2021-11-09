@@ -40,4 +40,7 @@ public class Item : MonoBehaviour
     {
         return itemObject;
     }
+
+    // How will item affect customer survivability? 
+    
 }
