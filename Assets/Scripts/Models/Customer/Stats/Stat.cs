@@ -56,11 +56,20 @@ public class Stat
 
     private void ApplyModifiers()
     {
-        float totalBonus = 0;
+        float finalValue = _baseValue;
+        
         foreach(StatModifier mod in statModifiers){
-            totalBonus += mod.Value;
+            switch(mod.Type){
+                case StatModType.Flat:
+                    finalValue += mod.Value;
+                    break;
+                case StatModType.Percent:
+                    finalValue *= 1 + mod.Value;
+                    break;
+            }
         }
 
-        valueAfterBonuses = _baseValue + totalBonus;
+        valueAfterBonuses = finalValue;
+        //valueAfterBonuses = _baseValue + totalBonus;
     }
 }
