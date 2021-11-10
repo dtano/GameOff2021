@@ -40,8 +40,7 @@ public class CustomerData
         int maxStatValue = Stat.GetMaxStatValue();
         // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
         //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
-        
-        
+           
         float prob = (_endurance.GetBaseValue() + _survivability.GetBaseValue() + _intelligence.GetBaseValue()) / (maxStatValue * 3);
 
         return prob;

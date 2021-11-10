@@ -28,22 +28,32 @@ public class SurvivalKit : MonoBehaviour
     {
         if(allItems.Count < maxSlots){
             allItems.Add(item);
-            AddStatModifiers(item);
+            AddItemStatModifiers(item);
         }else{
             Debug.Log("Over capacity");
         }
     }
 
-    private void AddStatModifiers(Item item)
+    public void RemoveItem(Item item)
+    {
+        bool removeSuccess = allItems.Remove(item);
+        if(removeSuccess){
+            RemoveItemStatModifiers(item);
+        }
+    }
+
+    private void AddItemStatModifiers(Item item)
     {
         affectedCustData.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
         affectedCustData.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
         affectedCustData.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
     }
 
-    public bool RemoveItem(Item item)
+    private void RemoveItemStatModifiers(Item item)
     {
-        return allItems.Remove(item);
+        affectedCustData.Endurance.RemoveModifier(item.GetItemObject().enduranceModifier);
+        affectedCustData.Intelligence.RemoveModifier(item.GetItemObject().intelligenceModifier);
+        affectedCustData.Survivability.RemoveModifier(item.GetItemObject().survivabilityModifier);
     }
 
     public void Clear()
