@@ -17,6 +17,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private CustomerData _data;
     private float _survivabilityScore; // Will be a percentage in game
 
+    private bool statsWereModified = false;
+
     // private string _name;
     
     // Customer's counting stats
@@ -31,8 +33,8 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        _survivalKit = GetComponent<SurvivalKit>();
+        //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        //_survivalKit = GetComponent<SurvivalKit>();
     }
 
     // Update is called once per frame
@@ -54,6 +56,15 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public void ApplyModifiers(Item item)
+    {
+        statsWereModified = true;
+
+        _data.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
+        _data.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
+        _data.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
+    }
+
     public void SetData(CustomerData data)
     {
         _data = data;
@@ -68,6 +79,16 @@ public class Customer : MonoBehaviour
     public CustomerData GetCustomerData()
     {
         return _data;
+    }
+
+    public bool WereStatsModified()
+    {
+        return statsWereModified;
+    }
+
+    public void SetStatsModified(bool modifStatus)
+    {
+        statsWereModified = modifStatus;
     }
 
 

@@ -53,7 +53,7 @@ public class CustomerData
     public Stat Intelligence { get => _intelligence; set => _intelligence = value; }
 
     public float SurvivalProbability { get => _survivalProbability; set => _survivalProbability = value; }
-    // public Sprite Sprite { get => _sprite; set => _sprite = value; }
+    public string Name {get => _name; set => _name = value;}
 
     public bool AddTrait(Trait trait)
     {

@@ -10,17 +10,25 @@ public class Stat
     private static int _maxValue = 5;
     [SerializeField] private float _baseValue;
 
+    private float valueAfterBonuses;
+
     private List<StatModifier> statModifiers;
 
     public Stat(int baseValue)
     {
         _baseValue = baseValue;
+        valueAfterBonuses = _baseValue;
         statModifiers = new List<StatModifier>();
     }
 
     public float GetBaseValue()
     {
         return _baseValue;
+    }
+
+    public float GetModifiedValue()
+    {
+        return valueAfterBonuses;
     }
 
     public static int GetMaxStatValue()
@@ -31,10 +39,22 @@ public class Stat
     public void AddModifier(StatModifier mod)
     {
         statModifiers.Add(mod);
+
+        ApplyModifiers();
     }
 
     public bool RemoveModifier(StatModifier mod)
     {
         return statModifiers.Remove(mod);
+    }
+
+    private void ApplyModifiers()
+    {
+        float totalBonus = 0;
+        foreach(StatModifier mod in statModifiers){
+            totalBonus += mod.Value;
+        }
+
+        valueAfterBonuses = _baseValue + totalBonus;
     }
 }
