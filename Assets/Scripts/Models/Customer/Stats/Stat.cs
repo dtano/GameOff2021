@@ -45,7 +45,13 @@ public class Stat
 
     public bool RemoveModifier(StatModifier mod)
     {
-        return statModifiers.Remove(mod);
+        if(statModifiers.Remove(mod)){
+            // reapply modifiers as this modifier has been removed
+            ApplyModifiers();
+            return true;
+        }
+        
+        return false;
     }
 
     private void ApplyModifiers()

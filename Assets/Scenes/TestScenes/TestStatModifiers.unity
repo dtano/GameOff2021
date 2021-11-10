@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 433986074}
   - component: {fileID: 433986073}
   - component: {fileID: 433986072}
+  - component: {fileID: 433986075}
   m_Layer: 5
   m_Name: CustomerScreen
   m_TagString: Untagged
@@ -414,6 +415,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statDisplay: {fileID: 1107668966}
   nameDisplay: {fileID: 2105236172}
+--- !u!114 &433986075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433986070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312211d4966017e4998c08f5e5cda517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlots: 6
 --- !u!1 &534321622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,9 +1024,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433986073}
-        m_TargetAssemblyTypeName: Customer, Assembly-CSharp
-        m_MethodName: ApplyModifiers
+      - m_Target: {fileID: 433986075}
+        m_TargetAssemblyTypeName: SurvivalKit, Assembly-CSharp
+        m_MethodName: AddItem
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 95097440}

@@ -17,52 +17,17 @@ public class Customer : MonoBehaviour
     [SerializeField] private CustomerData _data;
     private float _survivabilityScore; // Will be a percentage in game
 
-    private bool statsWereModified = false;
-
-    // private string _name;
-    
-    // Customer's counting stats
-    // POSSIBLE IMPROVEMENT: Make a CustomerStat class and make child classes that represent stats below
-    // [Range(1,5)]
-    // [SerializeField] int _endurance;
-    // [Range(1,5)]
-    // [SerializeField] int _intelligence;
-    // [Range(1,5)]
-    // [SerializeField] int _survivability;
-
     // Start is called before the first frame update
     void Start()
     {
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        //_survivalKit = GetComponent<SurvivalKit>();
+        _survivalKit = GetComponent<SurvivalKit>();
+        _survivalKit?.SetAffectedCustData(_data);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void AffectSurvivabilityScore(float effect)
-    {
-        // Change survivabilityScore logic here
-        _survivabilityScore += effect;
-        
-        // Make sure survivability score will stay in between 0-100%
-        if(_survivabilityScore > 1){
-            _survivabilityScore = 1;
-        }else if(_survivabilityScore < 0){
-            _survivabilityScore = 0;
-        }
-    }
-
-    public void ApplyModifiers(Item item)
-    {
-        statsWereModified = true;
-
-        _data.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
-        _data.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
-        _data.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
     }
 
     public void SetData(CustomerData data)
@@ -79,16 +44,6 @@ public class Customer : MonoBehaviour
     public CustomerData GetCustomerData()
     {
         return _data;
-    }
-
-    public bool WereStatsModified()
-    {
-        return statsWereModified;
-    }
-
-    public void SetStatsModified(bool modifStatus)
-    {
-        statsWereModified = modifStatus;
     }
 
 

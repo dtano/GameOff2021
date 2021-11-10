@@ -25,17 +25,18 @@ public class TestCustomerUI : MonoBehaviour
 
         nameDisplay.text = custData.Name;
 
-        DisplayStats();
+        //DisplayStats();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(customer.WereStatsModified()){
-            DisplayStats();
-            customer.SetStatsModified(false);
-        }
+        // if(customer.WereStatsModified()){
+        //     DisplayStats();
+        //     customer.SetStatsModified(false);
+        // }
+        DisplayStats();
     }
 
     private void DisplayStats()
