@@ -21,13 +21,29 @@ public class Customer : MonoBehaviour
     void Start()
     {
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        _survivalKit = GetComponent<SurvivalKit>();
+        if(_survivalKit == null){
+            _survivalKit = GetComponent<SurvivalKit>();
+        }
         _survivalKit?.SetAffectedCustData(_data);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_data != null) CalculateSurvivalProbability();
+    }
+
+    // Gonna move this function elsewhere
+    private float CalculateSurvivalProbability()
+    {
+        int maxStatValue = Stat.GetMaxStatValue();
+        // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
+        //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
+           
+        float prob = (_data.Endurance.GetModifiedValue() + _data.Survivability.GetModifiedValue() + 
+                      _data.Intelligence.GetModifiedValue()) / (maxStatValue * 3);
+
+        return prob;
     }
 
     public void SetData(CustomerData data)

@@ -30,21 +30,21 @@ public class CustomerData
         _perception = new Stat(perception);
         _intelligence = new Stat(intelligence);
 
-        _survivalProbability = CalculateSurvivalProbability();
+        //_survivalProbability = CalculateSurvivalProbability();
         // _sprite = sprite;
     }
 
-    // Gonna move this function elsewhere
-    private float CalculateSurvivalProbability()
-    {
-        int maxStatValue = Stat.GetMaxStatValue();
-        // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
-        //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
+    // // Gonna move this function elsewhere
+    // private float CalculateSurvivalProbability()
+    // {
+    //     int maxStatValue = Stat.GetMaxStatValue();
+    //     // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
+    //     //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
            
-        float prob = (_endurance.GetBaseValue() + _survivability.GetBaseValue() + _intelligence.GetBaseValue()) / (maxStatValue * 3);
+    //     float prob = (_endurance.GetModifiedValue() + _survivability.GetModifiedValue() + _intelligence.GetModifiedValue()) / (maxStatValue * 3);
 
-        return prob;
-    }
+    //     return prob;
+    // }
 
     public Stat Endurance { get => _endurance; set => _endurance = value; }
     public Stat Survivability { get => _survivability; set => _survivability = value; }

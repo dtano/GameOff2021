@@ -36,9 +36,21 @@ public class Stat
         return _maxValue;
     }
 
+    private int CompareModifierOrder(StatModifier a, StatModifier b)
+    {
+        if(a.Order < b.Order){
+            return -1;
+        }else if(a.Order > b.Order){
+            return 1;
+        }
+
+        return 0;
+    }
+
     public void AddModifier(StatModifier mod)
     {
         statModifiers.Add(mod);
+        statModifiers.Sort(CompareModifierOrder);
 
         ApplyModifiers();
     }
@@ -57,16 +69,28 @@ public class Stat
     private void ApplyModifiers()
     {
         float finalValue = _baseValue;
+        float sumPercentAdd = 0;
         
+        int i = 0;
         foreach(StatModifier mod in statModifiers){
             switch(mod.Type){
                 case StatModType.Flat:
                     finalValue += mod.Value;
                     break;
-                case StatModType.Percent:
+                case StatModType.PercentAdd:
+                    sumPercentAdd += mod.Value;
+
+                    if(i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd){
+                        finalValue *= 1 + sumPercentAdd;
+                        sumPercentAdd = 0;
+                    }
+
+                    break;
+                case StatModType.PercentMult:
                     finalValue *= 1 + mod.Value;
                     break;
             }
+            i++;
         }
 
         valueAfterBonuses = finalValue;
