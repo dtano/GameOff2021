@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Probably should be a ScriptableObject
-public class Trait : MonoBehaviour
+[System.Serializable]
+public class Trait
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] TraitObject _traitDetails;
+    
+    public Trait(TraitObject traitDetails)
     {
-        
+        _traitDetails = traitDetails;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Apply(Item item)
     {
-        
+        TraitType traitType = _traitDetails.Type;
+        switch(traitType){
+            case TraitType.Boost:
+                item.EnduranceModifier.Value += _traitDetails.EnduranceModifier.Value;
+                Debug.Log($"Added {_traitDetails.EnduranceModifier.Value} to {item.EnduranceModifier.Value}");
+                break;
+            case TraitType.Nullify:
+                break;
+            case TraitType.Reduce:
+                break;
+        }
     }
+
+
+
+    public TraitObject TraitDetails { get => _traitDetails;}
 }

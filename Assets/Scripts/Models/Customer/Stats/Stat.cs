@@ -55,6 +55,14 @@ public class Stat
         ApplyModifiers();
     }
 
+    public void AddModifier(StatModifier mod, List<Trait> traits)
+    {
+        statModifiers.Add(mod);
+        statModifiers.Sort(CompareModifierOrder);
+
+        ApplyModifiers();
+    }
+
     public bool RemoveModifier(StatModifier mod)
     {
         if(statModifiers.Remove(mod)){

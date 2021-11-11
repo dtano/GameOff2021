@@ -44,16 +44,23 @@ public class SurvivalKit : MonoBehaviour
 
     private void AddItemStatModifiers(Item item)
     {
-        affectedCustData.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
-        affectedCustData.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
-        affectedCustData.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
+        // Before adding, then apply any traits
+        List<TraitObject> traits = affectedCustData.Traits;
+        if(traits.Count > 0){
+            foreach(TraitObject trait in traits) trait.Apply(item);
+        }
+        
+        
+        affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
+        affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
+        affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
     }
 
     private void RemoveItemStatModifiers(Item item)
     {
-        affectedCustData.Endurance.RemoveModifier(item.GetItemObject().enduranceModifier);
-        affectedCustData.Intelligence.RemoveModifier(item.GetItemObject().intelligenceModifier);
-        affectedCustData.Survivability.RemoveModifier(item.GetItemObject().survivabilityModifier);
+        affectedCustData.Endurance.RemoveModifier(item.EnduranceModifier);
+        affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
+        affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
     }
 
     public void Clear()

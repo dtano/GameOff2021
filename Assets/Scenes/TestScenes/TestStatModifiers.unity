@@ -175,6 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemObject: {fileID: 11400000, guid: 49cf9fd1646ba254e838b1e1f7c24d65, type: 2}
   itemImage: {fileID: 95097441}
+  itemName: 
+  description: 
 --- !u!114 &95097441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customer: {fileID: 433986073}
+  traitObject: {fileID: 0}
 --- !u!114 &433986073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +405,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   _survivalKit: {fileID: 0}
+  _data:
+    traits:
+    - {fileID: 11400000, guid: b7df7333ad032e6448bfc6508d0dea0a, type: 2}
 --- !u!114 &433986074
 MonoBehaviour:
   m_ObjectHideFlags: 0

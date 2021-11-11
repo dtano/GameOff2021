@@ -13,4 +13,7 @@ public class ItemObject : ScriptableObject
     public StatModifier enduranceModifier;
     public StatModifier intelligenceModifier;
     public StatModifier survivabilityModifier;
+
+    // Might need a list of traits that it is affected by
+    // public List<Trait> traitsAffectedBy;
 }
