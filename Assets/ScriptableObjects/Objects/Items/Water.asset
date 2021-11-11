@@ -15,7 +15,15 @@ MonoBehaviour:
   itemName: Water
   sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   description: 
-  statsToAffect: 
   enduranceModifier:
     Value: 1
+    Type: 100
+    Order: 0
+  intelligenceModifier:
+    Value: 0
     Type: 0
+    Order: 0
+  survivabilityModifier:
+    Value: 0
+    Type: 0
+    Order: 0
