@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
-    RectTransform rectTransform;
-    [SerializeField] Canvas canvas;
 
-    private static float canvasScaleFactor = 1;
+    [SerializeField] private Canvas canvas;
 
-    void Awake()
+    private RectTransform rectTransform;
+
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
     }
@@ -23,8 +23,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
-        Debug.Log(canvasScaleFactor);
-        rectTransform.anchoredPosition += eventData.delta / canvasScaleFactor;
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -37,8 +36,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("Pointer Down");
     }
 
-    public static void SetCanvasScaleFactor(float newScale)
+    public void OnDrop(PointerEventData eventData)
     {
-        canvasScaleFactor = newScale;
+        throw new System.NotImplementedException();
     }
 }
