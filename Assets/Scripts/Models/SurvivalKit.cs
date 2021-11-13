@@ -86,6 +86,16 @@ public class SurvivalKit : MonoBehaviour
         affectedCustData = custData;
     }
 
+    public void Subscribe(OnItemAdd traitEffect)
+    {
+        OnItemAddFunction += traitEffect;
+    }
+
+    public void Unsubscribe(OnItemAdd traitEffect)
+    {
+        OnItemAddFunction -= traitEffect;
+    }
+
     public void SetOnItemAdd(OnItemAdd addDelegate)
     {
         Debug.Log("Set on item add function");

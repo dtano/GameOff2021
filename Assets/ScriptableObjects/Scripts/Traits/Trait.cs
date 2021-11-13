@@ -26,7 +26,9 @@ public abstract class Trait : ScriptableObject, ITrait
          // Get customer's survival kit
         SurvivalKit survivalKit = customer.GetSurvivalKit();
 
-        survivalKit.SetOnItemAdd(TraitEffect);
+        survivalKit.Subscribe(TraitEffect);
+
+        
         Debug.Log("Applied trait");
     }
 
