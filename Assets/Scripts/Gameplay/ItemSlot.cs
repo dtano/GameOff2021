@@ -1,84 +1,105 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
-	public event Action<BaseItemSlot> OnBeginDragEvent;
-	public event Action<BaseItemSlot> OnEndDragEvent;
-	public event Action<BaseItemSlot> OnDragEvent;
-	public event Action<BaseItemSlot> OnDropEvent;
 
-	private bool isDragging;
-	private Color dragColor = new Color(1, 1, 1, 0.5f);
+    [SerializeField] Image image;
 
-	public override bool CanAddStack(Item item, int amount = 1)
-	{
-		return base.CanAddStack(item, amount) && Amount + amount <= item.MaximumStacks;
-	}
+	public event Action<ItemSlot> OnPointerEnterEvent;
+	public event Action<ItemSlot> OnPointerExitEvent;
+	public event Action<ItemSlot> OnRightClickEvent;
+	public event Action<ItemSlot> OnBeginDragEvent;
+	public event Action<ItemSlot> OnEndDragEvent;
+	public event Action<ItemSlot> OnDragEvent;
+	public event Action<ItemSlot> OnDropEvent;
 
-	public override bool CanReceiveItem(Item item)
-	{
-		return true;
-	}
+    private Color normalColor = Color.white;
+    private Color disabledColor = new Color(1, 1, 1, 0);
 
-	protected override void OnDisable()
-	{
-		base.OnDisable();
+    private Item _item;
+    public Item Item {
+        get { return _item; }
+        set { 
+            _item = value;
+            
+            if (_item == null)
+            {
+                image.color = disabledColor;
+            }
+            else
+            {
+                image.sprite = _item.Icon;
+                image.color = normalColor;
+            }
+        }
+    }
 
-		if (isDragging)
-		{
-			OnEndDrag(null);
-		}
-	}
-
-	public void OnBeginDrag(PointerEventData eventData)
-	{
-		isDragging = true;
-
-		if (Item != null)
-			image.color = dragColor;
-
-		if (OnBeginDragEvent != null)
-			OnBeginDragEvent(this);
-	}
-
-	public void OnEndDrag(PointerEventData eventData)
-	{
-		isDragging = false;
-
-		if (Item != null)
-			image.color = normalColor;
-
-		if (OnEndDragEvent != null)
-			OnEndDragEvent(this);
-	}
-
-	public void OnDrag(PointerEventData eventData)
-	{
-		if (OnDragEvent != null)
-			OnDragEvent(this);
-	}
-
-	public void OnDrop(PointerEventData eventData)
-	{
-		if (OnDropEvent != null)
-			OnDropEvent(this);
-	}
+    //check if this is required
+   /* public virtual bool CanReceiveItem (Item item)
+    {
+        return true;
+    }*/
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (OnRightClickEvent != null)
+            {
+                OnRightClickEvent(this);
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (OnPointerEnterEvent != null)
+        {
+            OnPointerEnterEvent(this);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (OnPointerExitEvent != null)
+        {
+            OnPointerExitEvent(this);
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (OnBeginDragEvent != null)
+        {
+            OnBeginDragEvent(this);
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (OnEndDragEvent != null)
+        {
+            OnEndDragEvent(this);
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (OnDragEvent != null)
+        {
+            OnDragEvent(this);
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (OnDropEvent != null)
+        {
+            OnDropEvent(this);
+        }
     }
 }
+
