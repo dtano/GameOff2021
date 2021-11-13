@@ -15,10 +15,6 @@ public class Item : MonoBehaviour
     [TextArea]
     public string description;
 
-    //[SerializeField] StatModifier enduranceModifier;
-    // [SerializeField] StatModifier intelligenceModifier;
-    // [SerializeField] StatModifier survivabilityModifier;
-
     public StatModifier EnduranceModifier { get; set; }
     public StatModifier SurvivabilityModifier { get; set; }
     public StatModifier IntelligenceModifier { get; set; }
@@ -39,9 +35,9 @@ public class Item : MonoBehaviour
 
         description = itemObject.description;
 
-        EnduranceModifier = itemObject.enduranceModifier;
-        IntelligenceModifier = itemObject.intelligenceModifier;
-        SurvivabilityModifier = itemObject.survivabilityModifier;
+        EnduranceModifier = new StatModifier(itemObject.enduranceModifier);
+        IntelligenceModifier = new StatModifier(itemObject.intelligenceModifier);
+        SurvivabilityModifier = new StatModifier(itemObject.survivabilityModifier);
 
         itemImage.sprite = itemObject.sprite;
     }
@@ -52,15 +48,12 @@ public class Item : MonoBehaviour
         
     }
 
-    // public override bool Equals(object other)
-    // {
-    //     //Check for null and compare run-time types.
-    //     if ((other == null) || ! this.GetType().Equals(other.GetType()))
-    //     {
-    //         return false;
-    //     }
-    //     return itemObject.Equals(((Item) other).GetItemObject());
-    // }
+    public void ResetModifiers()
+    {
+        EnduranceModifier.Value = itemObject.enduranceModifier.Value;
+        IntelligenceModifier.Value = itemObject.intelligenceModifier.Value;
+        SurvivabilityModifier.Value = itemObject.survivabilityModifier.Value;
+    }
 
 
     
@@ -69,7 +62,5 @@ public class Item : MonoBehaviour
     {
         return itemObject;
     }
-
-    // How will item affect customer survivability? 
     
 }

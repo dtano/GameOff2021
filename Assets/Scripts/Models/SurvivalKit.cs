@@ -9,6 +9,9 @@ public class SurvivalKit : MonoBehaviour
     [SerializeField] int maxSlots;
 
     private CustomerData affectedCustData;
+
+    public delegate void OnItemAdd(Item item);
+    private OnItemAdd OnItemAddFunction;
     
     
     // Start is called before the first frame update
@@ -28,6 +31,10 @@ public class SurvivalKit : MonoBehaviour
     {
         if(allItems.Count < maxSlots){
             allItems.Add(item);
+            if(OnItemAddFunction != null){
+                OnItemAddFunction(item);
+                Debug.Log("Function called when adding");
+            }
             AddItemStatModifiers(item);
         }else{
             Debug.Log("Over capacity");
@@ -44,16 +51,28 @@ public class SurvivalKit : MonoBehaviour
 
     private void AddItemStatModifiers(Item item)
     {
+        // Not great, as removal will mess up the calculations
         // Before adding, then apply any traits
-        List<TraitObject> traits = affectedCustData.Traits;
-        if(traits.Count > 0){
-            foreach(TraitObject trait in traits) trait.Apply(item);
-        }
+        // bool affectedByTraits = false;
+        // List<Trait> traits = affectedCustData.Traits;
+        // if(traits.Count > 0){
+        //     foreach(Trait trait in traits){
+        //         trait.Apply(item);
+        //     }
+        //     affectedByTraits = true;
+        // }
         
+        // Debug.Log(item.EnduranceModifier.Value);
         
+        Debug.Log(affectedCustData);
         affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
         affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
         affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
+
+        // if(affectedByTraits){
+        //     item.ResetModifiers();
+        // }
+
     }
 
     private void RemoveItemStatModifiers(Item item)
@@ -76,6 +95,12 @@ public class SurvivalKit : MonoBehaviour
     public void SetAffectedCustData(CustomerData custData)
     {
         affectedCustData = custData;
+    }
+
+    public void SetOnItemAdd(OnItemAdd addDelegate)
+    {
+        Debug.Log("Set on item add function");
+        OnItemAddFunction = addDelegate;
     }
 
 

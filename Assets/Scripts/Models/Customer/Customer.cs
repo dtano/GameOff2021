@@ -18,12 +18,14 @@ public class Customer : MonoBehaviour
     private float _survivabilityScore; // Will be a percentage in game
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if(_survivalKit == null){
             _survivalKit = GetComponent<SurvivalKit>();
         }
+
+        if(_survivalKit == null) Debug.Log("Survival kit is null");
         _survivalKit?.SetAffectedCustData(_data);
     }
 

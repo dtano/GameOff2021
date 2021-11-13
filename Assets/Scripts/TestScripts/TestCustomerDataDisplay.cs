@@ -5,9 +5,9 @@ using UnityEngine;
 public class TestCustomerDataDisplay : MonoBehaviour
 {
     [SerializeField] Customer _customer;
-    [SerializeField] TraitObject traitObject;
+    [SerializeField] Trait traitObject;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _customer = GetComponent<Customer>();
         // Make a CustomerData object

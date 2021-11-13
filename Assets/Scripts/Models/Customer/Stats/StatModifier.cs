@@ -23,4 +23,11 @@ public class StatModifier
     }
 
     public StatModifier(float value, StatModType type) : this (value, type, (int)type) {}
+
+    public StatModifier(StatModifier modifier)
+    {
+        Value = modifier.Value;
+        Type = modifier.Type;
+        Order = modifier.Order;
+    }
 }
