@@ -63,8 +63,6 @@ public class SurvivalKit : MonoBehaviour
         // }
         
         // Debug.Log(item.EnduranceModifier.Value);
-        
-        Debug.Log(affectedCustData);
         affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
         affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
         affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);

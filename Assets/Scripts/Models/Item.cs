@@ -48,12 +48,12 @@ public class Item : MonoBehaviour
         
     }
 
-    public void ResetModifiers()
-    {
-        EnduranceModifier.Value = itemObject.enduranceModifier.Value;
-        IntelligenceModifier.Value = itemObject.intelligenceModifier.Value;
-        SurvivabilityModifier.Value = itemObject.survivabilityModifier.Value;
-    }
+    // public void ResetModifiers()
+    // {
+    //     EnduranceModifier.Value = itemObject.enduranceModifier.Value;
+    //     IntelligenceModifier.Value = itemObject.intelligenceModifier.Value;
+    //     SurvivabilityModifier.Value = itemObject.survivabilityModifier.Value;
+    // }
 
 
     

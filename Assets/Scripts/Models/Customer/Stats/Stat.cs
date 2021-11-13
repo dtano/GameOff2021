@@ -84,6 +84,7 @@ public class Stat
             switch(mod.Type){
                 case StatModType.Flat:
                     finalValue += mod.Value;
+                    Debug.Log($"Item after mod {finalValue}");
                     break;
                 case StatModType.PercentAdd:
                     sumPercentAdd += mod.Value;

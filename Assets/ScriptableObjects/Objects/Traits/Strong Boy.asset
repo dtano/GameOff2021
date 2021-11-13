@@ -15,14 +15,14 @@ MonoBehaviour:
   _name: Strong Boy
   _description: 
   enduranceModifier:
-    Value: 0.1
+    _value: 0.1
     Type: 100
     Order: 0
   intelligenceModifier:
-    Value: 0
+    _value: 0
     Type: 0
     Order: 0
   survivabilityModifier:
-    Value: 0
+    _value: 0
     Type: 0
     Order: 0

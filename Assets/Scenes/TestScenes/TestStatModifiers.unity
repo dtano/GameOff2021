@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
-  _survivalKit: {fileID: 0}
+  _survivalKit: {fileID: 433986075}
   _data:
     traits:
     - {fileID: 0}

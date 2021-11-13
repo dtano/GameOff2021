@@ -22,8 +22,14 @@ public class BoostTrait : Trait
     private void Boost(Item item)
     {
         Debug.Log("Boosting now");
-        item.EnduranceModifier.Value += enduranceModifier.Value;
-        item.IntelligenceModifier.Value += intelligenceModifier.Value;
-        item.SurvivabilityModifier.Value += survivabilityModifier.Value;
+
+        if(enduranceModifier != null) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+        
+        // if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
+        // if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+
+        // item.EnduranceModifier.Value += enduranceModifier.Value;
+        // item.IntelligenceModifier.Value += intelligenceModifier.Value;
+        // item.SurvivabilityModifier.Value += survivabilityModifier.Value;
     }
 }
