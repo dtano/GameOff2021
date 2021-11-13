@@ -46,6 +46,11 @@ public class StatModifier : BaseModifier
         return false;
     }
 
+    public List<BaseModifier> GetTraitBonuses()
+    {
+        return traitBonuses;
+    }
+
     public bool RemoveTraitBonus(BaseModifier mod)
     {
         return traitBonuses.Remove(mod);

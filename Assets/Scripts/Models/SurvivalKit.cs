@@ -51,37 +51,28 @@ public class SurvivalKit : MonoBehaviour
 
     private void AddItemStatModifiers(Item item)
     {
-        // Not great, as removal will mess up the calculations
-        // Before adding, then apply any traits
-        // bool affectedByTraits = false;
-        // List<Trait> traits = affectedCustData.Traits;
-        // if(traits.Count > 0){
-        //     foreach(Trait trait in traits){
-        //         trait.Apply(item);
-        //     }
-        //     affectedByTraits = true;
-        // }
-        
-        // Debug.Log(item.EnduranceModifier.Value);
-        affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
-        affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
-        affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
+       
+        if(!item.IsNullified()){
+            affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
+            affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
+            affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
+        }
 
-        // if(affectedByTraits){
-        //     item.ResetModifiers();
-        // }
 
     }
 
     private void RemoveItemStatModifiers(Item item)
     {
-        affectedCustData.Endurance.RemoveModifier(item.EnduranceModifier);
-        //affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
-        //affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
+        if(!item.IsNullified()){
+            affectedCustData.Endurance.RemoveModifier(item.EnduranceModifier);
+            //affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
+            //affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
+        }
     }
 
     public void Clear()
     {
+        // The game controller needs to be notified to remove all trait bonuses and clear the trait delegates
         allItems.Clear();
     }
 

@@ -940,6 +940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traits:
   - {fileID: 11400000, guid: 3b438fe6394e71845821ebb40071eadd, type: 2}
+  - {fileID: 11400000, guid: 985e7e6c239062d42bb71446ce3117dd, type: 2}
   customer: {fileID: 433986073}
 --- !u!4 &1432192340
 Transform:

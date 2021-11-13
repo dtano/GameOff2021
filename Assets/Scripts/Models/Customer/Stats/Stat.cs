@@ -68,9 +68,11 @@ public class Stat
         if(statModifiers.Remove(mod)){
             // reapply modifiers as this modifier has been removed
             ApplyModifiers();
+            //mod.ClearTraitBonuses();
             return true;
         }
         
+        Debug.Log("Failed to remove modifier");
         return false;
     }
 

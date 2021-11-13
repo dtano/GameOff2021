@@ -11,6 +11,8 @@ public class Item : MonoBehaviour
     [SerializeField] Image itemImage;
 
     [SerializeField] private string itemName;
+
+    private bool isNullified = false;
     
     [TextArea]
     public string description;
@@ -59,6 +61,28 @@ public class Item : MonoBehaviour
     //     IntelligenceModifier.Value = itemObject.intelligenceModifier.Value;
     //     SurvivabilityModifier.Value = itemObject.survivabilityModifier.Value;
     // }
+
+    public void Nullify()
+    {
+        isNullified = true;
+    }
+
+    public void Activate()
+    {
+        isNullified = false;
+    }
+
+    public bool IsNullified()
+    {
+        return isNullified;
+    }
+
+    public void ClearTraitBonuses()
+    {
+        EnduranceModifier.ClearTraitBonuses();
+        SurvivabilityModifier.ClearTraitBonuses();
+        IntelligenceModifier.ClearTraitBonuses();
+    }
 
 
     

@@ -10,22 +10,20 @@ public class BoostTrait : Trait
     [SerializeField] private StatModifier intelligenceModifier;
     [SerializeField] private StatModifier survivabilityModifier; 
 
-    public override void Apply(Customer customer)
-    {
-        // Get customer's survival kit
-        SurvivalKit survivalKit = customer.GetSurvivalKit();
 
-        survivalKit.SetOnItemAdd(Boost);
-        Debug.Log("Applied trait");
-    }
-
-    private void Boost(Item item)
+    protected virtual void Boost(Item item)
     {
         Debug.Log("Boosting now");
 
-        if(enduranceModifier != null) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
-        
-        //if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
-        //if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+        if(!item.IsNullified()){
+            if(enduranceModifier != null) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+            //if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
+            //if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+        }
+    }
+
+    protected override void TraitEffect(Item item)
+    {
+        Boost(item);
     }
 }

@@ -21,7 +21,16 @@ public abstract class Trait : ScriptableObject, ITrait
 
     //public abstract void Apply(Item item);
 
-    public abstract void Apply(Customer customer);
+    public virtual void Apply(Customer customer)
+    {
+         // Get customer's survival kit
+        SurvivalKit survivalKit = customer.GetSurvivalKit();
+
+        survivalKit.SetOnItemAdd(TraitEffect);
+        Debug.Log("Applied trait");
+    }
+
+    protected abstract void TraitEffect(Item item);
 
     // TraitType traitType = _type;
     //     switch(traitType){
