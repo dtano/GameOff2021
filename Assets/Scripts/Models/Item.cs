@@ -35,6 +35,7 @@ public class Item : MonoBehaviour
 
         description = itemObject.description;
 
+        // This might need to be changed
         EnduranceModifier = new StatModifier(itemObject.enduranceModifier);
         IntelligenceModifier = new StatModifier(itemObject.intelligenceModifier);
         SurvivabilityModifier = new StatModifier(itemObject.survivabilityModifier);

@@ -17,13 +17,13 @@ MonoBehaviour:
   description: 
   enduranceModifier:
     _value: 1
-    Type: 100
-    Order: 0
+    _type: 100
+    _order: 0
   intelligenceModifier:
     _value: 0
-    Type: 0
-    Order: 0
+    _type: 0
+    _order: 0
   survivabilityModifier:
     _value: 0
-    Type: 0
-    Order: 0
+    _type: 0
+    _order: 0

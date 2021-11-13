@@ -1,57 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum StatModType
-{
-    Flat = 100,
-    PercentAdd = 200,
-    PercentMult = 300
-}
 
 [System.Serializable]
-public class StatModifier
+public class StatModifier : BaseModifier
 {
-    [SerializeField] private float _value;
-    public StatModType Type;
-    public int Order;
-
-    public float Value {
+    public override float Value {
         get => CalculateValueAfterBonuses();
     }
 
-    private List<StatModifier> traitBonuses;
+    private List<BaseModifier> traitBonuses = new List<BaseModifier>();
 
-    public StatModifier(float value, StatModType type, int order)
+    public StatModifier(float value, StatModType type, int order) : base(value, type, order)
     {
-        _value = value;
-        Type = type;
-        Order = order;
-
-        traitBonuses = new List<StatModifier>();
+        //traitBonuses = new List<StatModifier>();
+        //traitBonuses = new List<BaseModifier>();
     }
 
-    public StatModifier(float value, StatModType type) : this (value, type, (int)type) {}
+    public StatModifier(float value, StatModType type) : base (value, type, (int)type) {
+        //traitBonuses = new List<BaseModifier>();
+    }
 
-    public StatModifier(StatModifier modifier)
+    public StatModifier(StatModifier modifier) : base(modifier.Value, modifier.Type, modifier.Order)
     {
-        _value = modifier.Value;
-        Type = modifier.Type;
-        Order = modifier.Order;
-
-        traitBonuses = new List<StatModifier>();
+        //traitBonuses = new List<StatModifier>();
+        //traitBonuses = new List<BaseModifier>();
     }
 
     private float CalculateValueAfterBonuses()
     {
+        Debug.Log("Called calculate value after bonuses");
         float totalBonuses = 0;
-        foreach(StatModifier mod in traitBonuses){
-            totalBonuses += mod.Value;
-        }
 
+        if(traitBonuses != null && traitBonuses.Count > 0){
+            foreach(BaseModifier mod in traitBonuses){
+                totalBonuses += mod.Value;
+            }
+        }
+        
         return _value + totalBonuses;
     }
 
-    public bool AddTraitBonus(StatModifier mod)
+    public bool AddTraitBonus(BaseModifier mod)
     {
         // Gotta make sure there is no duplicate modifier
         Debug.Log(mod.Value);
@@ -63,7 +53,7 @@ public class StatModifier
         return false;
     }
 
-    public bool RemoveTraitBonus(StatModifier mod)
+    public bool RemoveTraitBonus(BaseModifier mod)
     {
         return traitBonuses.Remove(mod);
     }

@@ -103,6 +103,5 @@ public class Stat
         }
 
         valueAfterBonuses = finalValue;
-        //valueAfterBonuses = _baseValue + totalBonus;
     }
 }
