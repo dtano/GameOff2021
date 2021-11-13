@@ -76,8 +76,8 @@ public class SurvivalKit : MonoBehaviour
     private void RemoveItemStatModifiers(Item item)
     {
         affectedCustData.Endurance.RemoveModifier(item.EnduranceModifier);
-        affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
-        affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
+        //affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
+        //affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
     }
 
     public void Clear()

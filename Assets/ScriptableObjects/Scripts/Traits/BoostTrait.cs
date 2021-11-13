@@ -24,7 +24,8 @@ public class BoostTrait : Trait
         Debug.Log("Boosting now");
 
         if(enduranceModifier != null) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
-        if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
-        if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+        
+        //if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
+        //if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
     }
 }

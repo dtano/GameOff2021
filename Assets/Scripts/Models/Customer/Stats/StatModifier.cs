@@ -11,21 +11,11 @@ public class StatModifier : BaseModifier
 
     private List<BaseModifier> traitBonuses = new List<BaseModifier>();
 
-    public StatModifier(float value, StatModType type, int order) : base(value, type, order)
-    {
-        //traitBonuses = new List<StatModifier>();
-        //traitBonuses = new List<BaseModifier>();
-    }
+    public StatModifier(float value, StatModType type, int order) : base(value, type, order){}
 
-    public StatModifier(float value, StatModType type) : base (value, type, (int)type) {
-        //traitBonuses = new List<BaseModifier>();
-    }
+    public StatModifier(float value, StatModType type) : base (value, type, (int)type) {}
 
-    public StatModifier(StatModifier modifier) : base(modifier.Value, modifier.Type, modifier.Order)
-    {
-        //traitBonuses = new List<StatModifier>();
-        //traitBonuses = new List<BaseModifier>();
-    }
+    public StatModifier(StatModifier modifier) : base(modifier.Value, modifier.Type, modifier.Order){}
 
     private float CalculateValueAfterBonuses()
     {
@@ -43,8 +33,11 @@ public class StatModifier : BaseModifier
 
     public bool AddTraitBonus(BaseModifier mod)
     {
+        if(traitBonuses == null){
+            traitBonuses = new List<BaseModifier>();
+        }
+        
         // Gotta make sure there is no duplicate modifier
-        Debug.Log(mod.Value);
         if(!traitBonuses.Contains(mod)){
             traitBonuses.Add(mod);
             return true;
@@ -60,6 +53,6 @@ public class StatModifier : BaseModifier
 
     public void ClearTraitBonuses()
     {
-        traitBonuses.Clear();
+        traitBonuses?.Clear();
     }
 }
