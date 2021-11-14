@@ -19,16 +19,27 @@ public class StatModifier : BaseModifier
 
     private float CalculateValueAfterBonuses()
     {
-        Debug.Log("Called calculate value after bonuses");
         float totalBonuses = 0;
 
         if(traitBonuses != null && traitBonuses.Count > 0){
             foreach(BaseModifier mod in traitBonuses){
+                // We need to do the same calculation that Stat does
                 totalBonuses += mod.Value;
             }
         }
         
         return _value + totalBonuses;
+    }
+
+    private int CompareModifierOrder(StatModifier a, StatModifier b)
+    {
+        if(a.Order < b.Order){
+            return -1;
+        }else if(a.Order > b.Order){
+            return 1;
+        }
+
+        return 0;
     }
 
     public bool AddTraitBonus(BaseModifier mod)
@@ -38,7 +49,7 @@ public class StatModifier : BaseModifier
         }
         
         // Gotta make sure there is no duplicate modifier
-        if(!traitBonuses.Contains(mod)){
+        if(Value > 0 && !traitBonuses.Contains(mod)){
             traitBonuses.Add(mod);
             return true;
         }

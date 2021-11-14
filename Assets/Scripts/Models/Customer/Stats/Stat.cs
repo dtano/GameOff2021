@@ -36,29 +36,10 @@ public class Stat
         return _maxValue;
     }
 
-    private int CompareModifierOrder(StatModifier a, StatModifier b)
-    {
-        if(a.Order < b.Order){
-            return -1;
-        }else if(a.Order > b.Order){
-            return 1;
-        }
-
-        return 0;
-    }
-
     public void AddModifier(StatModifier mod)
     {
         statModifiers.Add(mod);
-        statModifiers.Sort(CompareModifierOrder);
-
-        ApplyModifiers();
-    }
-
-    public void AddModifier(StatModifier mod, List<Trait> traits)
-    {
-        statModifiers.Add(mod);
-        statModifiers.Sort(CompareModifierOrder);
+        statModifiers.Sort(ModifierSorter.CompareModifierOrder);
 
         ApplyModifiers();
     }
@@ -72,7 +53,6 @@ public class Stat
             return true;
         }
         
-        Debug.Log("Failed to remove modifier");
         return false;
     }
 
@@ -86,7 +66,6 @@ public class Stat
             switch(mod.Type){
                 case StatModType.Flat:
                     finalValue += mod.Value;
-                    Debug.Log($"Item after mod {finalValue}");
                     break;
                 case StatModType.PercentAdd:
                     sumPercentAdd += mod.Value;

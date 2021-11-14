@@ -33,7 +33,6 @@ public class SurvivalKit : MonoBehaviour
             allItems.Add(item);
             if(OnItemAddFunction != null){
                 OnItemAddFunction(item);
-                Debug.Log("Function called when adding");
             }
             AddItemStatModifiers(item);
         }else{
@@ -53,9 +52,9 @@ public class SurvivalKit : MonoBehaviour
     {
        
         if(!item.IsNullified()){
-            affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
-            affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
-            affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
+            if(item.EnduranceModifier.Value > 0) affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
+            if(item.IntelligenceModifier.Value > 0) affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
+            if(item.SurvivabilityModifier.Value > 0) affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
         }
 
 
@@ -65,8 +64,8 @@ public class SurvivalKit : MonoBehaviour
     {
         if(!item.IsNullified()){
             affectedCustData.Endurance.RemoveModifier(item.EnduranceModifier);
-            //affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
-            //affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
+            affectedCustData.Intelligence.RemoveModifier(item.IntelligenceModifier);
+            affectedCustData.Survivability.RemoveModifier(item.SurvivabilityModifier);
         }
     }
 
@@ -86,6 +85,8 @@ public class SurvivalKit : MonoBehaviour
         affectedCustData = custData;
     }
 
+
+    // Delegate related functions
     public void Subscribe(OnItemAdd traitEffect)
     {
         OnItemAddFunction += traitEffect;
@@ -98,7 +99,6 @@ public class SurvivalKit : MonoBehaviour
 
     public void SetOnItemAdd(OnItemAdd addDelegate)
     {
-        Debug.Log("Set on item add function");
         OnItemAddFunction = addDelegate;
     }
 

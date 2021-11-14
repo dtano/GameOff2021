@@ -9,21 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6d9e5f1996561049b2d4c080807e868, type: 3}
-  m_Name: SampleTrait
+  m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
+  m_Name: Map
   m_EditorClassIdentifier: 
-  _title: Strong Boys
-  _type: 0
-  _description: All endurance bonuses +10%
+  itemName: Map
+  sprite: {fileID: 0}
+  description: 
   enduranceModifier:
-    Value: 0.1
-    Type: 200
-    Order: 0
+    _value: 0
+    _type: 0
+    _order: 0
   intelligenceModifier:
-    Value: 0
-    Type: 0
-    Order: 0
+    _value: 0.1
+    _type: 300
+    _order: 0
   survivabilityModifier:
-    Value: 0
-    Type: 0
-    Order: 0
+    _value: 0
+    _type: 0
+    _order: 0

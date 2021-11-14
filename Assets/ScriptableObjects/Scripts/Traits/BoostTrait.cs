@@ -13,12 +13,11 @@ public class BoostTrait : Trait
 
     protected virtual void Boost(Item item)
     {
-        Debug.Log("Boosting now");
-
         if(!item.IsNullified()){
-            if(enduranceModifier != null) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
-            //if(intelligenceModifier != null) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
-            //if(survivabilityModifier != null) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+            //Debug.Log(item.);
+            if(enduranceModifier.Value > 0) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+            if(intelligenceModifier.Value > 0) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
+            if(survivabilityModifier.Value > 0) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
         }
     }
 
