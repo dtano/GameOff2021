@@ -7,14 +7,7 @@ public class NullifyTrait : Trait
 {
     [SerializeField] List<ItemObject> itemsToNullify = new List<ItemObject>();
 
-    // public override void Apply(Customer customer)
-    // {
-    //     SurvivalKit survivalKit = customer.GetSurvivalKit();
 
-    //     survivalKit.SetOnItemAdd(null);
-
-    // }
-    
     protected override void TraitEffect(Item item)
     {
         Nullify(item);
