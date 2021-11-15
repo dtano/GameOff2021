@@ -25,7 +25,6 @@ public class Customer : MonoBehaviour
             _survivalKit = GetComponent<SurvivalKit>();
         }
 
-        if(_survivalKit == null) Debug.Log("Survival kit is null");
         _survivalKit?.SetAffectedCustData(_data);
     }
 
@@ -42,8 +41,8 @@ public class Customer : MonoBehaviour
         // THE METHOD COMMENTED BELOW CAN BE USED IF WEIGHTS ARE ASSIGNED TO EACH STAT
         //float prob = (_endurance.GetBaseValue()/maxStatValue) + (_survivability.GetBaseValue()/maxStatValue) + (_intelligence.GetBaseValue()/maxStatValue);
            
-        float prob = (_data.Endurance.GetModifiedValue() + _data.Survivability.GetModifiedValue() + 
-                      _data.Intelligence.GetModifiedValue()) / (maxStatValue * 3);
+        float prob = (_data.Endurance.ModifiedValue + _data.Survivability.ModifiedValue + 
+                      _data.Intelligence.ModifiedValue) / (maxStatValue * 3);
 
         return prob;
     }

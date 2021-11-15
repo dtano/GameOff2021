@@ -15,6 +15,9 @@ public class Stat : IModifiable
     private List<BaseModifier> statModifiers;
     private ModifierCalculator modifierCalculator;
 
+    public float ModifiedValue => valueAfterBonuses;
+    public float BaseValue => _baseValue;
+
     public Stat(int baseValue)
     {
         _baseValue = baseValue;
@@ -22,16 +25,6 @@ public class Stat : IModifiable
         statModifiers = new List<BaseModifier>();
 
         modifierCalculator = new ModifierCalculator(_baseValue, _maxValue);
-    }
-
-    public float GetBaseValue()
-    {
-        return _baseValue;
-    }
-
-    public float GetModifiedValue()
-    {
-        return valueAfterBonuses;
     }
 
     public static int GetMaxStatValue()

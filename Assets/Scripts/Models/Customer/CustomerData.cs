@@ -80,7 +80,7 @@ public class CustomerData
         sb.AppendFormat("Name: {0}\n", _name);
 
         // Show stats
-        string statsString = $"endurance = {_endurance.GetBaseValue()}\nsurvivability = {_survivability.GetBaseValue()}\nintelligence = {_intelligence.GetBaseValue()}\n";
+        string statsString = $"endurance = {_endurance.BaseValue}\nsurvivability = {_survivability.BaseValue}\nintelligence = {_intelligence.BaseValue}\n";
         sb.Append(statsString);
 
         sb.Append($"Survival probability: {_survivalProbability}");

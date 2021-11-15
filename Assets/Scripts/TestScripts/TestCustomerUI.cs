@@ -44,9 +44,9 @@ public class TestCustomerUI : MonoBehaviour
         statDisplay.text = "";
         sb.Clear();
         
-        sb.Append($"Endurance - {custData.Endurance.GetModifiedValue()}\n");
-        sb.Append($"Intelligence - {custData.Intelligence.GetModifiedValue()}\n");
-        sb.Append($"Survivability - {custData.Survivability.GetModifiedValue()}\n");
+        sb.Append($"Endurance - {custData.Endurance.ModifiedValue}\n");
+        sb.Append($"Intelligence - {custData.Intelligence.ModifiedValue}\n");
+        sb.Append($"Survivability - {custData.Survivability.ModifiedValue}\n");
 
         statDisplay.text = sb.ToString();
     }
