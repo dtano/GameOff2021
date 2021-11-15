@@ -52,9 +52,9 @@ public class SurvivalKit : MonoBehaviour
     {
        
         if(!item.IsNullified()){
-            if(item.EnduranceModifier.Value > 0) affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
-            if(item.IntelligenceModifier.Value > 0) affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
-            if(item.SurvivabilityModifier.Value > 0) affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
+            affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
+            affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);
+            affectedCustData.Survivability.AddModifier(item.SurvivabilityModifier);
         }
 
 

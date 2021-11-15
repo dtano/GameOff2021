@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatModifier : BaseModifier
+public class StatModifier : BaseModifier, IModifiable
 {
     public override float Value {
         get => CalculateValueAfterBonuses();
     }
 
     private List<BaseModifier> traitBonuses = new List<BaseModifier>();
+    private ModifierCalculator modifierCalculator;
+    private float modifiedValue;
 
     public StatModifier(float value, StatModType type, int order) : base(value, type, order){}
 
@@ -19,27 +21,21 @@ public class StatModifier : BaseModifier
 
     private float CalculateValueAfterBonuses()
     {
-        float totalBonuses = 0;
+        modifiedValue = _value;
 
         if(traitBonuses != null && traitBonuses.Count > 0){
-            foreach(BaseModifier mod in traitBonuses){
-                // We need to do the same calculation that Stat does
-                totalBonuses += mod.Value;
-            }
+            ApplyModifiers();
         }
         
-        return _value + totalBonuses;
+        return modifiedValue;
     }
 
-    private int CompareModifierOrder(StatModifier a, StatModifier b)
+    public void ApplyModifiers()
     {
-        if(a.Order < b.Order){
-            return -1;
-        }else if(a.Order > b.Order){
-            return 1;
+        if(modifierCalculator == null){
+            modifierCalculator = new ModifierCalculator(_value, Stat.GetMaxStatValue());
         }
-
-        return 0;
+        modifiedValue = modifierCalculator.CalculateValueAfterModifierBonuses(traitBonuses);
     }
 
     public bool AddTraitBonus(BaseModifier mod)
@@ -51,6 +47,9 @@ public class StatModifier : BaseModifier
         // Gotta make sure there is no duplicate modifier
         if(Value > 0 && !traitBonuses.Contains(mod)){
             traitBonuses.Add(mod);
+
+            traitBonuses.Sort(ModifierSorter.CompareModifierOrder);
+            
             return true;
         }
 

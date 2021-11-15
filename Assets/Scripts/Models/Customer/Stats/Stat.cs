@@ -4,21 +4,24 @@ using UnityEngine;
 
 // Represents a major stat that will affect the customer's survivability
 [System.Serializable]
-public class Stat
+public class Stat : IModifiable
 {
     // Needs stat modifiers
-    private static int _maxValue = 5;
+    private static int _maxValue = 10;
     [SerializeField] private float _baseValue;
 
     private float valueAfterBonuses;
 
-    private List<StatModifier> statModifiers;
+    private List<BaseModifier> statModifiers;
+    private ModifierCalculator modifierCalculator;
 
     public Stat(int baseValue)
     {
         _baseValue = baseValue;
         valueAfterBonuses = _baseValue;
-        statModifiers = new List<StatModifier>();
+        statModifiers = new List<BaseModifier>();
+
+        modifierCalculator = new ModifierCalculator(_baseValue, _maxValue);
     }
 
     public float GetBaseValue()
@@ -36,12 +39,17 @@ public class Stat
         return _maxValue;
     }
 
-    public void AddModifier(StatModifier mod)
+    public bool AddModifier(StatModifier mod)
     {
-        statModifiers.Add(mod);
-        statModifiers.Sort(ModifierSorter.CompareModifierOrder);
+        if(_baseValue > 0){
+            statModifiers.Add(mod);
+            statModifiers.Sort(ModifierSorter.CompareModifierOrder);
 
-        ApplyModifiers();
+            ApplyModifiers();
+            return true;
+        }
+
+        return false;
     }
 
     public bool RemoveModifier(StatModifier mod)
@@ -56,33 +64,8 @@ public class Stat
         return false;
     }
 
-    private void ApplyModifiers()
+    public void ApplyModifiers()
     {
-        float finalValue = _baseValue;
-        float sumPercentAdd = 0;
-        
-        int i = 0;
-        foreach(StatModifier mod in statModifiers){
-            switch(mod.Type){
-                case StatModType.Flat:
-                    finalValue += mod.Value;
-                    break;
-                case StatModType.PercentAdd:
-                    sumPercentAdd += mod.Value;
-
-                    if(i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd){
-                        finalValue *= 1 + sumPercentAdd;
-                        sumPercentAdd = 0;
-                    }
-
-                    break;
-                case StatModType.PercentMult:
-                    finalValue *= 1 + mod.Value;
-                    break;
-            }
-            i++;
-        }
-
-        valueAfterBonuses = finalValue;
+        valueAfterBonuses = modifierCalculator.CalculateValueAfterModifierBonuses(statModifiers);
     }
 }
