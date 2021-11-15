@@ -21,23 +21,26 @@ public class ModifierCalculator
         
         int i = 0;
         foreach(StatModifier mod in modifiers){
-            switch(mod.Type){
-                case StatModType.Flat:
-                    finalValue += mod.Value;
-                    break;
-                case StatModType.PercentAdd:
-                    sumPercentAdd += mod.Value;
+            if(!mod.IsLocked){
+                switch(mod.Type){
+                    case StatModType.Flat:
+                        finalValue += mod.Value;
+                        break;
+                    case StatModType.PercentAdd:
+                        sumPercentAdd += mod.Value;
 
-                    if(i + 1 >=  modifiers.Count || modifiers[i + 1].Type != StatModType.PercentAdd){
-                        finalValue *= 1 + sumPercentAdd;
-                        sumPercentAdd = 0;
-                    }
+                        if(i + 1 >=  modifiers.Count || modifiers[i + 1].Type != StatModType.PercentAdd){
+                            finalValue *= 1 + sumPercentAdd;
+                            sumPercentAdd = 0;
+                        }
 
-                    break;
-                case StatModType.PercentMult:
-                    finalValue *= 1 + mod.Value;
-                    break;
+                        break;
+                    case StatModType.PercentMult:
+                        finalValue *= 1 + mod.Value;
+                        break;
+                }
             }
+            // Point of possible problem
             i++;
         }
 

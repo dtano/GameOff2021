@@ -11,6 +11,8 @@ public enum StatModType
 
 public abstract class BaseModifier
 {
+    [SerializeField] private bool isLocked = false;
+
     [SerializeField] protected float _value;
     [SerializeField] protected StatModType _type;
     [SerializeField] protected int _order;
@@ -18,6 +20,8 @@ public abstract class BaseModifier
     public virtual float Value {get => _value;}
     public StatModType Type {get => _type;}
     public int Order {get; set;}
+
+    public bool IsLocked => isLocked;
 
     public BaseModifier(float value, StatModType type, int order)
     {
@@ -28,6 +32,16 @@ public abstract class BaseModifier
     }
 
     public BaseModifier(float value, StatModType type) : this (value, type, (int)type) {}
+
+    public void Lock()
+    {
+        isLocked = true;
+    }
+
+    public void Unlock()
+    {
+        isLocked = false;
+    }
 
 
 }

@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Text;
+using System;
 
 public class TestCustomerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI statDisplay;
     [SerializeField] TextMeshProUGUI nameDisplay;
+    [SerializeField] TextMeshProUGUI probabilityDisplay;
     
     private Customer customer;
     private CustomerData custData;
@@ -25,18 +27,14 @@ public class TestCustomerUI : MonoBehaviour
 
         nameDisplay.text = custData.Name;
 
-        //DisplayStats();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if(customer.WereStatsModified()){
-        //     DisplayStats();
-        //     customer.SetStatsModified(false);
-        // }
         DisplayStats();
+
+        DisplaySurvivalProbability();
     }
 
     private void DisplayStats()
@@ -49,5 +47,11 @@ public class TestCustomerUI : MonoBehaviour
         sb.Append($"Survivability - {custData.Survivability.ModifiedValue}\n");
 
         statDisplay.text = sb.ToString();
+    }
+
+    private void DisplaySurvivalProbability()
+    {
+        int prob = (int) Math.Ceiling(customer.CalculateSurvivalProbability());
+        probabilityDisplay.text = $"{prob}%";
     }
 }

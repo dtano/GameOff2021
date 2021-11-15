@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Traits/Nullify items Trait")]
-public class NullifyTrait : Trait
+public class NullifyTrait : Trait, INullify
 {
     [SerializeField] List<ItemObject> itemsToNullify = new List<ItemObject>();
 
@@ -14,7 +14,7 @@ public class NullifyTrait : Trait
     }
 
 
-    protected virtual void Nullify(Item item)
+    public void Nullify(Item item)
     {
         Debug.Log("Boosting now");
 
