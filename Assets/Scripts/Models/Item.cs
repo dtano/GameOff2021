@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour
 {
     [SerializeField] ItemObject itemObject;
-    
+
     [SerializeField] Image itemImage;
-    
+
     void Awake()
     {
-        if(itemImage == null){
+        if (itemImage == null)
+        {
             itemImage = GetComponent<Image>();
         }
 
@@ -21,7 +22,7 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // public override bool Equals(object other)
@@ -40,5 +41,6 @@ public class Item : MonoBehaviour
     }
 
     // How will item affect customer survivability? 
-    
+
 }
+*/

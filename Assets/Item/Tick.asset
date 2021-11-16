@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
-  m_Name: Water
+  m_Script: {fileID: 11500000, guid: 2ec6d41445dd8df4e97cb90b86d4f0a5, type: 3}
+  m_Name: Tick
   m_EditorClassIdentifier: 
-  itemName: Water
-  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  ItemName: 
+  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   description: 
   enduranceModifier:
-    Value: 1
+    Value: 0
     Type: 0
   intelligenceModifier:
     Value: 0

@@ -6,13 +6,14 @@ public class BackpackInventory : MonoBehaviour
     [SerializeField] Transform backpackSlotParent;
     [SerializeField] BackpackSlot[] backpackSlots;
 
-	public event Action<ItemSlot> OnPointerEnterEvent;
-	public event Action<ItemSlot> OnPointerExitEvent;
-	public event Action<ItemSlot> OnRightClickEvent;
-	public event Action<ItemSlot> OnBeginDragEvent;
-	public event Action<ItemSlot> OnEndDragEvent;
-	public event Action<ItemSlot> OnDragEvent;
-	public event Action<ItemSlot> OnDropEvent;
+
+    public event Action<ItemSlot> OnPointerEnterEvent;
+    public event Action<ItemSlot> OnPointerExitEvent;
+    public event Action<ItemSlot> OnRightClickEvent;
+    public event Action<ItemSlot> OnBeginDragEvent;
+    public event Action<ItemSlot> OnEndDragEvent;
+    public event Action<ItemSlot> OnDragEvent;
+    public event Action<ItemSlot> OnDropEvent;
 
     private void Start()
     {
@@ -28,6 +29,34 @@ public class BackpackInventory : MonoBehaviour
         }
     }
 
+    private void OnValidate()
+    {
+        backpackSlots = backpackSlotParent.GetComponentsInChildren<BackpackSlot>();
+    }
+
+
+
+    public bool AddItem(EquippableItem item, out EquippableItem previousItem)
+    {
+        for (int i = 0; i < backpackSlots.Length; i++)
+        {
+            previousItem = (EquippableItem)backpackSlots[i].Item;
+            backpackSlots[i].Item = item;
+            return true;
+        }
+        previousItem = null;
+        return false;
+    }
+
+    public bool RemoveItem(EquippableItem item)
+    {
+        for (int i = 0; i < backpackSlots.Length; i++)
+        {
+            backpackSlots[i].Item = null;
+            return true;
+        }
+        return false;
+    }
 
 
 

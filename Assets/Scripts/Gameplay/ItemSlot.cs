@@ -7,24 +7,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 {
 
     [SerializeField] Image image;
+/*    [SerializeField] ItemTooltip tooltip;*/
 
-	public event Action<ItemSlot> OnPointerEnterEvent;
-	public event Action<ItemSlot> OnPointerExitEvent;
-	public event Action<ItemSlot> OnRightClickEvent;
-	public event Action<ItemSlot> OnBeginDragEvent;
-	public event Action<ItemSlot> OnEndDragEvent;
-	public event Action<ItemSlot> OnDragEvent;
-	public event Action<ItemSlot> OnDropEvent;
+    public event Action<ItemSlot> OnPointerEnterEvent;
+    public event Action<ItemSlot> OnPointerExitEvent;
+    public event Action<ItemSlot> OnRightClickEvent;
+    public event Action<ItemSlot> OnBeginDragEvent;
+    public event Action<ItemSlot> OnEndDragEvent;
+    public event Action<ItemSlot> OnDragEvent;
+    public event Action<ItemSlot> OnDropEvent;
 
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
     private Item _item;
-    public Item Item {
+    public Item Item
+    {
         get { return _item; }
-        set { 
+        set
+        {
             _item = value;
-            
+
             if (_item == null)
             {
                 image.color = disabledColor;
@@ -37,11 +40,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    protected virtual void OnValidate()
+    {
+        if (image == null)
+            image = GetComponent<Image>();
+    }
+
     //check if this is required
-   /* public virtual bool CanReceiveItem (Item item)
+    public virtual bool CanReceiveItem(Item item)
     {
         return true;
-    }*/
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

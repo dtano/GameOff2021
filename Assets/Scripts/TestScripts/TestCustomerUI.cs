@@ -9,12 +9,12 @@ public class TestCustomerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI statDisplay;
     [SerializeField] TextMeshProUGUI nameDisplay;
-    
+
     private Customer customer;
     private CustomerData custData;
 
     private StringBuilder sb;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,8 @@ public class TestCustomerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(customer.WereStatsModified()){
+        if (customer.WereStatsModified())
+        {
             DisplayStats();
             customer.SetStatsModified(false);
         }
@@ -42,7 +43,7 @@ public class TestCustomerUI : MonoBehaviour
     {
         statDisplay.text = "";
         sb.Clear();
-        
+
         sb.Append($"Endurance - {custData.Endurance.GetModifiedValue()}\n");
         sb.Append($"Intelligence - {custData.Intelligence.GetModifiedValue()}\n");
         sb.Append($"Survivability - {custData.Survivability.GetModifiedValue()}\n");

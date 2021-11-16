@@ -18,7 +18,7 @@ public class ShopInventory : MonoBehaviour
 
     private void Start()
     {
-        for (int i=0; i < itemSlots.Length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
             itemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
             itemSlots[i].OnPointerExitEvent += OnPointerExitEvent;
@@ -31,6 +31,13 @@ public class ShopInventory : MonoBehaviour
 
         SetStartingItems();
     }
+
+    private void OnValidate()
+    {
+        if (itemsParent != null)
+            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+    }
+
 
     private void SetStartingItems()
     {
@@ -48,11 +55,11 @@ public class ShopInventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        for (int i = 0; 1 < itemSlots.Length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
             if (itemSlots[i].Item == null)
             {
-                itemSlots[i].Item = item
+                itemSlots[i].Item = item;
                 return true;
             }
         }
@@ -61,25 +68,25 @@ public class ShopInventory : MonoBehaviour
 
     public bool RemoveItem(Item item)
     {
-        for (int i =0; i < itemSlots.length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
             if (itemSlots[i].Item == item)
             {
-                itemSlots[i].Item == null;
+                itemSlots[i].Item = null;
                 return true;
             }
-            
+
         }
         return false;
     }
 
     public bool IsFull()
     {
-        for (int i = 0; 1 < itemSlots.Length; i++)\
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[1].Item == null)
+            if (itemSlots[i].Item == null)
             {
-                return false
+                return false;
             }
         }
         return true;
