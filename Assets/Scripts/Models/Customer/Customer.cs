@@ -18,6 +18,9 @@ public class Customer : MonoBehaviour
     [SerializeField] private CustomerData _data;
     private float _survivabilityScore; // Will be a percentage in game
 
+    public SurvivalKit SurvivalKit => _survivalKit;
+    public CustomerData CustomerData {get => _data; set => _data = value; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,7 +35,7 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(_data != null) CalculateSurvivalProbability();
+        
     }
 
     // Gonna move this function elsewhere
@@ -45,24 +48,8 @@ public class Customer : MonoBehaviour
         float prob = (_data.Endurance.ModifiedValue + _data.Survivability.ModifiedValue + 
                       _data.Intelligence.ModifiedValue) / (maxStatValue * NUM_STATS);
 
+        if(_data != null) _data.SurvivalProbability = prob * 100;
+
         return prob * 100;
     }
-
-    public void SetData(CustomerData data)
-    {
-        _data = data;
-        Debug.Log(_data);
-    }
-
-    public SurvivalKit GetSurvivalKit()
-    {
-        return _survivalKit;
-    }
-
-    public CustomerData GetCustomerData()
-    {
-        return _data;
-    }
-
-
 }

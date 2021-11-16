@@ -63,7 +63,11 @@ public class StatModifier : BaseModifier, IModifiable
 
     public bool RemoveTraitBonus(BaseModifier mod)
     {
-        return traitBonuses.Remove(mod);
+        if(traitBonuses.Remove(mod)){
+            mod.Unlock();
+            return true;
+        }
+        return false;
     }
 
     public void ClearTraitBonuses()

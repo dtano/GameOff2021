@@ -23,7 +23,7 @@ public class TestCustomerUI : MonoBehaviour
         sb = new StringBuilder();
         customer = GetComponent<Customer>();
 
-        custData = customer.GetCustomerData();
+        custData = customer.CustomerData;
 
         nameDisplay.text = custData.Name;
 

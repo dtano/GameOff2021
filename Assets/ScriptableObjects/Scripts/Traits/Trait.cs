@@ -19,33 +19,15 @@ public abstract class Trait : ScriptableObject, ITrait
 
     public string Description { get => _description; set => _description = value; }
 
-    //public abstract void Apply(Item item);
-
     public virtual void Apply(Customer customer)
     {
-         // Get customer's survival kit
-        SurvivalKit survivalKit = customer.GetSurvivalKit();
-
-        survivalKit.Subscribe(TraitEffect);
+        // Add trait effect to the survival kit's delegate function
+        customer.SurvivalKit.Subscribe(TraitEffect);
 
         
         Debug.Log("Applied trait");
     }
 
     protected abstract void TraitEffect(Item item);
-
-    // TraitType traitType = _type;
-    //     switch(traitType){
-    //         case TraitType.Boost:
-    //             item.EnduranceModifier.Value += enduranceModifier.Value;
-    //             Debug.Log($"Added {enduranceModifier.Value} to {enduranceModifier.Value}");
-    //             break;
-    //         case TraitType.Nullify:
-    //             break;
-    //         case TraitType.Reduce:
-    //             break;
-    //     }
-
-
 
 }
