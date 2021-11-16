@@ -77,6 +77,11 @@ public class SurvivalKit : MonoBehaviour
         SetOnItemAdd(null);
     }
 
+    public bool IsEligibleForCustomer()
+    {
+        return allItems.Count > 0;
+    }
+
     public List<Item> GetAllItems()
     {
         return allItems;

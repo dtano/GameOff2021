@@ -19,7 +19,7 @@ public class Customer : MonoBehaviour
     private float _survivabilityScore; // Will be a percentage in game
 
     public SurvivalKit SurvivalKit => _survivalKit;
-    public CustomerData CustomerData {get => _data; set => _data = value; }
+    public CustomerData CustomerData {get => _data; set => CustomerSetup(value); }
 
     // Start is called before the first frame update
     void Awake()
@@ -36,6 +36,18 @@ public class Customer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void CustomerSetup(CustomerData custData)
+    {
+        List<Trait> customerTraits = custData.Traits;
+        if(customerTraits != null && customerTraits.Count > 0){
+            foreach(Trait trait in customerTraits){
+                trait.Apply(this);
+            }
+        }
+
+        _data = custData;
     }
 
     // Gonna move this function elsewhere

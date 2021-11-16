@@ -20,7 +20,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        customerHistory?.Clear();
+        customerGenerator = GetComponent<CustomerGenerator>();
     }
 
     // Update is called once per frame
@@ -35,20 +36,23 @@ public class GameController : MonoBehaviour
     // Means that its time to store the customer data in the storage and generate a new one
     public async void FinishServingCustomer()
     {
-        // Store customer data in customer history
-        customerHistory.AddCustomerData(customer.CustomerData);
+        if(survivalKit.IsEligibleForCustomer()){
+            // Store customer data in customer history
+            customerHistory.AddCustomerData(customer.CustomerData);
+            numCustomersServed++;
 
-        // wait for transition 
-        await CustomerTransition(2f);
+            // wait for transition 
+            await CustomerTransition(2f);
 
-        Debug.Log("Transition over");
+            Debug.Log("Transition over");
 
-        // Generate new customer data
-        PrepareForNewCustomer();
+            // Generate new customer data
+            PrepareForNewCustomer();
 
-        await CustomerTransition(2f);
+            await CustomerTransition(2f);
 
-        Debug.Log("New customer has entered");
+            Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
+        }
 
 
     }
