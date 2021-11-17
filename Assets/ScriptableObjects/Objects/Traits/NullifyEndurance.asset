@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
-  m_Name: Water
+  m_Script: {fileID: 11500000, guid: b6df4c6a5676fcd49b3989bfa57cb842, type: 3}
+  m_Name: NullifyEndurance
   m_EditorClassIdentifier: 
-  itemName: Water
-  sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  description: 
+  _name: Nullify Endurance
+  _description: Nullifies all endurance bonuses from items
   enduranceModifier:
-    isLocked: 0
-    _value: 1
-    _type: 100
+    isLocked: 1
+    _value: 0
+    _type: 0
     _order: 0
   intelligenceModifier:
     isLocked: 0

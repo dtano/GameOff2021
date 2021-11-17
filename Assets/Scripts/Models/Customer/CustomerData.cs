@@ -19,7 +19,7 @@ public class CustomerData
 
     private float _survivalProbability;
 
-    [SerializeField] List<Trait> traits = new List<Trait>();
+    private List<Trait> traits = new List<Trait>();
     
     
     public CustomerData(string name, int endurance, int survivability, int perception, int intelligence)
@@ -53,8 +53,6 @@ public class CustomerData
 
     public float SurvivalProbability { get => _survivalProbability; set => _survivalProbability = value; }
     public string Name {get => _name; set => _name = value;}
-    //public List<Trait> Traits {get => traits;}
-
     public List<Trait> Traits {get => traits;}
 
     // public bool AddTrait(Trait trait)

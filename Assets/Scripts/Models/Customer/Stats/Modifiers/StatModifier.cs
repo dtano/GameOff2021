@@ -35,6 +35,7 @@ public class StatModifier : BaseModifier, IModifiable
         if(modifierCalculator == null){
             modifierCalculator = new ModifierCalculator(_value, Stat.GetMaxStatValue());
         }
+
         modifiedValue = modifierCalculator.CalculateValueAfterModifierBonuses(traitBonuses);
     }
 

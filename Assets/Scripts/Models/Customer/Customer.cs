@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour
 
     // Maybe CustomerData should be a mono
     [SerializeField] private CustomerData _data;
+    [SerializeField] private List<Trait> traits;
     private float _survivabilityScore; // Will be a percentage in game
 
     public SurvivalKit SurvivalKit => _survivalKit;
@@ -30,6 +31,10 @@ public class Customer : MonoBehaviour
         }
 
         _survivalKit?.SetAffectedCustData(_data);
+        
+        if(traits == null){
+            traits = new List<Trait>();
+        }
     }
 
     // Update is called once per frame
@@ -40,9 +45,9 @@ public class Customer : MonoBehaviour
 
     private void CustomerSetup(CustomerData custData)
     {
-        List<Trait> customerTraits = custData.Traits;
-        if(customerTraits != null && customerTraits.Count > 0){
-            foreach(Trait trait in customerTraits){
+        //List<Trait> customerTraits = custData.Traits;
+        if(traits != null && traits.Count > 0){
+            foreach(Trait trait in traits){
                 trait.Apply(this);
             }
         }

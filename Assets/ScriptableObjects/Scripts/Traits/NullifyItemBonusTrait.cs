@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Traits/Nullify item bonus trait")]
 public class NullifyItemBonusTrait : Trait, INullify
 {
     [SerializeField] private StatModifier enduranceModifier;
