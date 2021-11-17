@@ -57,7 +57,7 @@ public class InventoryManager : MonoBehaviour
 
         //Drop
         shopInventory.OnDropEvent += Drop;
-        backpackInventory.ondr += Drop;
+        backpackInventory.OnDropEvent += Drop;
 
     }
 

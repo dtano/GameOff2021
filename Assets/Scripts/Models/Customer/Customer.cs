@@ -63,9 +63,9 @@ public class Customer : MonoBehaviour
     {
         statsWereModified = true;
 
-        _data.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
-        _data.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
-        _data.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
+        // _data.Endurance.AddModifier(item.GetItemObject().enduranceModifier);
+        // _data.Intelligence.AddModifier(item.GetItemObject().intelligenceModifier);
+        // _data.Survivability.AddModifier(item.GetItemObject().survivabilityModifier);
     }
 
     public void SetData(CustomerData data)
