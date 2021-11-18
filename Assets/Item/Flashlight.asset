@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec6d41445dd8df4e97cb90b86d4f0a5, type: 3}
   m_Name: Flashlight
   m_EditorClassIdentifier: 
+  id: 955ffb1fbcfe9214f9dce3f3d591e353
   ItemName: 
   Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  MaximumStacks: 2
   description: 
   enduranceModifier:
     Value: 0

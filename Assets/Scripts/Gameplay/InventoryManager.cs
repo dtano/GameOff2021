@@ -152,32 +152,115 @@ public class InventoryManager : MonoBehaviour
     {
         if (dragItemSlot == null) return;
 
-        EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
-        EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
-
-        if (dragItemSlot is BackpackSlot)
-        {
-            if (dragItem != null) dragItem.Unequip(this);
-            if (dropItem != null) dropItem.Equip(this);
-        }
-        if (dropItemSlot is BackpackSlot)
-        {
-            if (dragItem != null) dragItem.Equip(this);
-            if (dropItem != null) dropItem.Unequip(this);
-        }
         //updates values of stats
         //statPanel.UpdateStatValues;
+        if (dropItemSlot.CanAddStack(dragItemSlot.Item))
+        {
+            AddStacks(dropItemSlot);
+        }
+        else
+        {
+            SwapItems(dropItemSlot);
+        }
+    }
+
+    private void SwapItems(ItemSlot dropItemSlot)
+    {
+        EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
+        EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
         Item draggedItem = dragItemSlot.Item;
         int draggedItemAmount = dragItemSlot.Amount;
 
+        //When dragging from the backpack
+        if (dragItemSlot is BackpackSlot)
+        {
+            if (dragItem != null) dragItem.Unequip(this);
+            if (dropItem != null) dropItem.Equip(this);
+
+            if (dropItemSlot.CanAddStack(dragItemSlot.Item))
+            {
+                AddStacks(dropItemSlot);
+            }
+
+            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dropItemSlot.Amount != 1)
+            {
+                // Add stacked shop items to the backpack and add backpack item back into shop
+                shopInventory.AddItem(draggedItem);
+                dropItemSlot.Amount--;
+                dragItemSlot.Item = dropItemSlot.Item;
+                dropItemSlot.Amount = 1;
+
+            }
+            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID)
+            {
+                //Do nothing, Items are the same and you are trying to drag and drop a stack
+            }
+            else
+            {
+                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+            }
+        }
+
+        //When dropping into the backpack
+        else if (dropItemSlot is BackpackSlot)
+        {
+            if (dragItem != null) dragItem.Equip(this);
+            if (dropItem != null) dropItem.Unequip(this);
+
+            //If items are the same
+            if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1)
+            {
+                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+            }
+            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1)
+            {
+                // Add stacked shop items to the backpack and add backpack item back into shop
+                shopInventory.AddItem(dropItemSlot.Item);
+                dragItemSlot.Amount--;
+                dropItemSlot.Item = draggedItem;
+                dropItemSlot.Amount = 1;
+
+            }
+            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID)
+            {
+                //Do nothing, Items are the same and you are trying to drag and drop a stack
+            }
+
+            // Dragging stacked items into backpack
+            else
+            {
+                dragItemSlot.Amount--;
+                dropItemSlot.Item = draggedItem;
+                dropItemSlot.Amount = 1;
+            }
+
+        }
+
+        else
+        {
+            ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+        }
+    }
+
+    //Swap items 1 for 1
+    private void ExchangeItems(ItemSlot dropItemSlot, Item draggedItem, int draggedItemAmount)
+    {
         dragItemSlot.Item = dropItemSlot.Item;
         dragItemSlot.Amount = dropItemSlot.Amount;
 
         dropItemSlot.Item = draggedItem;
         dropItemSlot.Amount = draggedItemAmount;
+    }
 
+    //Stacks items
+    private void AddStacks(ItemSlot dropItemSlot)
+    {
+        int numAddableStacks = dropItemSlot.Item.MaximumStacks - dropItemSlot.Amount;
+        int stacksToAdd = Mathf.Min(numAddableStacks, dragItemSlot.Amount);
 
+        dropItemSlot.Amount += stacksToAdd;
+        dragItemSlot.Amount -= stacksToAdd;
     }
 }
 

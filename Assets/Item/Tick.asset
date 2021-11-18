@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec6d41445dd8df4e97cb90b86d4f0a5, type: 3}
   m_Name: Tick
   m_EditorClassIdentifier: 
+  id: 66d25b2214fac1848985f98bb0a9508b
   ItemName: 
   Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  MaximumStacks: 1
   description: 
   enduranceModifier:
     Value: 0
