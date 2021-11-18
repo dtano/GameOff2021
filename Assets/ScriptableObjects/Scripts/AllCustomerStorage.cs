@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Holds customer data for a day/level so that we could display it in a day over screen
-[CreateAssetMenu(menuName = "Customer Storage/New Customer Storage")]
+[CreateAssetMenu(menuName = "Customer/Customer Storage/New Customer Storage")]
 public class AllCustomerStorage : ScriptableObject
 {
     public List<CustomerData> allCustData = new List<CustomerData>();
