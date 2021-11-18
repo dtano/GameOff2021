@@ -44,7 +44,7 @@ public class BackpackInventory : MonoBehaviour
             {
 
                 previousItem = (EquippableItem)backpackSlots[i].Item;
-                backpackSlots[i].Item = item;
+                backpackSlots[i].Item = item.GetCopy();
                 return true;
             }
             if (backpackSlots[i].Item)
@@ -53,7 +53,7 @@ public class BackpackInventory : MonoBehaviour
             }
             else
             {
-                backpackSlots[i].Item = item;
+                backpackSlots[i].Item = item.GetCopy();
                 previousItem = null;
                 return true;
             }

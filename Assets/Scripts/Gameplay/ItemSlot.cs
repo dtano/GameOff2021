@@ -7,6 +7,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 {
 
     [SerializeField] Image image;
+    [SerializeField] Text amountText;
 /*    [SerializeField] ItemTooltip tooltip;*/
 
     public event Action<ItemSlot> OnPointerEnterEvent;
@@ -40,10 +41,28 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    private int _amount;
+    public int Amount
+    {
+        get { return _amount; }
+        set
+        {
+            _amount = value;
+            amountText.enabled = _item != null && _item.MaximumStacks > 1 && _amount > 1;
+            if (amountText.enabled)
+            {
+                amountText.text = _amount.ToString();
+            }
+        }
+    }
+
     protected virtual void OnValidate()
     {
         if (image == null)
             image = GetComponent<Image>();
+
+        if (amountText == null)
+            amountText = GetComponentInChildren<Text>();
     }
 
     //check if this is required

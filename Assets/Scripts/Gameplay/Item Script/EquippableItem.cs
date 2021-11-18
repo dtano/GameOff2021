@@ -10,6 +10,16 @@ public class EquippableItem : Item
     public StatModifier intelligenceModifier;
     public StatModifier survivabilityModifier;
 
+    public override Item GetCopy()
+    {
+        return Instantiate(this);
+    }
+
+    public override void Destroy()
+    {
+        Destroy(this);
+    }
+
     public void Equip (InventoryManager c)
     {
 

@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] ItemTooltip itemTooltip;*/
     [SerializeField] Image draggableItem;
 
-    private ItemSlot draggedSlot;
+    private ItemSlot dragItemSlot;
 
     /*    private void OnValidate()
         {
@@ -129,8 +129,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (itemSlot.Item != null)
         {
-            
-            draggedSlot = itemSlot;
+
+            dragItemSlot = itemSlot;
             draggableItem.sprite = itemSlot.Item.Icon;
             draggableItem.transform.position = Input.mousePosition;
             draggableItem.enabled = true;
@@ -138,7 +138,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void EndDrag(ItemSlot itemSlot)
     {
-        draggedSlot = null;
+        dragItemSlot = null;
         draggableItem.enabled = false;
     }
     private void Drag(ItemSlot itemSlot)
@@ -150,34 +150,32 @@ public class InventoryManager : MonoBehaviour
     }
     private void Drop(ItemSlot dropItemSlot)
     {
-        /*if (dropItemSlot.CanReceiveItem(draggedSlot.Item) && draggedSlot.CanReceiveItem(dropItemSlot.Item))
-        {*/
-            EquippableItem dragItem = draggedSlot.Item as EquippableItem;
-            EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
+        if (dragItemSlot == null) return;
 
-            if (draggedSlot is BackpackSlot)
-            {
-                if (dragItem != null) dragItem.Unequip(this);
-                if (dropItem != null) dropItem.Equip(this);
-            }
-            if (dropItemSlot is BackpackSlot)
-            {
-                if (dragItem != null) dragItem.Equip(this);
-                if (dropItem != null) dropItem.Unequip(this);
-            }
-            //updates values of stats
-            //statPanel.UpdateStatValues;
+        EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
+        EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
-            Item draggedItem = draggedSlot.Item;
-            draggedSlot.Item = dropItemSlot.Item;
-            dropItemSlot.Item = draggedItem;
-  /*      }*/
+        if (dragItemSlot is BackpackSlot)
+        {
+            if (dragItem != null) dragItem.Unequip(this);
+            if (dropItem != null) dropItem.Equip(this);
+        }
+        if (dropItemSlot is BackpackSlot)
+        {
+            if (dragItem != null) dragItem.Equip(this);
+            if (dropItem != null) dropItem.Unequip(this);
+        }
+        //updates values of stats
+        //statPanel.UpdateStatValues;
 
+        Item draggedItem = dragItemSlot.Item;
+        int draggedItemAmount = dragItemSlot.Amount;
 
+        dragItemSlot.Item = dropItemSlot.Item;
+        dragItemSlot.Amount = dropItemSlot.Amount;
 
-
-
-
+        dropItemSlot.Item = draggedItem;
+        dropItemSlot.Amount = draggedItemAmount;
 
 
     }
