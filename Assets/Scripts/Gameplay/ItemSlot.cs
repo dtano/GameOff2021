@@ -47,10 +47,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     //check if this is required
-    public virtual bool CanReceiveItem(Item item)
+ /*   public virtual bool CanReceiveItem(Item item)
     {
         return true;
-    }
+    }*/
 
     public void OnPointerClick(PointerEventData eventData)
     {

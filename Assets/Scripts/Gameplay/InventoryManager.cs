@@ -104,12 +104,12 @@ public class InventoryManager : MonoBehaviour
 
     public void Unequip(EquippableItem item)
     {
-        /*if (shopInventory.CanAddItem(item) && BackpackInventory.RemoveItem(item))
-        {*/
+        if (!shopInventory.IsFull() && backpackInventory.RemoveItem(item))
+        {
             item.Unequip(this);
             /*statPanel.UpdateStatValues();*/
             shopInventory.AddItem(item);
-        /*}*/
+        }
     }
 
     /* private void ShowTooltip(ItemSlot itemSlot)

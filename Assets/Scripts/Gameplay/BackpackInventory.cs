@@ -40,9 +40,24 @@ public class BackpackInventory : MonoBehaviour
     {
         for (int i = 0; i < backpackSlots.Length; i++)
         {
-            previousItem = (EquippableItem)backpackSlots[i].Item;
-            backpackSlots[i].Item = item;
-            return true;
+            if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
+            {
+
+                previousItem = (EquippableItem)backpackSlots[i].Item;
+                backpackSlots[i].Item = item;
+                return true;
+            }
+            if (backpackSlots[i].Item)
+            {
+                continue;
+            }
+            else
+            {
+                backpackSlots[i].Item = item;
+                previousItem = null;
+                return true;
+            }
+            
         }
         previousItem = null;
         return false;
@@ -52,8 +67,11 @@ public class BackpackInventory : MonoBehaviour
     {
         for (int i = 0; i < backpackSlots.Length; i++)
         {
-            backpackSlots[i].Item = null;
-            return true;
+            if (backpackSlots[i].Item == item)
+            {
+                backpackSlots[i].Item = null;
+                return true;
+            }
         }
         return false;
     }
