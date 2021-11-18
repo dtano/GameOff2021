@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
         survivalKit.SetAffectedCustData(customer.CustomerData);
 
         // Reset all items
+        // shopInventory.ResetItemEffects();
     }
 
     
