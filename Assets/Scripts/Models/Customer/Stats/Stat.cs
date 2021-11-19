@@ -18,7 +18,7 @@ public class Stat : IModifiable
     public float ModifiedValue => valueAfterBonuses;
     public float BaseValue => _baseValue;
 
-    public Stat(int baseValue)
+    public Stat(float baseValue)
     {
         _baseValue = baseValue;
         valueAfterBonuses = _baseValue;

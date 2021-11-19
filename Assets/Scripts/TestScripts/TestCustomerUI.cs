@@ -11,6 +11,7 @@ public class TestCustomerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI statDisplay;
     [SerializeField] TextMeshProUGUI nameDisplay;
     [SerializeField] TextMeshProUGUI probabilityDisplay;
+    [SerializeField] Image customerImg;
     
     private Customer customer;
     private CustomerData custData;
@@ -26,6 +27,8 @@ public class TestCustomerUI : MonoBehaviour
         custData = customer.CustomerData;
 
         nameDisplay.text = custData.Name;
+
+        customerImg.sprite = custData.Sprite;
 
     }
 

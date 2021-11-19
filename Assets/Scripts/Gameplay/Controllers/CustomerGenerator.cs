@@ -34,6 +34,6 @@ public class CustomerGenerator : MonoBehaviour
     public CustomerData GenerateCustomerData()
     {
         // Pick a random customer from the potentialCustomers
-        return new CustomerData("Gordon Ramsay", 5, 2, 3, 4);
+        return new CustomerData("Gordon Ramsay", 5, 2, 4);
     }
 }

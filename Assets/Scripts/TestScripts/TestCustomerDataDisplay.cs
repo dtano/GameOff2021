@@ -11,7 +11,7 @@ public class TestCustomerDataDisplay : MonoBehaviour
     {
         _customer = GetComponent<Customer>();
         // Make a CustomerData object
-        CustomerData data = new CustomerData("Billy Summers", 3,4,1,5);
+        CustomerData data = new CustomerData("Billy Summers", 3,4,5);
         _customer.CustomerData = data;
     }
 }

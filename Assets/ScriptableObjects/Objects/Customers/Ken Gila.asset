@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0880cc1ced2cf234a854e6c54f133a93, type: 3}
-  m_Name: Jim Beam
+  m_Name: Ken Gila
   m_EditorClassIdentifier: 
-  _name: Jim Beam
-  _sprite: {fileID: -8488037357702319130, guid: b60de4ffffa70524ca5e21d5688df46c, type: 3}
+  _name: Ken Gila
+  _sprite: {fileID: 8876619355354386685, guid: b60de4ffffa70524ca5e21d5688df46c, type: 3}
   _endurance:
-    _baseValue: 4
+    _baseValue: 3
   _survivability:
-    _baseValue: 6
+    _baseValue: 3
   _intelligence:
-    _baseValue: 2
+    _baseValue: 5
   _survivalProbability: 0
-  traits:
-  - {fileID: 11400000, guid: 3b438fe6394e71845821ebb40071eadd, type: 2}
+  traits: []

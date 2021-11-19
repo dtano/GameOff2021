@@ -18,10 +18,12 @@ public class GameController : MonoBehaviour
     
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         customerHistory?.Clear();
         customerGenerator = GetComponent<CustomerGenerator>();
+
+        PrepareForNewCustomer();
     }
 
     // Update is called once per frame
@@ -60,8 +62,13 @@ public class GameController : MonoBehaviour
     private void PrepareForNewCustomer()
     {
         // Generate new customer data
-        CustomerData newCustomerData = customerGenerator.GenerateCustomerData();
-        customer.CustomerData = newCustomerData;
+        // CustomerData newCustomerData = customerGenerator.GenerateCustomerData();
+        // customer.CustomerData = newCustomerData;
+
+        // Alternate
+        // Instantiate CustomerData using preset CustomerInformation scriptable object
+        CustomerData chosenCustomerData = new CustomerData(customerGenerator.ChooseRandomCustomer());
+        customer.CustomerData = chosenCustomerData;
 
         survivalKit.Clear();
         survivalKit.SetAffectedCustData(customer.CustomerData);
