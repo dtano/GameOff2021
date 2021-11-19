@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] Customer customer;
     [SerializeField] SurvivalKit survivalKit;
+    [SerializeField] CustomerUI customerUI;
     // This is where you store the data of customers who have been served
     [SerializeField] AllCustomerStorage customerHistory;
     [SerializeField] private int totalCustomers;
@@ -39,24 +40,31 @@ public class GameController : MonoBehaviour
     public async void FinishServingCustomer()
     {
         if(survivalKit.IsEligibleForCustomer()){
-            // Store customer data in customer history
-            customerHistory.AddCustomerData(customer.CustomerData);
-            numCustomersServed++;
-
-            // wait for transition 
-            await CustomerTransition(2f);
-
+            await HandleCustomerLeaving();
+            
             Debug.Log("Transition over");
 
             // Generate new customer data
             PrepareForNewCustomer();
 
-            await CustomerTransition(2f);
+            await CustomerEnterSequence();
 
             Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
         }
 
 
+    }
+
+    private async Task HandleCustomerLeaving()
+    {
+        // Store customer data in customer history
+        customerHistory.AddCustomerData(customer.CustomerData);
+        numCustomersServed++;
+
+        customerUI?.MakeCustomerLeaveStore();
+        
+        // wait for transition 
+        await CustomerTransition(2f);
     }
 
     private void PrepareForNewCustomer()
@@ -73,8 +81,22 @@ public class GameController : MonoBehaviour
         survivalKit.Clear();
         survivalKit.SetAffectedCustData(customer.CustomerData);
 
-        // Reset all items
-        // shopInventory.ResetItemEffects();
+        // // Reset all items
+        // // shopInventory.ResetItemEffects();
+        // customerUI?.EnterNewCustomer();
+        // // Notify ui
+        // await CustomerTransition(2f);
+
+        // customerUI?.ShowUIElements();
+    }
+
+    private async Task CustomerEnterSequence()
+    {
+        customerUI?.EnterNewCustomer();
+        // Notify ui
+        await CustomerTransition(2f);
+
+        customerUI?.ShowUIElements();
     }
 
     

@@ -348,7 +348,6 @@ GameObject:
   - component: {fileID: 433986071}
   - component: {fileID: 433986074}
   - component: {fileID: 433986073}
-  - component: {fileID: 433986072}
   - component: {fileID: 433986075}
   m_Layer: 5
   m_Name: CustomerScreen
@@ -380,20 +379,6 @@ RectTransform:
   m_AnchoredPosition: {x: -429.059, y: -2.3804}
   m_SizeDelta: {x: 605.882, y: 620.7609}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &433986072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433986070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04fdaff31362974b91402902d515731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _customer: {fileID: 433986073}
-  traitObject: {fileID: 0}
 --- !u!114 &433986073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +411,7 @@ MonoBehaviour:
   nameDisplay: {fileID: 2105236172}
   probabilityDisplay: {fileID: 1545929744}
   customerImg: {fileID: 1243052418}
+  animator: {fileID: 534321624}
 --- !u!114 &433986075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 534321623}
+  - component: {fileID: 534321624}
   m_Layer: 5
   m_Name: CustomerAppearance
   m_TagString: Untagged
@@ -478,6 +465,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00030518, y: 92.19}
   m_SizeDelta: {x: 605.88, y: 436.38}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &534321624
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534321622}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c2248763ae911cd4a8a29f661eb49615, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &625301658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customer: {fileID: 433986073}
   survivalKit: {fileID: 433986075}
+  customerUI: {fileID: 433986074}
   customerHistory: {fileID: 11400000, guid: 682a1c17736d4644486cef46723470d3, type: 2}
   totalCustomers: 2
 --- !u!4 &1281771318
