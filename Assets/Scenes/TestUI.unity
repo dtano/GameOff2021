@@ -1880,6 +1880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   _survivalKit: {fileID: 0}
+  traits: []
 --- !u!4 &631387935
 Transform:
   m_ObjectHideFlags: 0
@@ -1907,6 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customer: {fileID: 0}
+  traitObject: {fileID: 0}
 --- !u!114 &631387937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1919,7 +1921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312211d4966017e4998c08f5e5cda517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allItems: []
   maxSlots: 0
 --- !u!1 &631742011
 GameObject:
@@ -1973,6 +1974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   _survivalKit: {fileID: 0}
+  traits: []
 --- !u!114 &631742014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,8 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312211d4966017e4998c08f5e5cda517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allItems: []
-  maxSlots: 0
+  maxSlots: 8
 --- !u!1 &674451230
 GameObject:
   m_ObjectHideFlags: 0
