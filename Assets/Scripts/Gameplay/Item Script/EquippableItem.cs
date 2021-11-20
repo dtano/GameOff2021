@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class EquippableItem : Item
+public class EquippableItem : ItemSO
 {
     [TextArea]
     public string description;
@@ -10,7 +10,7 @@ public class EquippableItem : Item
     public StatModifier intelligenceModifier;
     public StatModifier survivabilityModifier;
 
-    public override Item GetCopy()
+    public override ItemSO GetCopy()
     {
         return Instantiate(this);
     }

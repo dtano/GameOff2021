@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numCustomersServed == totalCustomers)
+        if(IsGameOver())
         {
             EndSequence();
         }
@@ -39,17 +39,19 @@ public class GameController : MonoBehaviour
     // Means that its time to store the customer data in the storage and generate a new one
     public async void FinishServingCustomer()
     {
-        if(survivalKit.IsEligibleForCustomer()){
+        if(!IsGameOver() && survivalKit.IsEligibleForCustomer()){
             await HandleCustomerLeaving();
             
             Debug.Log("Transition over");
 
-            // Generate new customer data
-            PrepareForNewCustomer();
+            if(numCustomersServed < totalCustomers){
+                // Generate new customer data
+                PrepareForNewCustomer();
 
-            await CustomerEnterSequence();
+                await CustomerEnterSequence();
 
-            Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
+                Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
+            }
         }
 
 
@@ -112,6 +114,11 @@ public class GameController : MonoBehaviour
     public void EndSequence()
     {
         Debug.Log("All customers served, time to end the game");
+    }
+
+    public bool IsGameOver()
+    {
+        return numCustomersServed == totalCustomers;
     }
 
     

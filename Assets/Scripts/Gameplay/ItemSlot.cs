@@ -21,8 +21,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
-    private Item _item;
-    public Item Item
+    private ItemSO _item;
+    public ItemSO Item
     {
         get { return _item; }
         set
@@ -78,7 +78,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return true;
     }*/
 
-    public virtual bool CanAddStack(Item item, int amount = 1)
+    public virtual bool CanAddStack(ItemSO item, int amount = 1)
     {
         return Item != null && Item.ID == item.ID && Amount + amount <= item.MaximumStacks;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopInventory : MonoBehaviour
 {
-    [SerializeField] List<Item> startingItems;
+    [SerializeField] List<ItemSO> startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
@@ -55,7 +55,7 @@ public class ShopInventory : MonoBehaviour
         }
     }
 
-    public bool AddItem(Item item)
+    public bool AddItem(ItemSO item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
@@ -69,7 +69,7 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    public bool RemoveItem(Item item)
+    public bool RemoveItem(ItemSO item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
@@ -86,11 +86,11 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    public Item RemoveItem(string itemID)
+    public ItemSO RemoveItem(string itemID)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            Item item = itemSlots[i].Item;
+            ItemSO item = itemSlots[i].Item;
             if (item != null && item.ID == itemID)
             {
                 itemSlots[i].Amount--;

@@ -9,7 +9,7 @@ public class BackpackSlot : ItemSlot
         base.OnValidate();
     }
 
-    public override bool CanAddStack(Item item, int amount = 1)
+    public override bool CanAddStack(ItemSO item, int amount = 1)
     {
         return false;
     }

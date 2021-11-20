@@ -169,7 +169,7 @@ public class InventoryManager : MonoBehaviour
         EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
         EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
-        Item draggedItem = dragItemSlot.Item;
+        ItemSO draggedItem = dragItemSlot.Item;
         int draggedItemAmount = dragItemSlot.Amount;
 
         //When dragging from the backpack
@@ -244,7 +244,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     //Swap items 1 for 1
-    private void ExchangeItems(ItemSlot dropItemSlot, Item draggedItem, int draggedItemAmount)
+    private void ExchangeItems(ItemSlot dropItemSlot, ItemSO draggedItem, int draggedItemAmount)
     {
         dragItemSlot.Item = dropItemSlot.Item;
         dragItemSlot.Amount = dropItemSlot.Amount;
