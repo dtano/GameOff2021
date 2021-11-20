@@ -12,8 +12,8 @@ public class SurvivalKit : MonoBehaviour
 
     public delegate void OnItemAdd(Item item);
     private OnItemAdd OnItemAddFunction;
-    
-    
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,7 +23,7 @@ public class SurvivalKit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Duplicates allowed
@@ -50,7 +50,7 @@ public class SurvivalKit : MonoBehaviour
 
     private void AddItemStatModifiers(Item item)
     {
-       
+
         if(!item.IsNullified()){
             affectedCustData.Endurance.AddModifier(item.EnduranceModifier);
             affectedCustData.Intelligence.AddModifier(item.IntelligenceModifier);

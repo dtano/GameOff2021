@@ -7,23 +7,24 @@ public class Item : MonoBehaviour
 {
     // Might need to expose all itemObject attributes directly on the Item class
     [SerializeField] ItemObject itemObject;
-    
+
     [SerializeField] Image itemImage;
 
     [SerializeField] private string itemName;
 
     private bool isNullified = false;
-    
+
     [TextArea]
     public string description;
 
     public StatModifier EnduranceModifier { get; set; }
     public StatModifier SurvivabilityModifier { get; set; }
     public StatModifier IntelligenceModifier { get; set; }
-    
+
     void Awake()
     {
-        if(itemImage == null){
+        if (itemImage == null)
+        {
             itemImage = GetComponent<Image>();
         }
 
@@ -47,13 +48,13 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Reset()
     {
         Activate();
-        
+
         ClearTraitBonuses();
     }
 
@@ -80,11 +81,11 @@ public class Item : MonoBehaviour
     }
 
 
-    
+
     public ItemObject ItemDetails {get => itemObject;}
     public ItemObject GetItemObject()
     {
         return itemObject;
     }
-    
+
 }
