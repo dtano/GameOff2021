@@ -21,6 +21,8 @@ public class Item : MonoBehaviour
     public StatModifier SurvivabilityModifier { get; set; }
     public StatModifier IntelligenceModifier { get; set; }
 
+    public string ID => itemObject.ID;
+
     public ItemObject ItemObject {
         get {
             return itemObject;
@@ -114,6 +116,11 @@ public class Item : MonoBehaviour
 
         Debug.Log("Remove item from survival kit");
         // survivalKit.RemoveItem(this);
+    }
+
+    public virtual Item GetCopy()
+    {
+        return this;
     }
 
 }

@@ -90,7 +90,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return itemMono;
     }
 
-    public void SetItem(ItemObject itemObject)
+    public void SetItemObject(ItemObject itemObject)
     {
         itemMono.ItemObject = itemObject;
 
@@ -106,9 +106,31 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    public void SetItem(Item item)
+    {
+        itemMono = item;
+
+        if(itemMono == null)
+        {
+            image.color = disabledColor;
+        }
+        else
+        {
+            itemMono.ItemObject = item.ItemObject;
+            Debug.Log("itemMono not null, so color needs to be changed");
+            image.sprite = itemMono.ItemObject.sprite;
+            image.color = normalColor;
+        }
+    }
+
     public virtual bool CanAddStack(ItemSO item, int amount = 1)
     {
         return Item != null && Item.ID == item.ID && Amount + amount <= item.MaximumStacks;
+    }
+
+    public virtual bool CanAddStack(Item item, int amount = 1)
+    {
+        return itemMono != null && itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.ItemObject.MaximumStacks;
     }
 
     public void OnPointerClick(PointerEventData eventData)

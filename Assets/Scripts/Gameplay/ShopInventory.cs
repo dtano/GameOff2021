@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ShopInventory : MonoBehaviour
 {
-    [SerializeField] List<ItemSO> startingItems;
+    //[SerializeField] List<ItemSO> startingItems;
+    
+    
     [SerializeField] List<ItemObject> startingItemObjects;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
@@ -60,7 +62,7 @@ public class ShopInventory : MonoBehaviour
         int j = 0;
         for(; j < startingItemObjects.Count && j < itemSlots.Length; j++)
         {
-            itemSlots[j].SetItem(startingItemObjects[j].GetCopy());
+            itemSlots[j].SetItemObject(startingItemObjects[j].GetCopy());
             itemSlots[j].Amount = 1;
         }
 
@@ -85,6 +87,20 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
+    public bool AddItem(Item item)
+    {
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].GetItem().ItemObject == null || (itemSlots[i].GetItem().ID == item.ID && itemSlots[i].Amount < item.ItemObject.MaximumStacks))
+            {
+                itemSlots[i].SetItem(item);
+                itemSlots[i].Amount++;
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool RemoveItem(ItemSO item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
@@ -102,23 +118,57 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    public ItemSO RemoveItem(string itemID)
+    // public ItemSO RemoveItem(string itemID)
+    // {
+    //     for (int i = 0; i < itemSlots.Length; i++)
+    //     {
+    //         ItemSO item = itemSlots[i].Item;
+    //         if (item != null && item.ID == itemID)
+    //         {
+    //             itemSlots[i].Amount--;
+    //             if (itemSlots[i].Amount == 0)
+    //             {
+    //                 itemSlots[i].Item = null;
+    //             }
+    //             return item;
+    //         }
+    //     }
+    //     return null;
+    // }
+
+    public bool RemoveItem(Item item)
     {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            ItemSO item = itemSlots[i].Item;
-            if (item != null && item.ID == itemID)
+        for(int i = 0; i < itemSlots.Length; i++){
+            if (itemSlots[i].Item == item)
             {
                 itemSlots[i].Amount--;
                 if (itemSlots[i].Amount == 0)
                 {
                     itemSlots[i].Item = null;
-                }
-                return item;
+                } 
+                return true;
             }
         }
-        return null;
+        return false;
     }
+
+    // public Item RemoveItem(string itemID)
+    // {
+    //     for (int i = 0; i < itemSlots.Length; i++)
+    //     {
+    //         Item item = itemSlots[i].GetItem();
+    //         if (item != null && item.ID == itemID)
+    //         {
+    //             itemSlots[i].Amount--;
+    //             if (itemSlots[i].Amount == 0)
+    //             {
+    //                 itemSlots[i].Item = null;
+    //             }
+    //             return item;
+    //         }
+    //     }
+    //     return null;
+    // }
 
     public bool IsFull()
     {

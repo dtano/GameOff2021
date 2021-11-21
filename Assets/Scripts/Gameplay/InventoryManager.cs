@@ -111,6 +111,29 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    // public void Equip(Item item)
+    // {
+    //     if (shopInventory.RemoveItem(item))
+    //     {
+    //         EquippableItem previousItem;
+    //         if (backpackInventory.AddItem(item, out previousItem))
+    //         {
+    //             if (previousItem != null)
+    //             {
+    //                 shopInventory.AddItem(previousItem);
+    //                 previousItem.Unequip(this);
+    //                 /*statPanel.UpdateStatValues();*/
+    //             }
+    //             item.Equip(this);
+    //             /*statPanel.UpdateStatValues();*/
+    //         }
+    //         else
+    //         {
+    //             shopInventory.AddItem(item);
+    //         }
+    //     }
+    // }
+
     public void Unequip(EquippableItem item)
     {
         if (!shopInventory.IsFull() && backpackInventory.RemoveItem(item))
@@ -143,11 +166,19 @@ public class InventoryManager : MonoBehaviour
 
     private void BeginDrag(ItemSlot itemSlot)
     {
-        if (itemSlot.Item != null)
-        {
+        // if (itemSlot.Item != null)
+        // {
 
+        //     dragItemSlot = itemSlot;
+        //     draggableItem.sprite = itemSlot.Item.Icon;
+        //     draggableItem.transform.position = Input.mousePosition;
+        //     draggableItem.enabled = true;
+        // }
+
+        if (itemSlot.GetItem() != null)
+        {
             dragItemSlot = itemSlot;
-            draggableItem.sprite = itemSlot.Item.Icon;
+            draggableItem.sprite = itemSlot.GetItem().ItemObject.sprite;
             draggableItem.transform.position = Input.mousePosition;
             draggableItem.enabled = true;
         }
@@ -157,6 +188,7 @@ public class InventoryManager : MonoBehaviour
         dragItemSlot = null;
         draggableItem.enabled = false;
     }
+    
     private void Drag(ItemSlot itemSlot)
     {
         if (draggableItem.enabled)
@@ -164,8 +196,10 @@ public class InventoryManager : MonoBehaviour
             draggableItem.transform.position = Input.mousePosition;
         }
     }
+    
     private void Drop(ItemSlot dropItemSlot)
     {
+        Debug.Log("Dropping");
         if (dragItemSlot == null) return;
 
         //updates values of stats
@@ -216,7 +250,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+                ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
             }
         }
 
@@ -226,12 +260,12 @@ public class InventoryManager : MonoBehaviour
             if (dragItem != null) dragItem.Equip(this);
             if (dropItem != null) dropItem.Unequip(this);
 
-             if(draggedItemMono != null) draggedItemMono.Equip(this);
+            //if(draggedItemMono != null) draggedItemMono.Equip(this);
 
             //If items are the same
             if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1)
             {
-                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+                ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
             }
             else if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1)
             {
@@ -250,8 +284,10 @@ public class InventoryManager : MonoBehaviour
             // Dragging stacked items into backpack
             else
             {
+                Debug.Log("Drag stacked items into backpack");
                 dragItemSlot.Amount--;
-                dropItemSlot.Item = draggedItem;
+                //dropItemSlot.Item = draggedItem;
+                dropItemSlot.SetItem(draggedItemMono);
                 dropItemSlot.Amount = 1;
             }
 
@@ -259,17 +295,24 @@ public class InventoryManager : MonoBehaviour
 
         else
         {
-            ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+            ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
         }
     }
 
     //Swap items 1 for 1
-    private void ExchangeItems(ItemSlot dropItemSlot, ItemSO draggedItem, int draggedItemAmount)
+    private void ExchangeItems(ItemSlot dropItemSlot, Item draggedItem, int draggedItemAmount)
     {
-        dragItemSlot.Item = dropItemSlot.Item;
+        Debug.Log("Drop exchange");
+        // dragItemSlot.Item = dropItemSlot.Item;
+        // dragItemSlot.Amount = dropItemSlot.Amount;
+
+        dragItemSlot.SetItem(dropItemSlot.GetItem());
         dragItemSlot.Amount = dropItemSlot.Amount;
 
-        dropItemSlot.Item = draggedItem;
+        // dropItemSlot.Item = draggedItem;
+        // dropItemSlot.Amount = draggedItemAmount;
+
+        dropItemSlot.SetItem(draggedItem);
         dropItemSlot.Amount = draggedItemAmount;
     }
 

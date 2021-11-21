@@ -67,6 +67,33 @@ public class BackpackInventory : MonoBehaviour
         return false;
     }
 
+    public bool AddItem(Item item, out Item previousItem)
+    {
+        for (int i = 0; i < backpackSlots.Length; i++)
+        {
+            if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
+            {
+
+                previousItem = backpackSlots[i].GetItem();
+                backpackSlots[i].SetItem(item.GetCopy());
+                return true;
+            }
+            if (backpackSlots[i].Item)
+            {
+                continue;
+            }
+            else
+            {
+                backpackSlots[i].SetItem(item.GetCopy());
+                previousItem = null;
+                return true;
+            }
+            
+        }
+        previousItem = null;
+        return false;
+    }
+
     public bool RemoveItem(EquippableItem item)
     {
         for (int i = 0; i < backpackSlots.Length; i++)
