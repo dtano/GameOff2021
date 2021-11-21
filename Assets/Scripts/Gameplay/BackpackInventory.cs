@@ -107,6 +107,26 @@ public class BackpackInventory : MonoBehaviour
         return false;
     }
 
+    public bool RemoveItem(Item item)
+    {
+        for(int i = 0; i < backpackSlots.Length; i++){
+            if(backpackSlots[i].GetItem() == item){
+                backpackSlots[i].SetItem(null);
+                Debug.Log($"{item.name} removed successfully");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void Clear()
+    {
+        foreach(BackpackSlot slot in backpackSlots)
+        {
+            slot.SetItem(null);
+        }
+    }
+
     public bool IsFull()
     {
         foreach(BackpackSlot slot in backpackSlots){

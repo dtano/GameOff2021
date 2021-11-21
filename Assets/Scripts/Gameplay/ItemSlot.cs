@@ -108,9 +108,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void SetItem(Item item)
     {
-        if(item != null && item.ItemObject != null){
-            Debug.Log(item.ItemObject.name);
-        }
         itemMono = item;
 
         if(itemMono == null)

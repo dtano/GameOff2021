@@ -76,16 +76,16 @@ public class InventoryManager : MonoBehaviour
 
     private void Unequip(ItemSlot itemSlot)
     {
-        EquippableItem equippableItem = itemSlot.Item as EquippableItem;
-        Item equippableItemMono = itemSlot.GetItem();
-        if (equippableItem != null)
+        //EquippableItem equippableItem = itemSlot.Item as EquippableItem;
+        Item equippableItem = itemSlot.GetItem();
+        // if (equippableItem != null)
+        // {
+        //     Unequip(equippableItem);
+        // }
+
+        if(equippableItem != null)
         {
             Unequip(equippableItem);
-        }
-
-        if(equippableItemMono != null)
-        {
-            Unequip(equippableItemMono);
         }
     }
 
@@ -147,8 +147,11 @@ public class InventoryManager : MonoBehaviour
 
     public void Unequip(Item item)
     {
-        if(!shopInventory.IsFull()){
+        if(!shopInventory.IsFull() && backpackInventory.RemoveItem(item)){
+            Debug.Log("Returning item");
             item.Unequip(this);
+
+            shopInventory.AddItem(item);
         }
     }
 

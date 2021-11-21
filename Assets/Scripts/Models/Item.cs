@@ -105,17 +105,13 @@ public class Item : MonoBehaviour
     public void Equip (InventoryManager inventoryManager)
     {
         SurvivalKit survivalKit = inventoryManager.SurvivalKit;
-
-        Debug.Log("Add item to survival kit");
         survivalKit.AddItem(this);
     }
 
     public void Unequip(InventoryManager inventoryManager)
     {
         SurvivalKit survivalKit = inventoryManager.SurvivalKit;
-
-        Debug.Log("Remove item from survival kit");
-        // survivalKit.RemoveItem(this);
+        survivalKit.RemoveItem(this);
     }
 
     public virtual Item GetCopy()

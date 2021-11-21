@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
 
     private async Task HandleCustomerLeaving()
     {
+        survivalKit.Clear();
         // Store customer data in customer history
         customerHistory.AddCustomerData(customer.CustomerData);
         numCustomersServed++;
@@ -77,8 +78,6 @@ public class GameController : MonoBehaviour
 
         // Alternate
         // Instantiate CustomerData using preset CustomerInformation scriptable object
-        survivalKit.Clear();
-        
         CustomerData chosenCustomerData = new CustomerData(customerGenerator.ChooseRandomCustomer());
         customer.CustomerData = chosenCustomerData;
 

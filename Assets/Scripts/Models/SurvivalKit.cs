@@ -76,6 +76,7 @@ public class SurvivalKit : MonoBehaviour
     {
         Debug.Log("CLEAR SURVIVAL KIT");
         // The game controller needs to be notified to remove all trait bonuses and clear the trait delegates
+        inventory.Clear();
         allItems.Clear();
 
         SetOnItemAdd(null);
