@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
         }
 
         // Set up variables
-        SetUpItemDetails();
+        if(itemObject != null) SetUpItemDetails();
     }
 
     void SetUpItemDetails()
