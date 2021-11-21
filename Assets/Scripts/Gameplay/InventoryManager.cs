@@ -66,10 +66,11 @@ public class InventoryManager : MonoBehaviour
 
     private void Equip(ItemSlot itemSlot)
     {
-        EquippableItem equippableItem = itemSlot.Item as EquippableItem;
-        if (equippableItem != null)
+        //EquippableItem equippableItem = itemSlot.Item as EquippableItem;
+        Item item = itemSlot.GetItem();
+        if (item != null)
         {
-            Equip(equippableItem);
+            Equip(item);
         }
     }
 
@@ -88,30 +89,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Equip(EquippableItem item)
-    {
-        if (shopInventory.RemoveItem(item))
-        {
-            EquippableItem previousItem;
-            if (backpackInventory.AddItem(item, out previousItem))
-            {
-                if (previousItem != null)
-                {
-                    shopInventory.AddItem(previousItem);
-                    previousItem.Unequip(this);
-                    /*statPanel.UpdateStatValues();*/
-                }
-                item.Equip(this);
-                /*statPanel.UpdateStatValues();*/
-            }
-            else
-            {
-                shopInventory.AddItem(item);
-            }
-        }
-    }
-
-    // public void Equip(Item item)
+    // public void Equip(EquippableItem item)
     // {
     //     if (shopInventory.RemoveItem(item))
     //     {
@@ -133,6 +111,29 @@ public class InventoryManager : MonoBehaviour
     //         }
     //     }
     // }
+
+    public void Equip(Item item)
+    {
+        if (shopInventory.RemoveItem(item))
+        {
+            Item previousItem;
+            if (backpackInventory.AddItem(item, out previousItem))
+            {
+                if (previousItem != null)
+                {
+                    shopInventory.AddItem(previousItem);
+                    previousItem.Unequip(this);
+                    /*statPanel.UpdateStatValues();*/
+                }
+                item.Equip(this);
+                /*statPanel.UpdateStatValues();*/
+            }
+            else
+            {
+                shopInventory.AddItem(item);
+            }
+        }
+    }
 
     public void Unequip(EquippableItem item)
     {
@@ -260,14 +261,16 @@ public class InventoryManager : MonoBehaviour
             if (dragItem != null) dragItem.Equip(this);
             if (dropItem != null) dropItem.Unequip(this);
 
-            //if(draggedItemMono != null) draggedItemMono.Equip(this);
+            if(draggedItemMono != null) draggedItemMono.Equip(this);
 
             //If items are the same
-            if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1)
+            // dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1
+            if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount == 1)
             {
                 ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
             }
-            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1)
+            // dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1
+            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount != 1)
             {
                 // Add stacked shop items to the backpack and add backpack item back into shop
                 shopInventory.AddItem(dropItemSlot.Item);
@@ -276,7 +279,8 @@ public class InventoryManager : MonoBehaviour
                 dropItemSlot.Amount = 1;
 
             }
-            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID)
+            // dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID
+            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID == dragItemSlot.GetItem().ID)
             {
                 //Do nothing, Items are the same and you are trying to drag and drop a stack
             }
@@ -319,7 +323,9 @@ public class InventoryManager : MonoBehaviour
     //Stacks items
     private void AddStacks(ItemSlot dropItemSlot)
     {
-        int numAddableStacks = dropItemSlot.Item.MaximumStacks - dropItemSlot.Amount;
+        //int numAddableStacks = dropItemSlot.Item.MaximumStacks - dropItemSlot.Amount;
+
+        int numAddableStacks = dropItemSlot.GetItem().ItemObject.MaximumStacks - dropItemSlot.Amount;
         int stacksToAdd = Mathf.Min(numAddableStacks, dragItemSlot.Amount);
 
         dropItemSlot.Amount += stacksToAdd;

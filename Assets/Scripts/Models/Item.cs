@@ -107,7 +107,7 @@ public class Item : MonoBehaviour
         SurvivalKit survivalKit = inventoryManager.SurvivalKit;
 
         Debug.Log("Add item to survival kit");
-        //survivalKit.AddItem(this);
+        survivalKit.AddItem(this);
     }
 
     public void Unequip(InventoryManager inventoryManager)

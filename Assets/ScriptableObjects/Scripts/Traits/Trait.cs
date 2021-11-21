@@ -23,9 +23,8 @@ public abstract class Trait : ScriptableObject, ITrait
     {
         // Add trait effect to the survival kit's delegate function
         customer.SurvivalKit.Subscribe(TraitEffect);
-
         
-        Debug.Log("Applied trait");
+        Debug.Log($"Applied trait {_name}");
     }
 
     protected abstract void TraitEffect(Item item);

@@ -45,7 +45,8 @@ public class Customer : MonoBehaviour
 
     private void CustomerSetup(CustomerData custData)
     {
-        //List<Trait> customerTraits = custData.Traits;
+        Debug.Log("Setting customer up");
+        List<Trait> traits = custData.Traits;
         if(traits != null && traits.Count > 0){
             foreach(Trait trait in traits){
                 trait.Apply(this);

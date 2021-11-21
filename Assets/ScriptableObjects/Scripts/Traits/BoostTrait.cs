@@ -14,8 +14,11 @@ public class BoostTrait : Trait
     protected virtual void Boost(Item item)
     {
         if(!item.IsNullified()){
-            //Debug.Log(item.);
-            if(enduranceModifier.Value > 0) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+            Debug.Log("Attempt boost trait effect");
+            if(enduranceModifier.Value > 0){
+                Debug.Log("Boost endurance");
+                item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+            }
             if(intelligenceModifier.Value > 0) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
             if(survivabilityModifier.Value > 0) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
         }

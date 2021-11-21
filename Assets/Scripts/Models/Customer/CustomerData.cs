@@ -37,6 +37,8 @@ public class CustomerData
         _endurance = new Stat(customerInformation.Endurance.BaseValue);
         _survivability = new Stat(customerInformation.Survivability.BaseValue);
         _intelligence = new Stat(customerInformation.Intelligence.BaseValue);
+
+        traits = customerInformation.Traits;
         
         _sprite = customerInformation._sprite;
     }

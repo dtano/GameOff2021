@@ -108,6 +108,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void SetItem(Item item)
     {
+        if(item != null && item.ItemObject != null){
+            Debug.Log(item.ItemObject.name);
+        }
         itemMono = item;
 
         if(itemMono == null)
@@ -116,7 +119,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
         else
         {
-            itemMono.ItemObject = item.ItemObject;
+            itemMono = item.GetCopy();
+            //itemMono.ItemObject = item.ItemObject;
             Debug.Log("itemMono not null, so color needs to be changed");
             image.sprite = itemMono.ItemObject.sprite;
             image.color = normalColor;

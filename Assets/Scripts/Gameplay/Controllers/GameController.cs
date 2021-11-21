@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     
     
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         customerHistory?.Clear();
         customerGenerator = GetComponent<CustomerGenerator>();
@@ -77,10 +77,11 @@ public class GameController : MonoBehaviour
 
         // Alternate
         // Instantiate CustomerData using preset CustomerInformation scriptable object
+        survivalKit.Clear();
+        
         CustomerData chosenCustomerData = new CustomerData(customerGenerator.ChooseRandomCustomer());
         customer.CustomerData = chosenCustomerData;
 
-        survivalKit.Clear();
         survivalKit.SetAffectedCustData(customer.CustomerData);
 
         // // Reset all items

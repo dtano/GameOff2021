@@ -40,32 +40,32 @@ public class BackpackInventory : MonoBehaviour
 
 
 
-    public bool AddItem(EquippableItem item, out EquippableItem previousItem)
-    {
-        for (int i = 0; i < backpackSlots.Length; i++)
-        {
-            if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
-            {
+    // public bool AddItem(EquippableItem item, out EquippableItem previousItem)
+    // {
+    //     for (int i = 0; i < backpackSlots.Length; i++)
+    //     {
+    //         if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
+    //         {
 
-                previousItem = (EquippableItem)backpackSlots[i].Item;
-                backpackSlots[i].Item = item.GetCopy();
-                return true;
-            }
-            if (backpackSlots[i].Item)
-            {
-                continue;
-            }
-            else
-            {
-                backpackSlots[i].Item = item.GetCopy();
-                previousItem = null;
-                return true;
-            }
+    //             previousItem = (EquippableItem)backpackSlots[i].Item;
+    //             backpackSlots[i].Item = item.GetCopy();
+    //             return true;
+    //         }
+    //         if (backpackSlots[i].Item)
+    //         {
+    //             continue;
+    //         }
+    //         else
+    //         {
+    //             backpackSlots[i].Item = item.GetCopy();
+    //             previousItem = null;
+    //             return true;
+    //         }
             
-        }
-        previousItem = null;
-        return false;
-    }
+    //     }
+    //     previousItem = null;
+    //     return false;
+    // }
 
     public bool AddItem(Item item, out Item previousItem)
     {

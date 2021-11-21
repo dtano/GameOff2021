@@ -34,6 +34,8 @@ public class SurvivalKit : MonoBehaviour
             allItems.Add(item);
             if(OnItemAddFunction != null){
                 OnItemAddFunction(item);
+            }else{
+                Debug.Log("OnItemAdd is null");
             }
             AddItemStatModifiers(item);
         }else{
@@ -72,6 +74,7 @@ public class SurvivalKit : MonoBehaviour
 
     public void Clear()
     {
+        Debug.Log("CLEAR SURVIVAL KIT");
         // The game controller needs to be notified to remove all trait bonuses and clear the trait delegates
         allItems.Clear();
 
@@ -96,6 +99,7 @@ public class SurvivalKit : MonoBehaviour
     public void SetAffectedCustData(CustomerData custData)
     {
         affectedCustData = custData;
+        
     }
 
 
