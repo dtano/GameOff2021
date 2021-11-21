@@ -114,8 +114,10 @@ public class InventoryManager : MonoBehaviour
 
     public void Equip(Item item)
     {
+        Debug.Log("Calling equip");
         if (shopInventory.RemoveItem(item))
         {
+            Debug.Log("Shop inventory failed to remove");
             Item previousItem;
             if (backpackInventory.AddItem(item, out previousItem))
             {
@@ -222,6 +224,7 @@ public class InventoryManager : MonoBehaviour
     {
         EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
         EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
+        Item dropItemMono = dropItemSlot.GetItem();
 
         ItemSO draggedItem = dragItemSlot.Item;
         Item draggedItemMono = dragItemSlot.GetItem();
@@ -230,8 +233,8 @@ public class InventoryManager : MonoBehaviour
         //When dragging from the backpack
         if (dragItemSlot is BackpackSlot)
         {
-            if (dragItem != null) dragItem.Unequip(this);
-            if (dropItem != null) dropItem.Equip(this);
+            if(draggedItemMono != null) draggedItemMono.Equip(this);
+            if(dropItemMono != null) dropItemMono.Unequip(this);
 
 
             if (dropItemSlot.CanAddStack(dragItemSlot.Item))
@@ -239,7 +242,12 @@ public class InventoryManager : MonoBehaviour
                 AddStacks(dropItemSlot);
             }
 
-            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dropItemSlot.Amount != 1)
+            else if(dropItemSlot is BackpackSlot)
+            {
+                // Disable in-place swapping for backpack
+            }
+            
+            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dropItemSlot.Amount != 1)
             {
                 // Add stacked shop items to the backpack and add backpack item back into shop
                 shopInventory.AddItem(draggedItem);
@@ -248,7 +256,7 @@ public class InventoryManager : MonoBehaviour
                 dropItemSlot.Amount = 1;
 
             }
-            else if (dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID)
+            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID == dragItemSlot.GetItem().ID)
             {
                 //Do nothing, Items are the same and you are trying to drag and drop a stack
             }
@@ -261,13 +269,12 @@ public class InventoryManager : MonoBehaviour
         //When dropping into the backpack
         else if (dropItemSlot is BackpackSlot)
         {
-            if (dragItem != null) dragItem.Equip(this);
-            if (dropItem != null) dropItem.Unequip(this);
 
             if(draggedItemMono != null) draggedItemMono.Equip(this);
+            if(dropItemMono != null) dropItemMono.Unequip(this);
+            
 
             //If items are the same
-            // dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1
             if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount == 1)
             {
                 ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);

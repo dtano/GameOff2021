@@ -91,7 +91,7 @@ public class ShopInventory : MonoBehaviour
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].GetItem().ItemObject == null || (itemSlots[i].GetItem().ID == item.ID && itemSlots[i].Amount < item.ItemObject.MaximumStacks))
+            if (itemSlots[i].GetItem() == null || (itemSlots[i].GetItem().ID == item.ID && itemSlots[i].Amount < item.ItemObject.MaximumStacks))
             {
                 itemSlots[i].SetItem(item);
                 itemSlots[i].Amount++;
@@ -139,12 +139,12 @@ public class ShopInventory : MonoBehaviour
     public bool RemoveItem(Item item)
     {
         for(int i = 0; i < itemSlots.Length; i++){
-            if (itemSlots[i].Item == item)
+            if (itemSlots[i].GetItem() == item)
             {
                 itemSlots[i].Amount--;
                 if (itemSlots[i].Amount == 0)
                 {
-                    itemSlots[i].Item = null;
+                    itemSlots[i].SetItem(null);
                 } 
                 return true;
             }
