@@ -8,6 +8,7 @@ public class ItemSO : ScriptableObject
     public string ID { get { return id; } }
     public string ItemSOName;
     public Sprite Icon;
+    
     [Range(1, 999)]
     public int MaximumStacks = 1;
 
