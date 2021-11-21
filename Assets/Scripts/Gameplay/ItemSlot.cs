@@ -21,6 +21,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
+    // Item slot has to hold an item object 
     private ItemSO _item;
     public ItemSO Item
     {

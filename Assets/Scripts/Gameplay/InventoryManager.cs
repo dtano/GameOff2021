@@ -45,15 +45,15 @@ public class InventoryManager : MonoBehaviour
 
         //Begin Drag
         shopInventory.OnBeginDragEvent += BeginDrag;
-        backpackInventory.OnBeginDragEvent += BeginDrag;
+        //backpackInventory.OnBeginDragEvent += BeginDrag;
 
         //End Drag
         shopInventory.OnEndDragEvent += EndDrag;
-        backpackInventory.OnEndDragEvent += EndDrag;
+        //backpackInventory.OnEndDragEvent += EndDrag;
 
         //Drag
         shopInventory.OnDragEvent += Drag;
-        backpackInventory.OnDragEvent += Drag;
+        //backpackInventory.OnDragEvent += Drag;
 
         //Drop
         shopInventory.OnDropEvent += Drop;
@@ -162,6 +162,11 @@ public class InventoryManager : MonoBehaviour
         {
             SwapItems(dropItemSlot);
         }
+    }
+
+    private void Drop(SurvivalKit survivalKit)
+    {
+        
     }
 
     private void SwapItems(ItemSlot dropItemSlot)

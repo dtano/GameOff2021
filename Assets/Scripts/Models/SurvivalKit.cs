@@ -7,6 +7,7 @@ public class SurvivalKit : MonoBehaviour
     // Maybe instead of a regular list, I could use an InventoryObject s
     private List<Item> allItems;
     [SerializeField] int maxSlots;
+    [SerializeField] BackpackInventory inventory;
 
     private CustomerData affectedCustData;
 
