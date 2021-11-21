@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopInventory : MonoBehaviour
 {
     [SerializeField] List<ItemSO> startingItems;
+    [SerializeField] List<ItemObject> startingItemObjects;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
@@ -15,6 +16,8 @@ public class ShopInventory : MonoBehaviour
     public event Action<ItemSlot> OnEndDragEvent;
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
+
+    
 
     private void Start()
     {
@@ -41,17 +44,30 @@ public class ShopInventory : MonoBehaviour
 
     private void SetStartingItems()
     {
-        int i = 0;
-        for (; i < startingItems.Count && i < itemSlots.Length; i++)
+        // int i = 0;
+        // for (; i < startingItems.Count && i < itemSlots.Length; i++)
+        // {
+        //     itemSlots[i].Item = startingItems[i].GetCopy();
+        //     itemSlots[i].Amount = 1;
+        // }
+
+        // for (; i < itemSlots.Length; i++)
+        // {
+        //     itemSlots[i].Item = null;
+        //     itemSlots[i].Amount = 0;
+        // }
+
+        int j = 0;
+        for(; j < startingItemObjects.Count && j < itemSlots.Length; j++)
         {
-            itemSlots[i].Item = startingItems[i].GetCopy();
-            itemSlots[i].Amount = 1;
+            itemSlots[j].SetItem(startingItemObjects[j].GetCopy());
+            itemSlots[j].Amount = 1;
         }
 
-        for (; i < itemSlots.Length; i++)
+        for(; j < itemSlots.Length; j++)
         {
-            itemSlots[i].Item = null;
-            itemSlots[i].Amount = 0;
+            itemSlots[j].SetItem(null);
+            itemSlots[j].Amount = 0;
         }
     }
 

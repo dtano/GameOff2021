@@ -475,6 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 125104906}
   - component: {fileID: 125104907}
+  - component: {fileID: 125104908}
   m_Layer: 5
   m_Name: Backpack Inventory Grid
   m_TagString: Untagged
@@ -502,7 +503,7 @@ RectTransform:
   - {fileID: 1381629075}
   - {fileID: 47504824}
   m_Father: {fileID: 1974906296}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -531,6 +532,20 @@ MonoBehaviour:
   - {fileID: 1329579982}
   - {fileID: 2085605892}
   - {fileID: 238786820}
+--- !u!114 &125104908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125104905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312211d4966017e4998c08f5e5cda517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlots: 8
+  inventory: {fileID: 125104907}
 --- !u!114 &172321187 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4199638908412438028, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
@@ -2116,7 +2131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631742011}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 312211d4966017e4998c08f5e5cda517, type: 3}
   m_Name: 
@@ -2525,6 +2540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopInventory: {fileID: 1448984494}
   backpackInventory: {fileID: 125104907}
+  survivalKit: {fileID: 125104908}
   draggableItem: {fileID: 511582346}
 --- !u!1 &937588550
 GameObject:
@@ -3011,6 +3027,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4199638908412438027, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
   m_PrefabInstance: {fileID: 1034492398}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1070097381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070097382}
+  - component: {fileID: 1070097384}
+  - component: {fileID: 1070097383}
+  m_Layer: 5
+  m_Name: SurvivalKit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1070097382
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070097381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1974906296}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 262, y: 0}
+  m_SizeDelta: {x: 208.4564, y: 282.8872}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1070097383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070097381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1070097384
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070097381}
+  m_CullTransparentMesh: 1
 --- !u!114 &1082106397 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3449672063111694201, guid: 76010fcbc1f29a44899df372175e8e2a, type: 3}
@@ -3212,7 +3303,7 @@ GameObject:
   - component: {fileID: 1326519886}
   - component: {fileID: 1326519885}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3559,6 +3650,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 955ffb1fbcfe9214f9dce3f3d591e353, type: 2}
   - {fileID: 11400000, guid: 955ffb1fbcfe9214f9dce3f3d591e353, type: 2}
   - {fileID: 11400000, guid: 955ffb1fbcfe9214f9dce3f3d591e353, type: 2}
+  startingItemObjects:
+  - {fileID: 11400000, guid: 0661d948e19d63d40bc4becb50bf64c6, type: 2}
+  - {fileID: 11400000, guid: 61246fe60c330cd4ba258fc0e35beddd, type: 2}
+  - {fileID: 11400000, guid: 49782c23b9be6cd47be95130d5006860, type: 2}
+  - {fileID: 11400000, guid: 49cf9fd1646ba254e838b1e1f7c24d65, type: 2}
   itemsParent: {fileID: 1543234140}
   itemSlots:
   - {fileID: 1153283597}
@@ -4335,6 +4431,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1326519884}
+  - {fileID: 1070097382}
   - {fileID: 125104906}
   m_Father: {fileID: 934340142}
   m_RootOrder: 0

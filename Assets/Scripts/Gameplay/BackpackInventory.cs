@@ -15,6 +15,8 @@ public class BackpackInventory : MonoBehaviour
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
 
+    
+
     public BackpackSlot[] BackpackSlots => backpackSlots;
 
     private void Start()
@@ -82,10 +84,10 @@ public class BackpackInventory : MonoBehaviour
     {
         foreach(BackpackSlot slot in backpackSlots){
             if(slot.Item == null){
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 }

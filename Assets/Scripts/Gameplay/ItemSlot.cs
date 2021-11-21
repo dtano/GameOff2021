@@ -21,6 +21,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private Color normalColor = Color.white;
     private Color disabledColor = new Color(1, 1, 1, 0);
 
+    private Item itemMono;
     // Item slot has to hold an item object 
     private ItemSO _item;
     public ItemSO Item
@@ -64,6 +65,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    void Awake()
+    {
+        itemMono = GetComponent<Item>();
+    }
+
     protected virtual void OnValidate()
     {
         if (image == null)
@@ -78,6 +84,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         return true;
     }*/
+
+    public Item GetItem()
+    {
+        return itemMono;
+    }
+
+    public void SetItem(ItemObject itemObject)
+    {
+        itemMono.ItemObject = itemObject;
+
+        if (itemMono.ItemObject == null)
+        {
+            image.color = disabledColor;
+        }
+        else
+        {
+            Debug.Log("itemMono not null, so color needs to be changed");
+            image.sprite = itemMono.ItemObject.sprite;
+            image.color = normalColor;
+        }
+    }
 
     public virtual bool CanAddStack(ItemSO item, int amount = 1)
     {

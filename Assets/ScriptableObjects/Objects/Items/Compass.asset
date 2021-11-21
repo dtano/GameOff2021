@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Compass
   m_EditorClassIdentifier: 
   itemName: Compass
-  sprite: {fileID: 0}
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   description: 
   enduranceModifier:
     isLocked: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
     _value: 0
     _type: 0
     _order: 0
+  id: 0661d948e19d63d40bc4becb50bf64c6
+  MaximumStacks: 1

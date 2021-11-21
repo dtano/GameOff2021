@@ -21,6 +21,18 @@ public class Item : MonoBehaviour
     public StatModifier SurvivabilityModifier { get; set; }
     public StatModifier IntelligenceModifier { get; set; }
 
+    public ItemObject ItemObject {
+        get {
+            return itemObject;
+        } set {
+            itemObject = value;
+            
+            if(itemObject != null)
+            {
+                SetUpItemDetails();
+            }
+        }}
+
     void Awake()
     {
         if (itemImage == null)
@@ -86,6 +98,22 @@ public class Item : MonoBehaviour
     public ItemObject GetItemObject()
     {
         return itemObject;
+    }
+
+    public void Equip (InventoryManager inventoryManager)
+    {
+        SurvivalKit survivalKit = inventoryManager.SurvivalKit;
+
+        Debug.Log("Add item to survival kit");
+        //survivalKit.AddItem(this);
+    }
+
+    public void Unequip(InventoryManager inventoryManager)
+    {
+        SurvivalKit survivalKit = inventoryManager.SurvivalKit;
+
+        Debug.Log("Remove item from survival kit");
+        // survivalKit.RemoveItem(this);
     }
 
 }

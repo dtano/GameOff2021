@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstAidKit
   m_EditorClassIdentifier: 
   itemName: First Aid Kit
-  sprite: {fileID: 0}
+  sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   description: 
   enduranceModifier:
     isLocked: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
     _value: 1
     _type: 100
     _order: 0
+  id: 61246fe60c330cd4ba258fc0e35beddd
+  MaximumStacks: 1

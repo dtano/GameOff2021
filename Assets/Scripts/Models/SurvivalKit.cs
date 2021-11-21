@@ -83,6 +83,11 @@ public class SurvivalKit : MonoBehaviour
         return allItems.Count > 0;
     }
 
+    public bool IsFull()
+    {
+        return allItems.Count == maxSlots && inventory.IsFull();
+    }
+
     public List<Item> GetAllItems()
     {
         return allItems;

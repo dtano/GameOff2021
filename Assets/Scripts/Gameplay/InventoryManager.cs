@@ -10,12 +10,15 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] ShopInventory shopInventory;
     [SerializeField] BackpackInventory backpackInventory;
+    [SerializeField] SurvivalKit survivalKit;
     /*[SerializeField] StatPanel statPanel;
     [SerializeField] ItemTooltip itemTooltip;*/
     [SerializeField] Image draggableItem;
 
     private ItemSlot dragItemSlot;
 
+
+    public SurvivalKit SurvivalKit => survivalKit;
     /*    private void OnValidate()
         {
             if (itemTooltip == null)
@@ -73,9 +76,15 @@ public class InventoryManager : MonoBehaviour
     private void Unequip(ItemSlot itemSlot)
     {
         EquippableItem equippableItem = itemSlot.Item as EquippableItem;
+        Item equippableItemMono = itemSlot.GetItem();
         if (equippableItem != null)
         {
             Unequip(equippableItem);
+        }
+
+        if(equippableItemMono != null)
+        {
+            Unequip(equippableItemMono);
         }
     }
 
@@ -109,6 +118,13 @@ public class InventoryManager : MonoBehaviour
             item.Unequip(this);
             /*statPanel.UpdateStatValues();*/
             shopInventory.AddItem(item);
+        }
+    }
+
+    public void Unequip(Item item)
+    {
+        if(!shopInventory.IsFull()){
+            item.Unequip(this);
         }
     }
 
@@ -164,17 +180,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Drop(SurvivalKit survivalKit)
-    {
-        
-    }
-
     private void SwapItems(ItemSlot dropItemSlot)
     {
         EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
         EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
         ItemSO draggedItem = dragItemSlot.Item;
+        Item draggedItemMono = dragItemSlot.GetItem();
         int draggedItemAmount = dragItemSlot.Amount;
 
         //When dragging from the backpack
@@ -182,6 +194,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (dragItem != null) dragItem.Unequip(this);
             if (dropItem != null) dropItem.Equip(this);
+
 
             if (dropItemSlot.CanAddStack(dragItemSlot.Item))
             {
@@ -212,6 +225,8 @@ public class InventoryManager : MonoBehaviour
         {
             if (dragItem != null) dragItem.Equip(this);
             if (dropItem != null) dropItem.Unequip(this);
+
+             if(draggedItemMono != null) draggedItemMono.Equip(this);
 
             //If items are the same
             if (dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount == 1)
