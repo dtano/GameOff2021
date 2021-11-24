@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstAidKit
   m_EditorClassIdentifier: 
   itemName: First Aid Kit
-  sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: ec78d0ac56852f54eb45c4e9d3b80c5a, type: 3}
   description: 
   enduranceModifier:
     isLocked: 0
