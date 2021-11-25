@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Soap
   m_EditorClassIdentifier: 
   itemName: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 992ac7781014e8e499b7153cfeb13d4c, type: 3}
   description: 
   enduranceModifier:
     isLocked: 0
@@ -30,5 +30,5 @@ MonoBehaviour:
     _value: 0
     _type: 0
     _order: 0
-  id: 
+  id: 855784e425bab924e9d218c539f593ea
   MaximumStacks: 1
