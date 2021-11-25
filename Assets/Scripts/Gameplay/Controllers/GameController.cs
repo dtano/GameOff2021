@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     CustomerGenerator customerGenerator;
     private int numCustomersServed = 0;
+    private bool hasHandledSurvivalChances = false;
 
     
     
@@ -31,7 +32,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsGameOver())
+        if(IsGameOver() && !hasHandledSurvivalChances)
         {
             EndSequence();
         }
@@ -73,10 +74,6 @@ public class GameController : MonoBehaviour
 
     private void PrepareForNewCustomer()
     {
-        // Generate new customer data
-        // CustomerData newCustomerData = customerGenerator.GenerateCustomerData();
-        // customer.CustomerData = newCustomerData;
-
         // Alternate
         // Instantiate CustomerData using preset CustomerInformation scriptable object
         CustomerData chosenCustomerData = customerGenerator.GenerateCustomerData();
@@ -85,7 +82,7 @@ public class GameController : MonoBehaviour
         survivalKit.SetAffectedCustData(customer.CustomerData);
 
         // // Reset all items
-        // // shopInventory.ResetItemEffects();
+        shopInventory.ResetItemEffects();
         // customerUI?.EnterNewCustomer();
         // // Notify ui
         // await CustomerTransition(2f);
@@ -115,6 +112,25 @@ public class GameController : MonoBehaviour
     public void EndSequence()
     {
         Debug.Log("All customers served, time to end the game");
+        
+        ExecuteSurvivalChances();
+
+    }
+
+    private void ExecuteSurvivalChances()
+    {
+        List<CustomerData> allServedCustomers = customerHistory.AllServedCustomers;
+
+        foreach(CustomerData customer in allServedCustomers){
+            Debug.Log($"{customer.Name} - {customer.SurvivalProbability}");
+            if(Random.Range(0,80) < customer.SurvivalProbability){
+                Debug.Log($"{customer.Name} survived!");
+            }else{
+                Debug.Log($"{customer.Name} died!");
+            }
+        }
+
+        hasHandledSurvivalChances = true;
     }
 
     public bool IsGameOver()

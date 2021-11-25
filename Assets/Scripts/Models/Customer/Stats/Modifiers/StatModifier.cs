@@ -74,5 +74,6 @@ public class StatModifier : BaseModifier, IModifiable
     public void ClearTraitBonuses()
     {
         traitBonuses?.Clear();
+        Unlock();
     }
 }

@@ -21,4 +21,16 @@ public class CustomerInformation : ScriptableObject
 
     public float SurvivalProbability { get => _survivalProbability; set => _survivalProbability = value; }
     public List<Trait> Traits {get => traits;}
+
+    public void AddTrait(Trait trait)
+    {
+        traits.Add(trait);
+    }
+
+    public bool RemoveTrait(Trait trait)
+    {
+        return traits.Remove(trait);
+    }
+
+
 }

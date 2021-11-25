@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0880cc1ced2cf234a854e6c54f133a93, type: 3}
   m_Name: Don Barley
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Don Barley
   _sprite: {fileID: -7688155332228908104, guid: eaac30eab7d1f7248827209b7b4d4358, type: 3}
   _endurance:
-    _baseValue: 0
+    _baseValue: 6
   _survivability:
-    _baseValue: 0
+    _baseValue: 6
   _intelligence:
-    _baseValue: 0
+    _baseValue: 4
   _survivalProbability: 0
   traits: []

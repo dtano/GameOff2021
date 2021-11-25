@@ -35,7 +35,7 @@ public abstract class BaseModifier
 
     public void Lock()
     {
-        isLocked = true;
+        if(_value > 0) isLocked = true;
     }
 
     public void Unlock()

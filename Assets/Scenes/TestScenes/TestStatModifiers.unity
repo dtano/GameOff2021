@@ -2538,6 +2538,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 866c122cf66d8be47861e9144ec15a5a, type: 2}
   - {fileID: 11400000, guid: 3e3a3704aa395b94db3339b2105af738, type: 2}
   - {fileID: 11400000, guid: dc3a994dc4b05d44783329bb6b13717c, type: 2}
+  possibleTraits:
+  - {fileID: 11400000, guid: d871190f46757ff4c94fcf75094e9f5b, type: 2}
 --- !u!114 &1281771317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,7 +2557,7 @@ MonoBehaviour:
   customerUI: {fileID: 433986074}
   shopInventory: {fileID: 397108859}
   customerHistory: {fileID: 11400000, guid: 682a1c17736d4644486cef46723470d3, type: 2}
-  totalCustomers: 5
+  totalCustomers: 3
 --- !u!4 &1281771318
 Transform:
   m_ObjectHideFlags: 0

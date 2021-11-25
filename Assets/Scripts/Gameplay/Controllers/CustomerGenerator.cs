@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomerGenerator : MonoBehaviour
 {
     [SerializeField] List<CustomerInformation> potentialCustomers = new List<CustomerInformation>();
+    [SerializeField] private List<Trait> possibleTraits = new List<Trait>();
     private List<CustomerInformation> servedCustomers = new List<CustomerInformation>();
 
     private const int MAX_BASE_STAT_VALUE = 8;
@@ -26,6 +27,7 @@ public class CustomerGenerator : MonoBehaviour
     {
         CustomerInformation chosenCustomerInformation = ChooseRandomCustomer();
         AssignCustomerStats(ref chosenCustomerInformation);
+        AssignTraitsToCustomer(chosenCustomerInformation);
 
         return new CustomerData(chosenCustomerInformation);
     }
@@ -49,6 +51,12 @@ public class CustomerGenerator : MonoBehaviour
         AssignRandomValueToStat(customerInformation.Survivability);
         AssignRandomValueToStat(customerInformation.Intelligence);
 
+    }
+
+    private void AssignTraitsToCustomer(CustomerInformation chosenCustomer)
+    {
+        // at the moment just add the only trait to the customer immediately
+        //chosenCustomer.AddTrait(possibleTraits[0]);
     }
 
     private void AssignRandomValueToStat(Stat stat)

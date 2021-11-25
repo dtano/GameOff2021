@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Customer/Customer Storage/New Customer Storage")]
 public class AllCustomerStorage : ScriptableObject
 {
-    public List<CustomerData> allCustData = new List<CustomerData>();
+    [SerializeField] private List<CustomerData> allCustData = new List<CustomerData>();
+    public List<CustomerData> AllServedCustomers => allCustData;
 
     public void SimulateSurvivalOutcome()
     {
