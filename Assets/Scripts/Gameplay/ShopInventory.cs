@@ -73,7 +73,7 @@ public class ShopInventory : MonoBehaviour
         }
     }
 
-    public bool AddItem(ItemSO item)
+    public bool AddItem(ItemObject item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
@@ -101,7 +101,7 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    public bool RemoveItem(ItemSO item)
+    public bool RemoveItem(ItemObject item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {

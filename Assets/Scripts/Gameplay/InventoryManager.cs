@@ -11,21 +11,21 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] ShopInventory shopInventory;
     [SerializeField] BackpackInventory backpackInventory;
     [SerializeField] SurvivalKit survivalKit;
-    /*[SerializeField] StatPanel statPanel;
-    [SerializeField] ItemTooltip itemTooltip;*/
+    /*[SerializeField] StatPanel statPanel;*/
+    [SerializeField] ItemToolTip itemTooltip;
     [SerializeField] Image draggableItem;
 
     private ItemSlot dragItemSlot;
 
 
     public SurvivalKit SurvivalKit => survivalKit;
-    /*    private void OnValidate()
+    private void OnValidate()
+    {
+        if (itemTooltip == null)
         {
-            if (itemTooltip == null)
-            {
-                itemTooltip = FindObjectOfType<ItemTooltip>();
-            }
-        }*/
+            itemTooltip = FindObjectOfType<ItemToolTip>();
+        }
+    }
 
     private void Awake()
     {
@@ -39,12 +39,12 @@ public class InventoryManager : MonoBehaviour
         backpackInventory.OnRightClickEvent += Unequip;
 
         //Pointer Enter
-        /*shopInventory.OnPointerEnterEvent += ShowTooltip;
-        backpackInventory.OnPointerEnterEvent += ShowTooltip;*/
+        shopInventory.OnPointerEnterEvent += ShowTooltip;
+        backpackInventory.OnPointerEnterEvent += ShowTooltip;
 
         //Pointer Exit
-        /*shopInventory.OnPointerExitEvent += HideTooltip;
-        backpackInventory.OnPointerExitEvent += HideTooltip;*/
+        shopInventory.OnPointerExitEvent += HideTooltip;
+        backpackInventory.OnPointerExitEvent += HideTooltip;
 
         //Begin Drag
         shopInventory.OnBeginDragEvent += BeginDrag;
@@ -137,15 +137,15 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Unequip(EquippableItem item)
+/*    public void Unequip(EquippableItem item)
     {
         if (!shopInventory.IsFull() && backpackInventory.RemoveItem(item))
         {
             item.Unequip(this);
-            /*statPanel.UpdateStatValues();*/
+            *//*statPanel.UpdateStatValues();*//*
             shopInventory.AddItem(item);
         }
-    }
+    }*/
 
     public void Unequip(Item item)
     {
@@ -157,18 +157,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    /* private void ShowTooltip(ItemSlot itemSlot)
+     private void ShowTooltip(ItemSlot itemSlot)
      {
-         EquipableItem equippableItem = itemSlot.Item as equippableItem;
-         if (equippableItem != null)
+        Debug.Log("calling tooltips");
+        Item item = itemSlot.GetItem();
+/*        ItemObject item = itemSlot.GetItem();
+*/        if (item != null)
          {
-             itemTooltip.ShowTooltip(equippableItem);
+            
+             itemTooltip.ShowTooltip(item);
          }
      }
      private void HideTooltip(ItemSlot itemSlot)
      {
-         itemTooltip.HideTooltip()
-     }*/
+        itemTooltip.HideToolTip();
+     }
 
     private void BeginDrag(ItemSlot itemSlot)
     {
@@ -222,11 +225,11 @@ public class InventoryManager : MonoBehaviour
 
     private void SwapItems(ItemSlot dropItemSlot)
     {
-        EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
-        EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
+        ItemObject dragItem = dragItemSlot.Item as ItemObject;
+        ItemObject dropItem = dropItemSlot.Item as ItemObject;
         Item dropItemMono = dropItemSlot.GetItem();
 
-        ItemSO draggedItem = dragItemSlot.Item;
+        ItemObject draggedItem = dragItemSlot.Item;
         Item draggedItemMono = dragItemSlot.GetItem();
         int draggedItemAmount = dragItemSlot.Amount;
 

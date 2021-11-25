@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     [SerializeField] Image image;
     [SerializeField] Text amountText;
-/*    [SerializeField] ItemTooltip tooltip;*/
+    /*[SerializeField] ItemToolTip tooltip;*/
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -23,8 +23,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private Item itemMono;
     // Item slot has to hold an item object 
-    private ItemSO _item;
-    public ItemSO Item
+    private ItemObject _item;
+    public ItemObject Item
     {
         get { return _item; }
         set
@@ -37,7 +37,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
             else
             {
-                image.sprite = _item.Icon;
+                image.sprite = _item.sprite;
                 image.color = normalColor;
             }
         }
@@ -77,6 +77,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         if (amountText == null)
             amountText = GetComponentInChildren<Text>();
+
+        /*if (tooltip == null)
+            tooltip = FindObjectOfType<ItemToolTip>();*/
     }
 
     //check if this is required
@@ -124,14 +127,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
-    public virtual bool CanAddStack(ItemSO item, int amount = 1)
+/*    public virtual bool CanAddStack(ItemSO item, int amount = 1)
     {
         return Item != null && Item.ID == item.ID && Amount + amount <= item.MaximumStacks;
-    }
+    }*/
 
-    public virtual bool CanAddStack(Item item, int amount = 1)
+    public virtual bool CanAddStack(ItemObject item, int amount = 1)
     {
-        return itemMono != null && itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.ItemObject.MaximumStacks;
+        return itemMono != null && itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.MaximumStacks;
     }
 
     public void OnPointerClick(PointerEventData eventData)
