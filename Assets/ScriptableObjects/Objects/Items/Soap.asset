@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
   m_Name: Soap
   m_EditorClassIdentifier: 
-  itemName: 
-  sprite: {fileID: 0}
+  itemName: Soap
+  sprite: {fileID: 21300000, guid: 992ac7781014e8e499b7153cfeb13d4c, type: 3}
   description: 
   enduranceModifier:
     isLocked: 0
-    _value: 0
-    _type: 0
+    _value: 1
+    _type: 100
     _order: 0
   intelligenceModifier:
     isLocked: 0
@@ -30,5 +30,5 @@ MonoBehaviour:
     _value: 0
     _type: 0
     _order: 0
-  id: 
+  id: 855784e425bab924e9d218c539f593ea
   MaximumStacks: 1

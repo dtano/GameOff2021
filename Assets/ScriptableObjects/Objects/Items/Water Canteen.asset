@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
-  m_Name: Compass
+  m_Name: Water Canteen
   m_EditorClassIdentifier: 
-  itemName: Compass
-  sprite: {fileID: 21300000, guid: bb1cfefd371506946a960cb90e95f976, type: 3}
+  itemName: Water Canteen
+  sprite: {fileID: 21300000, guid: 763dc3b8e2701f64798e4c43be6da371, type: 3}
   description: 
   enduranceModifier:
+    isLocked: 0
+    _value: 2
+    _type: 100
+    _order: 0
+  intelligenceModifier:
     isLocked: 0
     _value: 0
     _type: 0
     _order: 0
-  intelligenceModifier:
-    isLocked: 0
-    _value: 1
-    _type: 100
-    _order: 0
   survivabilityModifier:
     isLocked: 0
-    _value: 1
-    _type: 100
+    _value: 0
+    _type: 0
     _order: 0
-  id: 0661d948e19d63d40bc4becb50bf64c6
+  id: 49cf9fd1646ba254e838b1e1f7c24d65
   MaximumStacks: 1
