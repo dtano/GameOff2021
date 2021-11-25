@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0880cc1ced2cf234a854e6c54f133a93, type: 3}
-  m_Name: Ken Gila
+  m_Name: Katya Karamasov
   m_EditorClassIdentifier: 
-  _name: Ken Gila
-  _sprite: {fileID: 8876619355354386685, guid: b60de4ffffa70524ca5e21d5688df46c, type: 3}
+  _name: Katya Karamasov
+  _sprite: {fileID: 2630604858945192294, guid: eaac30eab7d1f7248827209b7b4d4358, type: 3}
   _endurance:
-    _baseValue: 3
+    _baseValue: 0
   _survivability:
-    _baseValue: 3
+    _baseValue: 0
   _intelligence:
-    _baseValue: 5
+    _baseValue: 0
   _survivalProbability: 0
   traits: []
