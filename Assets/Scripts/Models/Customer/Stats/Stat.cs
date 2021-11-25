@@ -16,7 +16,8 @@ public class Stat : IModifiable
     private ModifierCalculator modifierCalculator;
 
     public float ModifiedValue => valueAfterBonuses;
-    public float BaseValue => _baseValue;
+    //public float BaseValue => _baseValue;
+    public float BaseValue {get => _baseValue; set => _baseValue = value;}
 
     public Stat(float baseValue)
     {

@@ -2427,6 +2427,7 @@ MonoBehaviour:
   customer: {fileID: 433986073}
   survivalKit: {fileID: 194103218}
   customerUI: {fileID: 433986074}
+  shopInventory: {fileID: 397108859}
   customerHistory: {fileID: 11400000, guid: 682a1c17736d4644486cef46723470d3, type: 2}
   totalCustomers: 2
 --- !u!4 &1281771318

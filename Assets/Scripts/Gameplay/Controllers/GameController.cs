@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Customer customer;
     [SerializeField] SurvivalKit survivalKit;
     [SerializeField] CustomerUI customerUI;
+    [SerializeField] ShopInventory shopInventory;
     // This is where you store the data of customers who have been served
     [SerializeField] AllCustomerStorage customerHistory;
     [SerializeField] private int totalCustomers;
@@ -78,7 +79,7 @@ public class GameController : MonoBehaviour
 
         // Alternate
         // Instantiate CustomerData using preset CustomerInformation scriptable object
-        CustomerData chosenCustomerData = new CustomerData(customerGenerator.ChooseRandomCustomer());
+        CustomerData chosenCustomerData = customerGenerator.GenerateCustomerData();
         customer.CustomerData = chosenCustomerData;
 
         survivalKit.SetAffectedCustData(customer.CustomerData);

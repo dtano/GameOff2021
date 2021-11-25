@@ -7,6 +7,9 @@ public class CustomerGenerator : MonoBehaviour
     [SerializeField] List<CustomerInformation> potentialCustomers = new List<CustomerInformation>();
     private List<CustomerInformation> servedCustomers = new List<CustomerInformation>();
 
+    private const int MAX_BASE_STAT_VALUE = 8;
+    private const int MIN_BASE_STAT_VALUE = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,14 @@ public class CustomerGenerator : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public CustomerData GenerateCustomerData()
+    {
+        CustomerInformation chosenCustomerInformation = ChooseRandomCustomer();
+        AssignCustomerStats(ref chosenCustomerInformation);
+
+        return new CustomerData(chosenCustomerInformation);
     }
 
     public CustomerInformation ChooseRandomCustomer()
@@ -31,9 +42,18 @@ public class CustomerGenerator : MonoBehaviour
         return chosenCustomer;
     }
 
-    public CustomerData GenerateCustomerData()
+    private void AssignCustomerStats(ref CustomerInformation customerInformation)
     {
-        // Pick a random customer from the potentialCustomers
-        return new CustomerData("Gordon Ramsay", 5, 2, 4);
+        // Pick a random number between 2 and 8
+        AssignRandomValueToStat(customerInformation.Endurance);
+        AssignRandomValueToStat(customerInformation.Survivability);
+        AssignRandomValueToStat(customerInformation.Intelligence);
+
+    }
+
+    private void AssignRandomValueToStat(Stat stat)
+    {
+        int randomStatValue = Random.Range(MIN_BASE_STAT_VALUE, MAX_BASE_STAT_VALUE);
+        stat.BaseValue = randomStatValue;
     }
 }
