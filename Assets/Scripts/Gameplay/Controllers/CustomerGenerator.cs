@@ -14,7 +14,7 @@ public class CustomerGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        possibleTraits = new List<Trait>(Resources.LoadAll<Trait>("ScriptableObjects/Objects/Traits"));
     }
 
     // Update is called once per frame
@@ -27,9 +27,11 @@ public class CustomerGenerator : MonoBehaviour
     {
         CustomerInformation chosenCustomerInformation = ChooseRandomCustomer();
         AssignCustomerStats(ref chosenCustomerInformation);
-        AssignTraitsToCustomer(chosenCustomerInformation);
 
-        return new CustomerData(chosenCustomerInformation);
+        CustomerData customer = new CustomerData(chosenCustomerInformation);
+        AssignTraitsToCustomer(customer);
+
+        return customer;
     }
 
     public CustomerInformation ChooseRandomCustomer()
@@ -53,10 +55,19 @@ public class CustomerGenerator : MonoBehaviour
 
     }
 
-    private void AssignTraitsToCustomer(CustomerInformation chosenCustomer)
+    private void AssignTraitsToCustomer(CustomerData chosenCustomer)
     {
         // at the moment just add the only trait to the customer immediately
         //chosenCustomer.AddTrait(possibleTraits[0]);
+        
+        // Pick random amount of traits for a customer (Might need weights for the amounts)
+        int numTraits = Random.Range(0,3);
+
+        // Pick the random traits
+        for(int i = 0; i < numTraits; i++){
+            int randomTraitIndex = Random.Range(0, possibleTraits.Count);
+            chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
+        }
     }
 
     private void AssignRandomValueToStat(Stat stat)

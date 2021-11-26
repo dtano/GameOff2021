@@ -31,6 +31,13 @@ public class ItemObject : ScriptableObject
         return this;
     }
 
+    public void ResetModifiers()
+    {
+        if(enduranceModifier.Value > 0) enduranceModifier.ClearTraitBonuses();
+        if(intelligenceModifier.Value > 0) intelligenceModifier.ClearTraitBonuses();
+        if(survivabilityModifier.Value > 0) survivabilityModifier.ClearTraitBonuses();
+    }
+
 
     // Might need a list of traits that it is affected by
     // public List<Trait> traitsAffectedBy;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 132aed8539eb9d947ae6247aef0b2340, type: 3}
-  m_Name: New Nullify Trait
+  m_Name: Hydrophobia
   m_EditorClassIdentifier: 
   _name: Hydrophobia
   _description: Afraid of water. All bonuses from water bottles are nullified

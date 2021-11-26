@@ -48,6 +48,7 @@ public class Item : MonoBehaviour
 
     void SetUpItemDetails()
     {
+        itemObject.ResetModifiers();
         itemName = itemObject.itemName;
 
         description = itemObject.description;
