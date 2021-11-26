@@ -29,7 +29,7 @@ public class CustomerGenerator : MonoBehaviour
         AssignCustomerStats(ref chosenCustomerInformation);
 
         CustomerData customer = new CustomerData(chosenCustomerInformation);
-        AssignTraitsToCustomer(customer);
+        //AssignTraitsToCustomer(customer);
 
         return customer;
     }
@@ -64,6 +64,7 @@ public class CustomerGenerator : MonoBehaviour
         int numTraits = Random.Range(0,3);
 
         // Pick the random traits
+        // Have to separate traits to categories
         for(int i = 0; i < numTraits; i++){
             int randomTraitIndex = Random.Range(0, possibleTraits.Count);
             chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
