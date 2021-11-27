@@ -18,9 +18,9 @@ public class ItemToolTip : MonoBehaviour
         AddStat(item.IntelligenceModifier.Value, "Intelligence");
         AddStat(item.SurvivabilityModifier.Value, "Survivability");
 
-        AddStat(item.EnduranceModifier.Value, "Endurance", isPercent: true);
+/*        AddStat(item.EnduranceModifier.Value, "Endurance", isPercent: true);
         AddStat(item.IntelligenceModifier.Value, "Intelligence", isPercent: true);
-        AddStat(item.SurvivabilityModifier.Value, "Survivability", isPercent: true);
+        AddStat(item.SurvivabilityModifier.Value, "Survivability", isPercent: true);*/
 
         ItemStatsText.text = sb.ToString();
 
