@@ -46,6 +46,7 @@ public class Customer : MonoBehaviour
 
     private void CustomerSetup(CustomerData custData)
     {
+        _data = custData;
         Debug.Log("Setting customer up");
         List<Trait> traits = custData.Traits;
         if(traits != null && traits.Count > 0){
@@ -54,7 +55,6 @@ public class Customer : MonoBehaviour
             }
         }
 
-        _data = custData;
     }
 
     // Gonna move this function elsewhere
