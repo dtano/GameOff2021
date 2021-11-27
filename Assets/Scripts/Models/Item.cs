@@ -95,14 +95,6 @@ public class Item : MonoBehaviour
         IntelligenceModifier.ClearTraitBonuses();
     }
 
-
-
-    public ItemObject ItemDetails {get => itemObject;}
-    public ItemObject GetItemObject()
-    {
-        return itemObject;
-    }
-
     public void Equip (InventoryManager inventoryManager)
     {
         SurvivalKit survivalKit = inventoryManager.SurvivalKit;

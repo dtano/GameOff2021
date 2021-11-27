@@ -6,21 +6,17 @@ using UnityEngine;
 public class BoostTrait : Trait
 {
     // This will be the Boost item modifier trait
-    [SerializeField] private StatModifier enduranceModifier;
-    [SerializeField] private StatModifier intelligenceModifier;
-    [SerializeField] private StatModifier survivabilityModifier; 
+    [SerializeField] protected StatModifier enduranceModifier;
+    [SerializeField] protected StatModifier intelligenceModifier;
+    [SerializeField] protected StatModifier survivabilityModifier; 
 
 
     protected virtual void Boost(Item item)
     {
         if(!item.IsNullified()){
-            Debug.Log("Attempt boost trait effect");
-            if(enduranceModifier.Value > 0){
-                Debug.Log("Boost endurance");
-                item.EnduranceModifier.AddTraitBonus(enduranceModifier);
-            }
-            if(intelligenceModifier.Value > 0) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
-            if(survivabilityModifier.Value > 0) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
+            if(enduranceModifier.Value != 0) item.EnduranceModifier.AddTraitBonus(enduranceModifier);
+            if(intelligenceModifier.Value != 0) item.IntelligenceModifier.AddTraitBonus(intelligenceModifier);
+            if(survivabilityModifier.Value != 0) item.SurvivabilityModifier.AddTraitBonus(survivabilityModifier);
         }
     }
 

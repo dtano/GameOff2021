@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3a46860daee754ba6186cefdeb8d88, type: 3}
+  m_Script: {fileID: 11500000, guid: 49b05816aa01010428af635f8f0ca4ed, type: 3}
   m_Name: FOB
   m_EditorClassIdentifier: 
   _name: F.O.B
-  _description: Fan of Bear. Survivability +50%
+  _description: Friend of Bear. Survivability +50%
   enduranceModifier:
     isLocked: 0
     _value: 0

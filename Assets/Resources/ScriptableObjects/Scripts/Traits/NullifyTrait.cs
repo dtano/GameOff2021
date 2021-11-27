@@ -18,7 +18,7 @@ public class NullifyTrait : Trait, INullify
     {
         Debug.Log("Boosting now");
 
-        ItemObject itemObjToAffect = item.GetItemObject();
+        ItemObject itemObjToAffect = item.ItemObject;
 
         if(itemsToNullify.Contains(itemObjToAffect))
         {
