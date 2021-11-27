@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
 
     [SerializeField] Image image;
-    [SerializeField] Text amountText;
+    [SerializeField] TextMeshProUGUI amountText;
     /*[SerializeField] ItemToolTip tooltip;*/
 
     public event Action<ItemSlot> OnPointerEnterEvent;
@@ -76,7 +77,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             image = GetComponent<Image>();
 
         if (amountText == null)
-            amountText = GetComponentInChildren<Text>();
+            amountText = GetComponentInChildren<TextMeshProUGUI>();
 
         /*if (tooltip == null)
             tooltip = FindObjectOfType<ItemToolTip>();*/

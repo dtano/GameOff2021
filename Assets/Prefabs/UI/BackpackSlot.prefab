@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 3449672062620943983}
   amountText: {fileID: 0}
+  survivalKit: {fileID: 0}
 --- !u!114 &2463464740972605127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,14 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4617046793780530988, guid: ee05072823395e64dbb3e6e09c308491, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
