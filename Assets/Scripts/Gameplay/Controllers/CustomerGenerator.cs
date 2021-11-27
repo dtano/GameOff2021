@@ -58,19 +58,19 @@ public class CustomerGenerator : MonoBehaviour
     private void AssignTraitsToCustomer(CustomerData chosenCustomer)
     {
         // at the moment just add the only trait to the customer immediately
-        //chosenCustomer.AddTrait(possibleTraits[0]);
-        
-        // Pick random amount of traits for a customer (Might need weights for the amounts)
-        // int numTraits = Random.Range(0,3);
-
-        // // Pick the random traits
-        // // Have to separate traits to categories
-        // for(int i = 0; i < numTraits; i++){
-        //     int randomTraitIndex = Random.Range(0, possibleTraits.Count);
-        //     chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
-        // }
-
         chosenCustomer.AddTrait(possibleTraits[0]);
+        
+        //Pick random amount of traits for a customer (Might need weights for the amounts)
+        int numTraits = Random.Range(0,3);
+
+        // Pick the random traits
+        // Have to separate traits to categories
+        for(int i = 0; i < numTraits; i++){
+            int randomTraitIndex = Random.Range(0, possibleTraits.Count);
+            chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
+        }
+
+        //chosenCustomer.AddTrait(possibleTraits[0]);
     }
 
     private void AssignRandomValueToStat(Stat stat)
