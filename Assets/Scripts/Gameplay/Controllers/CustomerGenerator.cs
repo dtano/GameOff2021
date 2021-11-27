@@ -67,6 +67,7 @@ public class CustomerGenerator : MonoBehaviour
         // Have to separate traits to categories
         for(int i = 0; i < numTraits; i++){
             int randomTraitIndex = Random.Range(0, possibleTraits.Count);
+            //Debug.Log($"Chosen trait is {possibleTraits[randomTraitIndex]} with index {randomTraitIndex}");
             chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
         }
     }

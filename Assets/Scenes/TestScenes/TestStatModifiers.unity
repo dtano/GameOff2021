@@ -860,6 +860,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49cf9fd1646ba254e838b1e1f7c24d65, type: 2}
   - {fileID: 11400000, guid: 855784e425bab924e9d218c539f593ea, type: 2}
   - {fileID: 11400000, guid: 3d1025b92d0cf3842833e0b6eb643e29, type: 2}
+  - {fileID: 11400000, guid: 65fd93691ab0ffc46bd713d535e9f39a, type: 2}
+  - {fileID: 11400000, guid: c1e3ca8aa7b03864d9fd73da647106bd, type: 2}
   itemsParent: {fileID: 1712907254}
   itemSlots:
   - {fileID: 1158169017}
@@ -2655,7 +2657,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e3a3704aa395b94db3339b2105af738, type: 2}
   - {fileID: 11400000, guid: dc3a994dc4b05d44783329bb6b13717c, type: 2}
   possibleTraits:
-  - {fileID: 11400000, guid: e65d5b39b6f1e1b4693a1811940db6f9, type: 2}
+  - {fileID: 11400000, guid: 3a6e60075bb4c8a40a700f09a3dd4ea8, type: 2}
+  - {fileID: 11400000, guid: 930c6038aefc38b4c979ea2c2560da1f, type: 2}
+  - {fileID: 11400000, guid: f9a5dbc634e2cb449ada0207e774df05, type: 2}
 --- !u!114 &1281771317
 MonoBehaviour:
   m_ObjectHideFlags: 0
