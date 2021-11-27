@@ -1,10 +1,12 @@
 using System.Text;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
+
 public class ItemToolTip : MonoBehaviour
 {
-    [SerializeField] Text ItemNameText;
-    [SerializeField] Text ItemStatsText;
+    [SerializeField] TextMeshProUGUI ItemNameText;
+    [SerializeField] TextMeshProUGUI ItemStatsText;
 
     private StringBuilder sb = new StringBuilder();
 
@@ -24,13 +26,12 @@ public class ItemToolTip : MonoBehaviour
 
         ItemStatsText.text = sb.ToString();
 
-        gameObject.SetActive(true);
-
     }
 
     public void HideToolTip()
     {
-        gameObject.SetActive(false);
+        ItemNameText.text = "";
+        ItemStatsText.text = "";
     }
 
     private void AddStat(float value, string statName, bool isPercent = false)

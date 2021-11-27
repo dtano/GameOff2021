@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 9bba78b669596424eb96caf1731dca56, type: 3}
   description: 
   enduranceModifier:
-    isLocked: 1
+    isLocked: 0
     _value: 1
     _type: 100
     _order: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   survivabilityModifier:
     isLocked: 0
     _value: 0
-    _type: 100
+    _type: 300
     _order: 0
   id: 49782c23b9be6cd47be95130d5006860
   MaximumStacks: 1
