@@ -11,6 +11,7 @@ public class CustomerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI statDisplay;
     [SerializeField] TextMeshProUGUI nameDisplay;
     [SerializeField] TextMeshProUGUI probabilityDisplay;
+    [SerializeField] TextMeshProUGUI traitsDisplay;
     [SerializeField] Image customerImg;
     
     [SerializeField] Animator animator;
@@ -48,7 +49,7 @@ public class CustomerUI : MonoBehaviour
         customerImg.sprite = custData.Sprite;
         
         DisplayStats(custData);
-
+        DisplayTraits(custData);
         DisplaySurvivalProbability();
     }
 
@@ -65,6 +66,19 @@ public class CustomerUI : MonoBehaviour
         statDisplay.text = sb.ToString();
     }
 
+    private void DisplayTraits(CustomerData custData)
+    {
+        traitsDisplay.text = "";
+        sb.Clear();
+
+        foreach(Trait trait in custData.Traits)
+        {
+            sb.Append($"{trait.Name}\n");
+        }
+
+        traitsDisplay.text = sb.ToString();
+    }
+
     private void DisplaySurvivalProbability()
     {
         int prob = (int) Math.Ceiling(customer.CalculateSurvivalProbability());
@@ -76,6 +90,7 @@ public class CustomerUI : MonoBehaviour
         statDisplay.gameObject.SetActive(false);
         nameDisplay.gameObject.SetActive(false);
         probabilityDisplay.gameObject.SetActive(false);
+        traitsDisplay.gameObject.SetActive(false);
     }
 
     public void ShowUIElements()
@@ -83,6 +98,7 @@ public class CustomerUI : MonoBehaviour
         statDisplay.gameObject.SetActive(true);
         nameDisplay.gameObject.SetActive(true);
         probabilityDisplay.gameObject.SetActive(true);
+        traitsDisplay.gameObject.SetActive(true);
     }
 
     public void MakeCustomerLeaveStore()

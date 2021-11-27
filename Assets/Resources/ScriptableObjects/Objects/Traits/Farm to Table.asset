@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132aed8539eb9d947ae6247aef0b2340, type: 3}
+  m_Name: Farm to Table
+  m_EditorClassIdentifier: 
+  _name: Farm to Table
+  _description: The person will not accept any packaged food. They gather their own
+    food. Nullify MRE
+  itemsToNullify:
+  - {fileID: 11400000, guid: 49782c23b9be6cd47be95130d5006860, type: 2}

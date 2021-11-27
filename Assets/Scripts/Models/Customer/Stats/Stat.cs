@@ -62,4 +62,5 @@ public class Stat : IModifiable
     {
         valueAfterBonuses = modifierCalculator.CalculateValueAfterModifierBonuses(statModifiers);
     }
+
 }

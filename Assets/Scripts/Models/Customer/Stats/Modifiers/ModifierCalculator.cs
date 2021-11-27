@@ -44,6 +44,12 @@ public class ModifierCalculator
             i++;
         }
 
+        if(finalValue > _maxValue){
+            finalValue = _maxValue;
+        }else if(finalValue < 0){
+            finalValue = 0;
+        }
+
         return finalValue;
     }
 }

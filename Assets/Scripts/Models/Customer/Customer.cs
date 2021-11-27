@@ -17,10 +17,11 @@ public class Customer : MonoBehaviour
     // Maybe CustomerData should be a mono
     [SerializeField] private CustomerData _data;
     [SerializeField] private List<Trait> traits;
-    private float _survivabilityScore; // Will be a percentage in game
+    private float _survivalProbability; // Will be a percentage in game
 
     public SurvivalKit SurvivalKit => _survivalKit;
     public CustomerData CustomerData {get => _data; set => CustomerSetup(value); }
+    public float SurvivalProbability => _data.SurvivalProbability;
 
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +46,7 @@ public class Customer : MonoBehaviour
 
     private void CustomerSetup(CustomerData custData)
     {
+        _data = custData;
         Debug.Log("Setting customer up");
         List<Trait> traits = custData.Traits;
         if(traits != null && traits.Count > 0){
@@ -53,7 +55,6 @@ public class Customer : MonoBehaviour
             }
         }
 
-        _data = custData;
     }
 
     // Gonna move this function elsewhere

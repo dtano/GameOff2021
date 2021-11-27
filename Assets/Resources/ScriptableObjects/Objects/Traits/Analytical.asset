@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3a46860daee754ba6186cefdeb8d88, type: 3}
+  m_Name: Analytical
+  m_EditorClassIdentifier: 
+  _name: Analytical
+  _description: Intelligence item bonuses +40%
+  enduranceModifier:
+    isLocked: 0
+    _value: 0
+    _type: 0
+    _order: 0
+  intelligenceModifier:
+    isLocked: 0
+    _value: 0.4
+    _type: 300
+    _order: 0
+  survivabilityModifier:
+    isLocked: 0
+    _value: 0
+    _type: 0
+    _order: 0

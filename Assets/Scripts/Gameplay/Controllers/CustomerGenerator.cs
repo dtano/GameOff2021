@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomerGenerator : MonoBehaviour
 {
     [SerializeField] List<CustomerInformation> potentialCustomers = new List<CustomerInformation>();
+    [SerializeField] private List<Trait> possibleTraits = new List<Trait>();
     private List<CustomerInformation> servedCustomers = new List<CustomerInformation>();
 
     private const int MAX_BASE_STAT_VALUE = 8;
@@ -13,7 +14,7 @@ public class CustomerGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //possibleTraits = new List<Trait>(Resources.LoadAll<Trait>("ScriptableObjects/Objects/Traits"));
     }
 
     // Update is called once per frame
@@ -27,7 +28,10 @@ public class CustomerGenerator : MonoBehaviour
         CustomerInformation chosenCustomerInformation = ChooseRandomCustomer();
         AssignCustomerStats(ref chosenCustomerInformation);
 
-        return new CustomerData(chosenCustomerInformation);
+        CustomerData customer = new CustomerData(chosenCustomerInformation);
+        AssignTraitsToCustomer(customer);
+
+        return customer;
     }
 
     public CustomerInformation ChooseRandomCustomer()
@@ -49,6 +53,23 @@ public class CustomerGenerator : MonoBehaviour
         AssignRandomValueToStat(customerInformation.Survivability);
         AssignRandomValueToStat(customerInformation.Intelligence);
 
+    }
+
+    private void AssignTraitsToCustomer(CustomerData chosenCustomer)
+    {
+        // at the moment just add the only trait to the customer immediately
+        chosenCustomer.AddTrait(possibleTraits[0]);
+        
+        //Pick random amount of traits for a customer (Might need weights for the amounts)
+        int numTraits = Random.Range(0,3);
+
+        // Pick the random traits
+        // Have to separate traits to categories
+        for(int i = 0; i < numTraits; i++){
+            int randomTraitIndex = Random.Range(0, possibleTraits.Count);
+            //Debug.Log($"Chosen trait is {possibleTraits[randomTraitIndex]} with index {randomTraitIndex}");
+            chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
+        }
     }
 
     private void AssignRandomValueToStat(Stat stat)

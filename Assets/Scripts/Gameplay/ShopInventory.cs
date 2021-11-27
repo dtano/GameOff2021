@@ -152,6 +152,15 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
+    public void ResetItemEffects()
+    {
+        foreach(ItemSlot slot in itemSlots){
+            Item itemInSlot = slot.GetItem();
+            itemInSlot?.Reset();
+            Debug.Log("Resetting item in slot");
+        }
+    }
+
     // public Item RemoveItem(string itemID)
     // {
     //     for (int i = 0; i < itemSlots.Length; i++)

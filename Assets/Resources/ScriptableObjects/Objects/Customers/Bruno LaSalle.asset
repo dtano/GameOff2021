@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0880cc1ced2cf234a854e6c54f133a93, type: 3}
+  m_Name: Bruno LaSalle
+  m_EditorClassIdentifier: 
+  _name: Bruno LaSalle
+  _sprite: {fileID: -8298713270442152022, guid: eaac30eab7d1f7248827209b7b4d4358, type: 3}
+  _endurance:
+    _baseValue: 0
+  _survivability:
+    _baseValue: 0
+  _intelligence:
+    _baseValue: 0
+  _survivalProbability: 0
+  traits: []

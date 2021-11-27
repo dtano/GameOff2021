@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9959437148fa94fbb073d9821bb97e, type: 3}
+  m_Name: Sleeping bag
+  m_EditorClassIdentifier: 
+  itemName: Sleeping bag
+  sprite: {fileID: 21300000, guid: 3604e947022975047b401b1b78f7fb2f, type: 3}
+  description: 
+  enduranceModifier:
+    isLocked: 0
+    _value: 1
+    _type: 100
+    _order: 0
+  intelligenceModifier:
+    isLocked: 0
+    _value: 1
+    _type: 100
+    _order: 0
+  survivabilityModifier:
+    isLocked: 0
+    _value: 0
+    _type: 0
+    _order: 0
+  id: 899c7e1bf6dad554abc789f506baec1a
+  MaximumStacks: 1

@@ -48,6 +48,7 @@ public class Item : MonoBehaviour
 
     void SetUpItemDetails()
     {
+        itemObject.ResetModifiers();
         itemName = itemObject.itemName;
 
         description = itemObject.description;
@@ -92,14 +93,6 @@ public class Item : MonoBehaviour
         EnduranceModifier.ClearTraitBonuses();
         SurvivabilityModifier.ClearTraitBonuses();
         IntelligenceModifier.ClearTraitBonuses();
-    }
-
-
-
-    public ItemObject ItemDetails {get => itemObject;}
-    public ItemObject GetItemObject()
-    {
-        return itemObject;
     }
 
     public void Equip (InventoryManager inventoryManager)
