@@ -69,8 +69,6 @@ public class CustomerGenerator : MonoBehaviour
             int randomTraitIndex = Random.Range(0, possibleTraits.Count);
             chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
         }
-
-        //chosenCustomer.AddTrait(possibleTraits[0]);
     }
 
     private void AssignRandomValueToStat(Stat stat)

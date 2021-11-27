@@ -15,10 +15,10 @@ MonoBehaviour:
   _name: Rohan
   _sprite: {fileID: -8488037357702319130, guid: b60de4ffffa70524ca5e21d5688df46c, type: 3}
   _endurance:
-    _baseValue: 4
+    _baseValue: 3
   _survivability:
     _baseValue: 6
   _intelligence:
-    _baseValue: 2
+    _baseValue: 5
   _survivalProbability: 0
   traits: []

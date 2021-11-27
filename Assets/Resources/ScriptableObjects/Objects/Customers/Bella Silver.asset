@@ -15,10 +15,10 @@ MonoBehaviour:
   _name: Bella Silver
   _sprite: {fileID: -6900843903742348998, guid: eaac30eab7d1f7248827209b7b4d4358, type: 3}
   _endurance:
-    _baseValue: 0
+    _baseValue: 6
   _survivability:
-    _baseValue: 0
+    _baseValue: 7
   _intelligence:
-    _baseValue: 0
+    _baseValue: 2
   _survivalProbability: 0
   traits: []

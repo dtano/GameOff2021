@@ -2653,7 +2653,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e3a3704aa395b94db3339b2105af738, type: 2}
   - {fileID: 11400000, guid: dc3a994dc4b05d44783329bb6b13717c, type: 2}
   possibleTraits:
-  - {fileID: 11400000, guid: 4f47706009ccd0243a4643b0a7c8cb56, type: 2}
+  - {fileID: 11400000, guid: e4f40274a9566164aaafe911c0d5ccc7, type: 2}
+  - {fileID: 11400000, guid: 5e8bf28d5efafee47bf0e398da4b0d31, type: 2}
+  - {fileID: 11400000, guid: ab7f881e7a4230c469c9b777f1e0ca18, type: 2}
+  - {fileID: 11400000, guid: ee00b75c3f5b9f94c9a7dda0d78224fe, type: 2}
 --- !u!114 &1281771317
 MonoBehaviour:
   m_ObjectHideFlags: 0

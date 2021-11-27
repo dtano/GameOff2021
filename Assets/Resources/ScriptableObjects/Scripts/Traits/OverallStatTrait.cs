@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Traits/Stat blanket trait")]
 public class OverallStatTrait : Trait
 {
-    [SerializeField] private float effectPercentage;
-
     [SerializeField] StatModifier enduranceModifier;
     [SerializeField] StatModifier intelligenceModifier;
     [SerializeField] StatModifier survivabilityModifier;

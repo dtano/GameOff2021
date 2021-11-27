@@ -15,10 +15,10 @@ MonoBehaviour:
   _name: Ken Alaska
   _sprite: {fileID: 8876619355354386685, guid: b60de4ffffa70524ca5e21d5688df46c, type: 3}
   _endurance:
-    _baseValue: 3
+    _baseValue: 7
   _survivability:
-    _baseValue: 3
+    _baseValue: 6
   _intelligence:
-    _baseValue: 5
+    _baseValue: 3
   _survivalProbability: 0
   traits: []
