@@ -70,7 +70,7 @@ public class Item : MonoBehaviour
     {
         Activate();
 
-        ClearTraitBonuses();
+        if(itemObject != null) ClearTraitBonuses();
     }
 
     public void Nullify()
@@ -90,9 +90,11 @@ public class Item : MonoBehaviour
 
     public void ClearTraitBonuses()
     {
-        EnduranceModifier.ClearTraitBonuses();
-        SurvivabilityModifier.ClearTraitBonuses();
-        IntelligenceModifier.ClearTraitBonuses();
+        if(itemObject != null){
+            EnduranceModifier.ClearTraitBonuses();
+            SurvivabilityModifier.ClearTraitBonuses();
+            IntelligenceModifier.ClearTraitBonuses();
+        }
     }
 
     public void Equip (InventoryManager inventoryManager)

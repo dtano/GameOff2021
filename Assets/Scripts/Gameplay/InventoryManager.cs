@@ -280,6 +280,7 @@ public class InventoryManager : MonoBehaviour
             //If items are the same
             if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount == 1)
             {
+                Debug.Log("Calling exchange item when items are the same");
                 ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
             }
             // dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1
@@ -312,6 +313,7 @@ public class InventoryManager : MonoBehaviour
 
         else
         {
+            Debug.Log("Calling exchange item from else leg");
             ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
         }
     }
@@ -320,14 +322,9 @@ public class InventoryManager : MonoBehaviour
     private void ExchangeItems(ItemSlot dropItemSlot, Item draggedItem, int draggedItemAmount)
     {
         Debug.Log("Drop exchange");
-        // dragItemSlot.Item = dropItemSlot.Item;
-        // dragItemSlot.Amount = dropItemSlot.Amount;
 
         dragItemSlot.SetItem(dropItemSlot.GetItem());
         dragItemSlot.Amount = dropItemSlot.Amount;
-
-        // dropItemSlot.Item = draggedItem;
-        // dropItemSlot.Amount = draggedItemAmount;
 
         dropItemSlot.SetItem(draggedItem);
         dropItemSlot.Amount = draggedItemAmount;

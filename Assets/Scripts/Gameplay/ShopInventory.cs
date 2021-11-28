@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopInventory : MonoBehaviour
-{
-    //[SerializeField] List<ItemSO> startingItems;
-    
-    
+{   
     [SerializeField] List<ItemObject> startingItemObjects;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
@@ -34,6 +31,7 @@ public class ShopInventory : MonoBehaviour
             itemSlots[i].OnDropEvent += OnDropEvent;
         }
 
+        PopulateStartingItems();
         SetStartingItems();
     }
 
@@ -43,22 +41,14 @@ public class ShopInventory : MonoBehaviour
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
     }
 
+    private void PopulateStartingItems()
+    {
+        startingItemObjects = new List<ItemObject>(Resources.LoadAll<ItemObject>("ScriptableObjects/Objects/Items"));
+    }
+
 
     private void SetStartingItems()
     {
-        // int i = 0;
-        // for (; i < startingItems.Count && i < itemSlots.Length; i++)
-        // {
-        //     itemSlots[i].Item = startingItems[i].GetCopy();
-        //     itemSlots[i].Amount = 1;
-        // }
-
-        // for (; i < itemSlots.Length; i++)
-        // {
-        //     itemSlots[i].Item = null;
-        //     itemSlots[i].Amount = 0;
-        // }
-
         int j = 0;
         for(; j < startingItemObjects.Count && j < itemSlots.Length; j++)
         {
@@ -118,24 +108,6 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    // public ItemSO RemoveItem(string itemID)
-    // {
-    //     for (int i = 0; i < itemSlots.Length; i++)
-    //     {
-    //         ItemSO item = itemSlots[i].Item;
-    //         if (item != null && item.ID == itemID)
-    //         {
-    //             itemSlots[i].Amount--;
-    //             if (itemSlots[i].Amount == 0)
-    //             {
-    //                 itemSlots[i].Item = null;
-    //             }
-    //             return item;
-    //         }
-    //     }
-    //     return null;
-    // }
-
     public bool RemoveItem(Item item)
     {
         for(int i = 0; i < itemSlots.Length; i++){
@@ -160,24 +132,6 @@ public class ShopInventory : MonoBehaviour
             Debug.Log("Resetting item in slot");
         }
     }
-
-    // public Item RemoveItem(string itemID)
-    // {
-    //     for (int i = 0; i < itemSlots.Length; i++)
-    //     {
-    //         Item item = itemSlots[i].GetItem();
-    //         if (item != null && item.ID == itemID)
-    //         {
-    //             itemSlots[i].Amount--;
-    //             if (itemSlots[i].Amount == 0)
-    //             {
-    //                 itemSlots[i].Item = null;
-    //             }
-    //             return item;
-    //         }
-    //     }
-    //     return null;
-    // }
 
     public bool IsFull()
     {
