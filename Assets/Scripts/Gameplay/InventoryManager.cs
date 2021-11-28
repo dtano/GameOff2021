@@ -209,7 +209,7 @@ public class InventoryManager : MonoBehaviour
     private void Drop(ItemSlot dropItemSlot)
     {
         Debug.Log("Dropping");
-        if (dragItemSlot == null) return;
+        if (dragItemSlot == null || dragItemSlot == dropItemSlot) return;
 
         //updates values of stats
         //statPanel.UpdateStatValues;

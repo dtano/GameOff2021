@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackpackInventory : MonoBehaviour
 {
     [SerializeField] Transform backpackSlotParent;
     [SerializeField] BackpackSlot[] backpackSlots;
+    [SerializeField] GameObject survivalKitSprite;
 
+    private Animator survivalKitAnimator;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -25,6 +28,8 @@ public class BackpackInventory : MonoBehaviour
         foreach(BackpackSlot slot in backpackSlots){
             SetSlotEvents(slot);
         }
+
+        if(survivalKitSprite != null) survivalKitAnimator = survivalKitSprite.GetComponent<Animator>();
     }
 
     private void SetSlotEvents(ItemSlot slot)
@@ -112,6 +117,16 @@ public class BackpackInventory : MonoBehaviour
         foreach(BackpackSlot slot in backpackSlots){
             slot.gameObject.SetActive(true);
         }
+    }
+
+    public void ServeBag()
+    {
+        survivalKitAnimator?.SetTrigger("ServeBag");
+    }
+
+    public void GetNewBag()
+    {
+        survivalKitAnimator?.SetTrigger("GetNewBag");
     }
 
 }

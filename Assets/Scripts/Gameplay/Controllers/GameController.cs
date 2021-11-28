@@ -29,6 +29,12 @@ public class GameController : MonoBehaviour
         mainUIController = GetComponent<UIController>();
 
         //PrepareForNewCustomer();
+        mainUIController.HideUIElements();
+    }
+
+    public async void StartGame()
+    {
+        await CustomerArrival();
     }
 
     // Update is called once per frame
@@ -61,6 +67,7 @@ public class GameController : MonoBehaviour
     {
         PrepareForNewCustomer();
         await CustomerEnterSequence();
+        
         Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
     }
 
@@ -73,9 +80,11 @@ public class GameController : MonoBehaviour
 
         mainUIController?.HideBackpackUI();
         customerUI?.MakeCustomerLeaveStore();
+        //mainUIController?.ServeBag();
         
         // wait for transition 
         await CustomerTransition(2f);
+
     }
 
     private void PrepareForNewCustomer()
@@ -89,6 +98,7 @@ public class GameController : MonoBehaviour
 
         // // Reset all items
         shopInventory.ResetItemEffects();
+        //mainUIController?.GetNewBag();
         // customerUI?.EnterNewCustomer();
         // // Notify ui
         // await CustomerTransition(2f);

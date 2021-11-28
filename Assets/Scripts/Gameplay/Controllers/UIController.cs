@@ -14,9 +14,9 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(backpackInventory != null && customerUI != null){
-            HideUIElements();
-        }
+        // if(backpackInventory != null && customerUI != null){
+        //     HideUIElements();
+        // }
     }
 
     // Update is called once per frame
@@ -48,5 +48,15 @@ public class UIController : MonoBehaviour
     {
         backpackInventory?.ShowSlots();
         serveKitButton?.gameObject.SetActive(true);
+    }
+
+    public void ServeBag()
+    {
+        backpackInventory.ServeBag();
+    }
+
+    public void GetNewBag()
+    {
+        backpackInventory.GetNewBag();
     }
 }

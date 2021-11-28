@@ -33,6 +33,7 @@ public class CustomerUI : MonoBehaviour
         
         // nameDisplay.text = customer.CustomerData.Name;
         // customerImg.sprite = customer.CustomerData.Sprite;
+        // Activate();
 
     }
 
@@ -49,15 +50,14 @@ public class CustomerUI : MonoBehaviour
     {
         CustomerData custData = customer.CustomerData;
 
-        if(customer != null && custData != null){
-            //Debug.Log(custData.Name);
-            nameDisplay.text = custData.Name;
-            customerImg.sprite = custData.Sprite;
-            
-            DisplayStats(custData);
-            DisplayTraits(custData);
-            DisplaySurvivalProbability();
-        }
+        //Debug.Log(custData.Name);
+        nameDisplay.text = custData.Name;
+        customerImg.sprite = custData.Sprite;
+        
+        DisplayStats(custData);
+        DisplayTraits(custData);
+        DisplaySurvivalProbability();
+        
     }
 
 
@@ -98,8 +98,8 @@ public class CustomerUI : MonoBehaviour
         nameDisplay.gameObject.SetActive(false);
         probabilityDisplay.gameObject.SetActive(false);
         traitsDisplay.transform.parent.gameObject.SetActive(false);
-        //customerImg.gameObject.SetActive(false);
     }
+
 
     public void ShowUIElements()
     {
@@ -107,7 +107,7 @@ public class CustomerUI : MonoBehaviour
         nameDisplay.gameObject.SetActive(true);
         probabilityDisplay.gameObject.SetActive(true);
         traitsDisplay.transform.parent.gameObject.SetActive(true);
-        customerImg.gameObject.SetActive(true);
+        Activate();
     }
 
     public void MakeCustomerLeaveStore()
@@ -120,6 +120,7 @@ public class CustomerUI : MonoBehaviour
 
     public void EnterNewCustomer()
     {
+        customerImg.sprite = customer.CustomerData.Sprite;
         animator.SetTrigger("EnterStore");
     }
 
