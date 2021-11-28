@@ -52,14 +52,16 @@ public class BackpackInventory : MonoBehaviour
     {
         for (int i = 0; i < backpackSlots.Length; i++)
         {
-            if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
+            /*Debug.Log(backpackSlots[i].GetItem());*/
+
+            if (backpackSlots[i].GetItem() && i == backpackSlots.Length - 1)
             {
 
                 previousItem = backpackSlots[i].GetItem();
                 backpackSlots[i].SetItem(item.GetCopy());
                 return true;
             }
-            if (backpackSlots[i].Item)
+            if (backpackSlots[i].GetItem())
             {
                 continue;
             }
@@ -98,7 +100,7 @@ public class BackpackInventory : MonoBehaviour
     public bool IsFull()
     {
         foreach(BackpackSlot slot in backpackSlots){
-            if(slot.Item == null){
+            if(slot.GetItem() == null){
                 return false;
             }
         }

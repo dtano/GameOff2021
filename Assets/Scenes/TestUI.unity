@@ -924,6 +924,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1219412339, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
+      propertyPath: customerUI
+      value: 
+      objectReference: {fileID: 1084558159}
+    - target: {fileID: 1219412339, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
+      propertyPath: shopInventory
+      value: 
+      objectReference: {fileID: 1448984494}
+    - target: {fileID: 1219412339, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
+      propertyPath: serveKitButton
+      value: 
+      objectReference: {fileID: 589433001}
+    - target: {fileID: 1219412339, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
+      propertyPath: backpackInventory
+      value: 
+      objectReference: {fileID: 125104907}
     - target: {fileID: 6326826919549559072, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -988,14 +1004,6 @@ PrefabInstance:
       propertyPath: shopInventory
       value: 
       objectReference: {fileID: 1448984494}
-    - target: {fileID: 6326826919549559078, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
-      propertyPath: totalCustomers
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326826919549559079, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
-      propertyPath: possibleTraits.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
 --- !u!114 &341453712 stripped
@@ -1003,7 +1011,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6326826919549559078, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
   m_PrefabInstance: {fileID: 341453711}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219412336}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c4d9b8ef1e8cc2459823706bd1d565b, type: 3}
@@ -4186,27 +4194,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4199638908412438027, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
   m_PrefabInstance: {fileID: 1182453496}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1219412336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6326826919549559072, guid: 9fb83f7c24ce5284fa8a198f3533f2f4, type: 3}
-  m_PrefabInstance: {fileID: 341453711}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1219412339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219412336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b6a8cd6fba4f14b8be3ebe941a0963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backpackInventory: {fileID: 125104907}
-  shopInventory: {fileID: 1448984494}
-  customerUI: {fileID: 1084558159}
-  serveKitButton: {fileID: 589433001}
 --- !u!1 &1326519883
 GameObject:
   m_ObjectHideFlags: 0
