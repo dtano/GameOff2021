@@ -21,51 +21,27 @@ public class BackpackInventory : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < backpackSlots.Length; i++)
-        {
-            backpackSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
-            backpackSlots[i].OnPointerExitEvent += OnPointerExitEvent;
-            backpackSlots[i].OnRightClickEvent += OnRightClickEvent;
-            backpackSlots[i].OnBeginDragEvent += OnBeginDragEvent;
-            backpackSlots[i].OnEndDragEvent += OnEndDragEvent;
-            backpackSlots[i].OnDragEvent += OnDragEvent;
-            backpackSlots[i].OnDropEvent += OnDropEvent;
+        //backpackSlots = backpackSlotParent.GetComponentsInChildren<BackpackSlot>();
+        foreach(BackpackSlot slot in backpackSlots){
+            SetSlotEvents(slot);
         }
+    }
+
+    private void SetSlotEvents(ItemSlot slot)
+    {
+        slot.OnPointerEnterEvent += OnPointerEnterEvent;
+        slot.OnPointerExitEvent += OnPointerExitEvent;
+        slot.OnRightClickEvent += OnRightClickEvent;
+        slot.OnBeginDragEvent += OnBeginDragEvent;
+        slot.OnEndDragEvent += OnEndDragEvent;
+        slot.OnDragEvent += OnDragEvent;
+        slot.OnDropEvent += OnDropEvent;
     }
 
     private void OnValidate()
     {
         backpackSlots = backpackSlotParent.GetComponentsInChildren<BackpackSlot>();
     }
-
-
-
-    // public bool AddItem(EquippableItem item, out EquippableItem previousItem)
-    // {
-    //     for (int i = 0; i < backpackSlots.Length; i++)
-    //     {
-    //         if (backpackSlots[i].Item && i == backpackSlots.Length - 1)
-    //         {
-
-    //             previousItem = (EquippableItem)backpackSlots[i].Item;
-    //             backpackSlots[i].Item = item.GetCopy();
-    //             return true;
-    //         }
-    //         if (backpackSlots[i].Item)
-    //         {
-    //             continue;
-    //         }
-    //         else
-    //         {
-    //             backpackSlots[i].Item = item.GetCopy();
-    //             previousItem = null;
-    //             return true;
-    //         }
-            
-    //     }
-    //     previousItem = null;
-    //     return false;
-    // }
 
     public bool AddItem(Item item, out Item previousItem)
     {
@@ -91,19 +67,6 @@ public class BackpackInventory : MonoBehaviour
             
         }
         previousItem = null;
-        return false;
-    }
-
-    public bool RemoveItem(EquippableItem item)
-    {
-        for (int i = 0; i < backpackSlots.Length; i++)
-        {
-            if (backpackSlots[i].Item == item)
-            {
-                backpackSlots[i].Item = null;
-                return true;
-            }
-        }
         return false;
     }
 
@@ -135,6 +98,20 @@ public class BackpackInventory : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void HideSlots()
+    {
+        foreach(BackpackSlot slot in backpackSlots){
+            slot.gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowSlots()
+    {
+        foreach(BackpackSlot slot in backpackSlots){
+            slot.gameObject.SetActive(true);
+        }
     }
 
 }

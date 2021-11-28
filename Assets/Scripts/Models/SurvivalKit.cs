@@ -32,6 +32,7 @@ public class SurvivalKit : MonoBehaviour
     {
         if(allItems.Count < maxSlots){
             allItems.Add(item);
+            
             if(OnItemAddFunction != null){
                 OnItemAddFunction(item);
             }else{

@@ -20,19 +20,23 @@ public class ShopInventory : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            itemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
-            itemSlots[i].OnPointerExitEvent += OnPointerExitEvent;
-            itemSlots[i].OnRightClickEvent += OnRightClickEvent;
-            itemSlots[i].OnBeginDragEvent += OnBeginDragEvent;
-            itemSlots[i].OnEndDragEvent += OnEndDragEvent;
-            itemSlots[i].OnDragEvent += OnDragEvent;
-            itemSlots[i].OnDropEvent += OnDropEvent;
+        foreach(ItemSlot slot in itemSlots){
+            SetSlotEvents(slot);
         }
 
         PopulateStartingItems();
         SetStartingItems();
+    }
+
+    private void SetSlotEvents(ItemSlot slot)
+    {
+        slot.OnPointerEnterEvent += OnPointerEnterEvent;
+        slot.OnPointerExitEvent += OnPointerExitEvent;
+        slot.OnRightClickEvent += OnRightClickEvent;
+        slot.OnBeginDragEvent += OnBeginDragEvent;
+        slot.OnEndDragEvent += OnEndDragEvent;
+        slot.OnDragEvent += OnDragEvent;
+        slot.OnDropEvent += OnDropEvent;
     }
 
     private void OnValidate()

@@ -275,7 +275,6 @@ public class InventoryManager : MonoBehaviour
 
             if(draggedItemMono != null) draggedItemMono.Equip(this);
             if(dropItemMono != null) dropItemMono.Unequip(this);
-            
 
             //If items are the same
             if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount == 1)
@@ -302,11 +301,7 @@ public class InventoryManager : MonoBehaviour
             // Dragging stacked items into backpack
             else
             {
-                Debug.Log("Drag stacked items into backpack");
-                dragItemSlot.Amount--;
-                //dropItemSlot.Item = draggedItem;
-                dropItemSlot.SetItem(draggedItemMono);
-                dropItemSlot.Amount = 1;
+                DragItemToBagSlot(dragItemSlot, dropItemSlot);
             }
 
         }
@@ -316,6 +311,22 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Calling exchange item from else leg");
             ExchangeItems(dropItemSlot, draggedItemMono, draggedItemAmount);
         }
+    }
+
+    private void DragItemToBagSlot(ItemSlot dragItemSlot, ItemSlot dropItemSlot)
+    {
+        Debug.Log("Drag stacked items into backpack");
+        Item draggedItem = dragItemSlot.GetItem();
+        dragItemSlot.Amount--;
+
+        // if(dragItemSlot.Amount == 0){
+        //     Debug.Log("Drag item is finished");
+        //     dragItemSlot.SetItem(null);
+        // }
+
+        dropItemSlot.SetItem(draggedItem);
+        dropItemSlot.Amount = 1;
+
     }
 
     //Swap items 1 for 1

@@ -52,7 +52,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             _amount = value;
             if (_amount < 0) _amount = 0;
-            if (_amount == 0) Item = null;
+            if (_amount == 0) {
+                Item = null;
+                itemMono = null;
+            }
 
             if (amountText != null)
             {

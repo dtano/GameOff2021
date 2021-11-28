@@ -19,6 +19,9 @@ public class CustomerUI : MonoBehaviour
     //private CustomerData custData;
 
     private StringBuilder sb;
+    private bool isActive = false;
+
+    public bool IsActive => isActive;
     
     // Start is called before the first frame update
     void Start()
@@ -26,18 +29,19 @@ public class CustomerUI : MonoBehaviour
         sb = new StringBuilder();
         customer = GetComponent<Customer>();
 
-        nameDisplay.text = customer.CustomerData.Name;
-
-        customerImg.sprite = customer.CustomerData.Sprite;
-
-        //animator = GetComponent<Animator>();
+        HideUIElements();
+        
+        // nameDisplay.text = customer.CustomerData.Name;
+        // customerImg.sprite = customer.CustomerData.Sprite;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        DisplayCustomerDetails();
+        if(isActive){
+            DisplayCustomerDetails();
+        }
     }
 
 
@@ -45,12 +49,15 @@ public class CustomerUI : MonoBehaviour
     {
         CustomerData custData = customer.CustomerData;
 
-        nameDisplay.text = custData.Name;
-        customerImg.sprite = custData.Sprite;
-        
-        DisplayStats(custData);
-        DisplayTraits(custData);
-        DisplaySurvivalProbability();
+        if(customer != null && custData != null){
+            //Debug.Log(custData.Name);
+            nameDisplay.text = custData.Name;
+            customerImg.sprite = custData.Sprite;
+            
+            DisplayStats(custData);
+            DisplayTraits(custData);
+            DisplaySurvivalProbability();
+        }
     }
 
 
@@ -85,12 +92,13 @@ public class CustomerUI : MonoBehaviour
         probabilityDisplay.text = $"{prob}%";
     }
 
-    private void HideUIElements()
+    public void HideUIElements()
     {
         statDisplay.gameObject.SetActive(false);
         nameDisplay.gameObject.SetActive(false);
         probabilityDisplay.gameObject.SetActive(false);
-        traitsDisplay.gameObject.SetActive(false);
+        traitsDisplay.transform.parent.gameObject.SetActive(false);
+        //customerImg.gameObject.SetActive(false);
     }
 
     public void ShowUIElements()
@@ -98,7 +106,8 @@ public class CustomerUI : MonoBehaviour
         statDisplay.gameObject.SetActive(true);
         nameDisplay.gameObject.SetActive(true);
         probabilityDisplay.gameObject.SetActive(true);
-        traitsDisplay.gameObject.SetActive(true);
+        traitsDisplay.transform.parent.gameObject.SetActive(true);
+        customerImg.gameObject.SetActive(true);
     }
 
     public void MakeCustomerLeaveStore()
@@ -112,6 +121,16 @@ public class CustomerUI : MonoBehaviour
     public void EnterNewCustomer()
     {
         animator.SetTrigger("EnterStore");
+    }
+
+    public void Activate()
+    {
+        isActive = true;
+    }
+
+    public void Deactivate()
+    {
+        isActive = false;
     }
 
     

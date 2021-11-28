@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int totalCustomers;
 
     CustomerGenerator customerGenerator;
+    UIController mainUIController;
     private int numCustomersServed = 0;
     private bool hasHandledSurvivalChances = false;
 
@@ -25,8 +26,9 @@ public class GameController : MonoBehaviour
     {
         customerHistory?.Clear();
         customerGenerator = GetComponent<CustomerGenerator>();
+        mainUIController = GetComponent<UIController>();
 
-        PrepareForNewCustomer();
+        //PrepareForNewCustomer();
     }
 
     // Update is called once per frame
@@ -48,15 +50,18 @@ public class GameController : MonoBehaviour
 
             if(numCustomersServed < totalCustomers){
                 // Generate new customer data
-                PrepareForNewCustomer();
-
-                await CustomerEnterSequence();
-
-                Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
+                await CustomerArrival();
             }
         }
 
 
+    }
+
+    public async Task CustomerArrival()
+    {
+        PrepareForNewCustomer();
+        await CustomerEnterSequence();
+        Debug.Log($"New customer has entered: {customer.CustomerData.Name}");
     }
 
     private async Task HandleCustomerLeaving()
@@ -66,6 +71,7 @@ public class GameController : MonoBehaviour
         customerHistory.AddCustomerData(customer.CustomerData);
         numCustomersServed++;
 
+        mainUIController?.HideBackpackUI();
         customerUI?.MakeCustomerLeaveStore();
         
         // wait for transition 
@@ -97,6 +103,7 @@ public class GameController : MonoBehaviour
         await CustomerTransition(2f);
 
         customerUI?.ShowUIElements();
+        mainUIController?.ShowBackpackUI();
     }
 
     
