@@ -19,6 +19,7 @@ public class ItemObject : ScriptableObject
     public string ID { get { return id; } }
     [Range(1, 999)]
     public int MaximumStacks = 1;
+    public int StartingAmount;
 
     private void OnValidate()
     {

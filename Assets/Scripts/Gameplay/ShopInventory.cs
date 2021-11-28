@@ -57,7 +57,7 @@ public class ShopInventory : MonoBehaviour
         for(; j < startingItemObjects.Count && j < itemSlots.Length; j++)
         {
             itemSlots[j].SetItemObject(startingItemObjects[j].GetCopy());
-            itemSlots[j].Amount = 1;
+            itemSlots[j].Amount = startingItemObjects[j].StartingAmount;
         }
 
         for(; j < itemSlots.Length; j++)
