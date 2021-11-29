@@ -47,6 +47,7 @@ public class SurvivalKit : MonoBehaviour
     {
         bool removeSuccess = allItems.Remove(item);
         if(removeSuccess){
+            Debug.Log("remove successful " + item);
             RemoveItemStatModifiers(item);
         }
     }

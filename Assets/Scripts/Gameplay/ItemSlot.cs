@@ -24,8 +24,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private Item itemMono;
     // Item slot has to hold an item object 
-    private Item _item;
-    public Item Item
+    /*private Item _item;*/
+   /* public Item Item
     {
         get {
             return _item; }
@@ -44,7 +44,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
                 image.color = normalColor;
             }
         }
-    }
+    }*/
 
     private int _amount;
     public int Amount
@@ -56,7 +56,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             _amount = value;
             if (_amount < 0) _amount = 0;
             if (_amount == 0) {
-                itemMono = null;
+                //setting empty slot to null
+                SetItem(null);
             }
 
             if (amountText != null)
@@ -119,16 +120,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         itemMono = item;
 
-        if(itemMono == null)
+        if(item == null)
         {
             image.color = disabledColor;
         }
         else
         {
-            itemMono = item.GetCopy();
+/*            itemMono = item;*/
             //itemMono.ItemObject = item.ItemObject;
             Debug.Log("itemMono not null, so color needs to be changed");
-            image.sprite = itemMono.ItemObject.sprite;
+            image.sprite = item.ItemObject.sprite;
             image.color = normalColor;
         }
     }
@@ -140,7 +141,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public virtual bool CanAddStack(Item item, int amount = 1)
     {
-        return itemMono.ItemObject != null && itemMono.ItemObject.ID == item.ID && Amount + amount <= item.ItemObject.MaximumStacks;
+        return itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.ItemObject.MaximumStacks;
+    }
+
+    public bool IsOccupied()
+    {
+        return itemMono != null;
     }
 
     public void OnPointerClick(PointerEventData eventData)

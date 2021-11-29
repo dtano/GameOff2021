@@ -59,6 +59,7 @@ public class BackpackInventory : MonoBehaviour
 
                 previousItem = backpackSlots[i].GetItem();
                 backpackSlots[i].SetItem(item.GetCopy());
+                Debug.Log(backpackSlots[i].GetItem().ID);
                 return true;
             }
             if (backpackSlots[i].GetItem())
@@ -68,6 +69,7 @@ public class BackpackInventory : MonoBehaviour
             else
             {
                 backpackSlots[i].SetItem(item.GetCopy());
+                Debug.Log(backpackSlots[i].GetItem().ID);
                 previousItem = null;
                 return true;
             }

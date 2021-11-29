@@ -114,4 +114,8 @@ public class Item : MonoBehaviour
         return this;
     }
 
+    public virtual void Destroy()
+    {
+        Destroy(this);
+    }
 }

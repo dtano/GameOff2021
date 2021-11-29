@@ -48,15 +48,15 @@ public class InventoryManager : MonoBehaviour
 
         //Begin Drag
         shopInventory.OnBeginDragEvent += BeginDrag;
-        backpackInventory.OnBeginDragEvent += BeginDrag;
+        /*backpackInventory.OnBeginDragEvent += BeginDrag;*/
 
         //End Drag
         shopInventory.OnEndDragEvent += EndDrag;
-        backpackInventory.OnEndDragEvent += EndDrag;
+        /*backpackInventory.OnEndDragEvent += EndDrag;*/
 
         //Drag
         shopInventory.OnDragEvent += Drag;
-        backpackInventory.OnDragEvent += Drag;
+        /*backpackInventory.OnDragEvent += Drag;*/
 
         //Drop
         shopInventory.OnDropEvent += Drop;
@@ -77,15 +77,15 @@ public class InventoryManager : MonoBehaviour
     private void Unequip(ItemSlot itemSlot)
     {
         //EquippableItem equippableItem = itemSlot.Item as EquippableItem;
-        Item equippableItem = itemSlot.GetItem();
+        Item item = itemSlot.GetItem();
         // if (equippableItem != null)
         // {
         //     Unequip(equippableItem);
         // }
 
-        if(equippableItem != null)
+        if (item != null)
         {
-            Unequip(equippableItem);
+            Unequip(item);
         }
     }
 
@@ -134,41 +134,45 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-/*    public void Unequip(EquippableItem item)
-    {
-        if (!shopInventory.IsFull() && backpackInventory.RemoveItem(item))
+    /*    public void Unequip(EquippableItem item)
         {
-            item.Unequip(this);
-            *//*statPanel.UpdateStatValues();*//*
-            shopInventory.AddItem(item);
-        }
-    }*/
+            if (!shopInventory.IsFull() && backpackInventory.RemoveItem(item))
+            {
+                item.Unequip(this);
+                *//*statPanel.UpdateStatValues();*//*
+                shopInventory.AddItem(item);
+            }
+        }*/
+
 
     public void Unequip(Item item)
     {
-        if(!shopInventory.IsFull() && backpackInventory.RemoveItem(item)){
+        Debug.Log("calling unequip");
+        /*!shopInventory.IsFull() &&*/
+        if (backpackInventory.RemoveItem(item))
+        {
             Debug.Log("Returning item");
 
+            Debug.Log(item.ID);
             item.Unequip(this);
             shopInventory.AddItem(item);
 
         }
     }
 
-     private void ShowTooltip(ItemSlot itemSlot)
-     {
+    private void ShowTooltip(ItemSlot itemSlot)
+    {
         Item item = itemSlot.GetItem();
-/*        ItemObject item = itemSlot.GetItem();
-*/        if (item != null)
-         {
-            
-             itemTooltip.ShowTooltip(item);
-         }
-     }
-     private void HideTooltip(ItemSlot itemSlot)
-     {
+        if (item != null)
+        {
+
+            itemTooltip.ShowTooltip(item);
+        }
+    }
+    private void HideTooltip(ItemSlot itemSlot)
+    {
         itemTooltip.HideToolTip();
-     }
+    }
 
     private void BeginDrag(ItemSlot itemSlot)
     {
@@ -194,7 +198,7 @@ public class InventoryManager : MonoBehaviour
         dragItemSlot = null;
         draggableItem.enabled = false;
     }
-    
+
     private void Drag(ItemSlot itemSlot)
     {
         if (draggableItem.enabled)
@@ -202,152 +206,126 @@ public class InventoryManager : MonoBehaviour
             draggableItem.transform.position = Input.mousePosition;
         }
     }
-    
+
     private void Drop(ItemSlot dropItemSlot)
     {
         Debug.Log("Dropping");
         if (dragItemSlot == null || dragItemSlot == dropItemSlot) return;
 
-        //updates values of stats
-        //statPanel.UpdateStatValues;
-        if (dropItemSlot.CanAddStack(dragItemSlot.GetItem()))
-        {
-            AddStacks(dropItemSlot);
-        }
-        else
-        {
-            SwapItems(dropItemSlot);
-        }
-    }
+        /*Item dragItem = dragItemSlot.GetItem();*/
+        /*Item dropItemMono = dropItemSlot.GetItem();*/
+        /*Item draggedItemMono = dragItemSlot.GetItem();*/
 
-    private void SwapItems(ItemSlot dropItemSlot)
-    {
+        /*if (draggedItem != null) draggedItem.Equip(this);
+        if (dropItem != null) dropItem.Unequip(this);*/
+
         Item dragItem = dragItemSlot.GetItem();
         Item dropItem = dropItemSlot.GetItem();
-        Item dropItemMono = dropItemSlot.GetItem();
 
-        Item draggedItem = dragItemSlot.GetItem();
-        /*Item draggedItemMono = dragItemSlot.GetItem();*/
-        int draggedItemAmount = dragItemSlot.Amount;
-
-        //When dragging from the backpack
-        if (dragItemSlot is BackpackSlot)
+        if (dropItemSlot.IsOccupied() && dropItemSlot.CanAddStack(dragItemSlot.GetItem()))
         {
-            if(draggedItem != null) draggedItem.Equip(this);
-            if(dropItemMono != null) dropItemMono.Unequip(this);
+            if (dragItem != null) dragItem.Unequip(this);
+            if (dropItem != null) dropItem.Equip(this);
 
-
-            if (dropItemSlot.CanAddStack(dragItemSlot.GetItem()))
-            {
-                AddStacks(dropItemSlot);
-            }
-
-            else if(dropItemSlot is BackpackSlot)
-            {
-                // Disable in-place swapping for backpack
-            }
-            
-            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dropItemSlot.Amount != 1)
-            {
-                // Add stacked shop items to the backpack and add backpack item back into shop
-                shopInventory.AddItem(draggedItem);
-                dropItemSlot.Amount--;
-                dragItemSlot.SetItem(dropItemSlot.GetItem());
-                dropItemSlot.Amount = 1;
-
-            }
-            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID == dragItemSlot.GetItem().ID)
-            {
-                //Do nothing, Items are the same and you are trying to drag and drop a stack
-            }
-            else
-            {
-                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
-            }
+            AddStacks(dropItemSlot);
+            Debug.Log("adding stacks");
         }
-
-        //When dropping into the backpack
-        else if (dropItemSlot is BackpackSlot)
-        {
-
-            if(draggedItem != null) draggedItem.Equip(this);
-            if(dropItemMono != null) dropItemMono.Unequip(this);
-
-            //If items are the same
-            if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount == 1)
-            {
-                Debug.Log("Calling exchange item when items are the same");
-                ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
-            }
-            // dropItemSlot.Item != null && dropItemSlot.Item.ID != dragItemSlot.Item.ID && dragItemSlot.Amount != 1
-            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID != dragItemSlot.GetItem().ID && dragItemSlot.Amount != 1)
-            {
-                // Add stacked shop items to the backpack and add backpack item back into shop
-                shopInventory.AddItem(dropItemSlot.GetItem());
-                dragItemSlot.Amount--;
-                dropItemSlot.SetItem(draggedItem);
-                dropItemSlot.Amount = 1;
-
-            }
-            // dropItemSlot.Item != null && dropItemSlot.Item.ID == dragItemSlot.Item.ID
-            else if (dropItemSlot.GetItem() != null && dropItemSlot.GetItem().ID == dragItemSlot.GetItem().ID)
-            {
-                //Do nothing, Items are the same and you are trying to drag and drop a stack
-            }
-
-            // Dragging stacked items into backpack
-            else
-            {
-                DragItemToBagSlot(dragItemSlot, dropItemSlot);
-            }
-
-        }
-
         else
         {
-            Debug.Log("Calling exchange item from else leg");
-            ExchangeItems(dropItemSlot, draggedItem, draggedItemAmount);
+            if (dragItemSlot is BackpackSlot)
+            {
+                if (dragItem != null) dragItem.Unequip(this);
+                if (dropItem != null) dropItem.Equip(this);
+
+                if (dropItemSlot.GetItem() != null && !(dropItemSlot is BackpackSlot) && dragItemSlot.GetItem().ID == dropItemSlot.GetItem().ID)
+                {
+                    Debug.Log("Moving one item from backpack inventory back to stacked item of the same type");
+                    dropItemSlot.Amount++;
+                    dragItemSlot.Amount = 0;
+                }
+
+                else if (dropItemSlot.GetItem() == null && !(dropItemSlot is BackpackSlot))
+                {
+                    Debug.Log("Moving one item from backpack inventory back to empty slot");
+                    ExchangeItems(dropItemSlot);
+                }
+
+                else if (dragItemSlot is BackpackSlot && dropItemSlot is BackpackSlot)
+                {
+                    // Do nothing when dropping items within the bag
+                }
+
+
+
+            }
+
+            else if (dropItemSlot is BackpackSlot)
+            {
+                Debug.Log("Entering Backpack Slot");
+                if (dragItem != null) dragItem.Equip(this);
+                if (dropItem != null) dropItem.Unequip(this);
+
+                //Moving one item (from a stack) in shop inventory to backpack inventory
+                if (dragItemSlot.Amount == 1)
+                {
+                    
+                    dropItemSlot.SetItem(dragItemSlot.GetItem().GetCopy());
+                    dropItemSlot.Amount = 1;
+                    dragItemSlot.Amount--;
+                    Debug.Log("swapping item from shop to bag inventory when amount = 1");
+                }
+                else if (dropItemSlot.IsOccupied())
+                {
+                    // Do not swap if the drop slot is occupied
+                }
+                else
+                {
+                    Debug.Log("Moving one item (from a stack) in shop inventory to backpack inventory");
+               
+                    dropItemSlot.SetItem(dragItemSlot.GetItem().GetCopy());
+                    dropItemSlot.Amount = 1;
+                    dragItemSlot.Amount--;
+                }
+
+
+            }
+            else
+            {
+                ExchangeItems(dropItemSlot);
+                Debug.Log("swapping items");
+            }
+
         }
+
     }
 
-    private void DragItemToBagSlot(ItemSlot dragItemSlot, ItemSlot dropItemSlot)
+    private void ExchangeItems(ItemSlot dropItemSlot)
     {
-        Debug.Log("Drag stacked items into backpack");
+
         Item draggedItem = dragItemSlot.GetItem();
-        dragItemSlot.Amount--;
-
-        // if(dragItemSlot.Amount == 0){
-        //     Debug.Log("Drag item is finished");
-        //     dragItemSlot.SetItem(null);
-        // }
-
-        dropItemSlot.SetItem(draggedItem);
-        dropItemSlot.Amount = 1;
-
-    }
-
-    //Swap items 1 for 1
-    private void ExchangeItems(ItemSlot dropItemSlot, Item draggedItem, int draggedItemAmount)
-    {
-        Debug.Log("Drop exchange");
+        int draggedItemAmount = dragItemSlot.Amount;
+        
 
         dragItemSlot.SetItem(dropItemSlot.GetItem());
         dragItemSlot.Amount = dropItemSlot.Amount;
 
         dropItemSlot.SetItem(draggedItem);
         dropItemSlot.Amount = draggedItemAmount;
+
+        /*Debug.Log("draggeditem:" + dragItemSlot.GetItem().ItemObject.itemName + " " + "droppeditem" + dropItemSlot.GetItem().ItemObject.itemName);*/
     }
 
-    //Stacks items
     private void AddStacks(ItemSlot dropItemSlot)
     {
-        //int numAddableStacks = dropItemSlot.Item.MaximumStacks - dropItemSlot.Amount;
-
         int numAddableStacks = dropItemSlot.GetItem().ItemObject.MaximumStacks - dropItemSlot.Amount;
         int stacksToAdd = Mathf.Min(numAddableStacks, dragItemSlot.Amount);
 
         dropItemSlot.Amount += stacksToAdd;
         dragItemSlot.Amount -= stacksToAdd;
+       /* if (dragItemSlot.Amount == 0)
+        {
+            dragItemSlot.SetItem(null);
+        }*/
     }
 }
 

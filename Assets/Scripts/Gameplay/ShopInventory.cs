@@ -95,26 +95,27 @@ public class ShopInventory : MonoBehaviour
         return false;
     }
 
-    public bool RemoveItem(ItemObject item)
+ /*   public bool RemoveItem(ItemObject item)
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].Item == item)
+            if (itemSlots[i].GetItem() == item)
             {
                 itemSlots[i].Amount--;
                 if (itemSlots[i].Amount == 0)
                 {
-                    itemSlots[i].Item = null;
+                    itemSlots[i].SetItem(null);
                 } 
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
     public bool RemoveItem(Item item)
     {
         for(int i = 0; i < itemSlots.Length; i++){
+
             if (itemSlots[i].GetItem() == item)
             {
                 itemSlots[i].Amount--;
@@ -127,6 +128,23 @@ public class ShopInventory : MonoBehaviour
         }
         return false;
     }
+
+/*    public Item RemoveItem(string itemID)
+    {
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            Item item = itemSlots[i].GetItem();
+            if (item != null && item.ID == itemID)
+            {
+                if (itemSlots[i].Amount == 0)
+                {
+                    itemSlots[i].SetItem(null);
+                }
+                return item;
+            }
+        }
+        return null;
+    }*/
 
     public void ResetItemEffects()
     {
@@ -141,7 +159,7 @@ public class ShopInventory : MonoBehaviour
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].Item == null)
+            if (itemSlots[i].GetItem() == null)
             {
                 return false;
             }
@@ -155,12 +173,14 @@ public class ShopInventory : MonoBehaviour
 
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].Item.ID == itemID)
+            if (itemSlots[i].GetItem().ID == itemID)
             {
                 number++;
             }
         }
         return number;
     }
+
+
 
 }
