@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,7 +68,7 @@ public class Customer : MonoBehaviour
         float prob = (_data.Endurance.ModifiedValue + _data.Survivability.ModifiedValue +
                       _data.Intelligence.ModifiedValue) / (maxStatValue * NUM_STATS);
 
-        if(_data != null) _data.SurvivalProbability = prob * 100;
+        if(_data != null) _data.SurvivalProbability = (int) Math.Ceiling(prob * 100);
 
         return prob * 100;
     }
