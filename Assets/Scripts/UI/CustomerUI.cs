@@ -12,6 +12,7 @@ public class CustomerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameDisplay;
     [SerializeField] TextMeshProUGUI probabilityDisplay;
     [SerializeField] TextMeshProUGUI traitsDisplay;
+    [SerializeField] TextMeshProUGUI customersServedCounter;
     [SerializeField] Image customerImg;
     
     [SerializeField] Animator animator;
@@ -28,6 +29,8 @@ public class CustomerUI : MonoBehaviour
     {
         sb = new StringBuilder();
         customer = GetComponent<Customer>();
+
+        ShowNumCustomersServed(0);
 
         HideUIElements();
         
@@ -80,7 +83,7 @@ public class CustomerUI : MonoBehaviour
 
         foreach(Trait trait in custData.Traits)
         {
-            sb.Append($"{trait.Name}\n");
+            sb.Append($"{trait.Name}:     {trait.Description}\n\n");
         }
 
         traitsDisplay.text = sb.ToString();
@@ -108,6 +111,11 @@ public class CustomerUI : MonoBehaviour
         probabilityDisplay.gameObject.SetActive(true);
         traitsDisplay.transform.parent.gameObject.SetActive(true);
         Activate();
+    }
+
+    public void ShowNumCustomersServed(int amount)
+    {
+        customersServedCounter.text = $"{amount}/12";
     }
 
     public void MakeCustomerLeaveStore()

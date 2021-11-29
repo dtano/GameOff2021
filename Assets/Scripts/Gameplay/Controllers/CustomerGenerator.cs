@@ -6,7 +6,10 @@ public class CustomerGenerator : MonoBehaviour
 {
     [SerializeField] List<CustomerInformation> potentialCustomers = new List<CustomerInformation>();
     [SerializeField] private List<Trait> possibleTraits = new List<Trait>();
+    
     private List<CustomerInformation> servedCustomers = new List<CustomerInformation>();
+    
+    TraitDistributor traitDistributor;
 
     private const int MAX_BASE_STAT_VALUE = 8;
     private const int MIN_BASE_STAT_VALUE = 2;
@@ -14,7 +17,8 @@ public class CustomerGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //possibleTraits = new List<Trait>(Resources.LoadAll<Trait>("ScriptableObjects/Objects/Traits"));
+        possibleTraits = new List<Trait>(Resources.LoadAll<Trait>("ScriptableObjects/Objects/Traits"));
+        traitDistributor = GetComponentInChildren<TraitDistributor>();
     }
 
     // Update is called once per frame
@@ -29,7 +33,8 @@ public class CustomerGenerator : MonoBehaviour
         AssignCustomerStats(ref chosenCustomerInformation);
 
         CustomerData customer = new CustomerData(chosenCustomerInformation);
-        AssignTraitsToCustomer(customer);
+        traitDistributor.AssignTraitsToCustomer(customer);
+        //AssignTraitsToCustomer(customer);
         
 
         return customer;

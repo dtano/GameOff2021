@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
         // Store customer data in customer history
         customerHistory.AddCustomerData(customer.CustomerData);
         numCustomersServed++;
+        customerUI?.ShowNumCustomersServed(numCustomersServed);
 
         mainUIController?.HideBackpackUI();
         customerUI?.MakeCustomerLeaveStore();
