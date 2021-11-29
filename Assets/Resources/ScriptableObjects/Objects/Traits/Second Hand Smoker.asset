@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Second Hand Smoker
   m_EditorClassIdentifier: 
   _name: Second Hand Smoker
-  _description: Endurance stat -50%
+  _description: Starting Endurance stat -50%
   enduranceModifier:
     isLocked: 0
     _value: -0.5

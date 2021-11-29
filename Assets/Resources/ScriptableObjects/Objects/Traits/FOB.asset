@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FOB
   m_EditorClassIdentifier: 
   _name: F.O.B
-  _description: Friend of Bear. Survivability +50%
+  _description: Friend of Bear. Starting Survivability +50%
   enduranceModifier:
     isLocked: 0
     _value: 0

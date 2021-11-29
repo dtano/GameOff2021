@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Headstrong
   m_EditorClassIdentifier: 
   _name: Head Strong
-  _description: Intelligence stat -25%
+  _description: Starting Intelligence -25%
   enduranceModifier:
     isLocked: 0
     _value: 0

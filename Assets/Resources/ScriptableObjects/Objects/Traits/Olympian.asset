@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Olympian
   m_EditorClassIdentifier: 
   _name: Olympian
-  _description: Endurance +50%
+  _description: Starting Endurance +50%
   enduranceModifier:
     isLocked: 0
     _value: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Prodigy
   m_EditorClassIdentifier: 
   _name: Prodigy
-  _description: 'Intelligence +50% '
+  _description: 'Starting Intelligence +50% '
   enduranceModifier:
     isLocked: 0
     _value: 0

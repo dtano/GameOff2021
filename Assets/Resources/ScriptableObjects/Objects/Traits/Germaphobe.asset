@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Germaphobe
   m_EditorClassIdentifier: 
   _name: Germaphobe
-  _description: Boosts the effects of soap.
+  _description: Boosts the effects of soap by 50%.
   itemsToBoost:
   - {fileID: 11400000, guid: 855784e425bab924e9d218c539f593ea, type: 2}
   effectPercentage: 0.5

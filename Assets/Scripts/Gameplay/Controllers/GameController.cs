@@ -103,6 +103,7 @@ public class GameController : MonoBehaviour
         //mainUIController?.GetNewBag();
         // customerUI?.EnterNewCustomer();
         // // Notify ui
+        customerUI.DisplayTraits(chosenCustomerData);
         // await CustomerTransition(2f);
 
         // customerUI?.ShowUIElements();

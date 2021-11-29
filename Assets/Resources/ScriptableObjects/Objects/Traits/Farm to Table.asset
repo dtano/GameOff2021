@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Farm to Table
   m_EditorClassIdentifier: 
   _name: Farm to Table
-  _description: The person will not accept any packaged food. They gather their own
-    food. Nullify MRE
+  _description: Nullify MRE
   itemsToNullify:
   - {fileID: 11400000, guid: 49782c23b9be6cd47be95130d5006860, type: 2}
