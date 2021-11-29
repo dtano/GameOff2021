@@ -12,11 +12,11 @@ public class ItemSO : ScriptableObject
     [Range(1, 999)]
     public int MaximumStacks = 1;
 
-    private void OnValidate()
-    {
-        string path = AssetDatabase.GetAssetPath(this);
-        id = AssetDatabase.AssetPathToGUID(path);
-    }
+    // private void OnValidate()
+    // {
+    //     string path = AssetDatabase.GetAssetPath(this);
+    //     id = AssetDatabase.AssetPathToGUID(path);
+    // }
 
     public virtual ItemSO GetCopy()
     {

@@ -15,15 +15,11 @@ public class OutcomeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        outcomeBanners = outcomeBannersParent.GetComponentsInChildren<OutcomeBanner>();
         foreach(OutcomeBanner banner in outcomeBanners){
             banner.gameObject.SetActive(false);
         }
         ExecuteSurvivalChances();
-    }
-
-    private void OnValidate()
-    {
-        outcomeBanners = outcomeBannersParent.GetComponentsInChildren<OutcomeBanner>();
     }
 
     private void ExecuteSurvivalChances()
