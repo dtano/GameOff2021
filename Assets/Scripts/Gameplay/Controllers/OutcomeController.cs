@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OutcomeController : MonoBehaviour
 {
     [SerializeField] AllCustomerStorage servedCustomers;
     [SerializeField] GameObject outcomeBannersParent;
+    [SerializeField] TextMeshProUGUI numCustomerSurvivedText;
     
     private OutcomeBanner[] outcomeBanners;
+    private int numCustomersSurvived;
     
     // Start is called before the first frame update
     void Start()
@@ -32,16 +35,14 @@ public class OutcomeController : MonoBehaviour
             OutcomeBanner vacantBanner = outcomeBanners[bannerIndex];
             bool customerSurvivalStatus = DidCustomerSurvive(customer);
 
+            if(customerSurvivalStatus) numCustomersSurvived++;
+
             PopulateBanner(vacantBanner, customer, customerSurvivalStatus);
 
-            // Debug.Log($"{customer.Name} - {customer.SurvivalProbability}");
-            // if(customerSurvivalStatus){
-            //     Debug.Log($"{customer.Name} survived!");
-            // }else{
-            //     Debug.Log($"{customer.Name} died!");
-            // }
             bannerIndex++;
         }
+
+        numCustomerSurvivedText.text = $"{numCustomersSurvived}/{bannerIndex}";
     }
 
     private void PopulateBanner(OutcomeBanner banner, CustomerData customer, bool customerSurvivalStatus)
@@ -52,12 +53,12 @@ public class OutcomeController : MonoBehaviour
 
     public bool DidCustomerSurvive(CustomerData customer)
     {
-        return (Random.Range(0,80) < customer.SurvivalProbability);
+        return (Random.Range(0,90) < customer.SurvivalProbability);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit()
     {
-        
+        servedCustomers?.Clear();
+        Application.Quit();
     }
 }

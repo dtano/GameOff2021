@@ -16,7 +16,7 @@ public class OutcomeBanner : MonoBehaviour
     {
         customerSprite.sprite = custData.Sprite;
         customerName.text = custData.Name;
-        survivalProbability.text = custData.SurvivalProbability.ToString();
+        survivalProbability.text = $"{custData.SurvivalProbability.ToString()}%";
 
         if(!hasSurvived){
             hasSurvivedSprite.enabled = false;

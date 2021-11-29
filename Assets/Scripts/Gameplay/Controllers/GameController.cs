@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 // Controls the main gameplay loop
 public class GameController : MonoBehaviour
@@ -126,28 +127,15 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void EndSequence()
+    public async void EndSequence()
     {
-        Debug.Log("All customers served, time to end the game");
-        
-        ExecuteSurvivalChances();
-
-    }
-
-    private void ExecuteSurvivalChances()
-    {
-        List<CustomerData> allServedCustomers = customerHistory.AllServedCustomers;
-
-        foreach(CustomerData customer in allServedCustomers){
-            Debug.Log($"{customer.Name} - {customer.SurvivalProbability}");
-            if(Random.Range(0,80) < customer.SurvivalProbability){
-                Debug.Log($"{customer.Name} survived!");
-            }else{
-                Debug.Log($"{customer.Name} died!");
-            }
-        }
-
         hasHandledSurvivalChances = true;
+        Debug.Log("All customers served, time to end the game");
+
+        await CustomerTransition(1f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     public bool IsGameOver()
