@@ -70,9 +70,12 @@ public class CustomerUI : MonoBehaviour
         statDisplay.text = "";
         sb.Clear();
 
-        sb.Append($"Endurance - {custData.Endurance.ModifiedValue}\n");
-        sb.Append($"Intelligence - {custData.Intelligence.ModifiedValue}\n");
-        sb.Append($"Survivability - {custData.Survivability.ModifiedValue}\n");
+        sb.Append(String.Format("Endurance - {0:F1}\n", custData.Endurance.ModifiedValue));
+        sb.Append(String.Format("Intelligence - {0:F1}\n", custData.Intelligence.ModifiedValue));
+        sb.Append(String.Format("Survivability - {0:F1}\n", custData.Survivability.ModifiedValue));
+        // sb.Append($"Endurance - {custData.Endurance.ModifiedValue}\n");
+        // sb.Append($"Intelligence - {custData.Intelligence.ModifiedValue}\n");
+        // sb.Append($"Survivability - {custData.Survivability.ModifiedValue}\n");
 
         statDisplay.text = sb.ToString();
     }

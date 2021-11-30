@@ -49,7 +49,7 @@ public class OutcomeController : MonoBehaviour
 
     public bool DidCustomerSurvive(CustomerData customer)
     {
-        return (Random.Range(0,90) < customer.SurvivalProbability);
+        return (Random.Range(0,95) < customer.SurvivalProbability);
     }
 
     public void Exit()

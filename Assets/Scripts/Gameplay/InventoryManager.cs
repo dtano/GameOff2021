@@ -76,12 +76,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Unequip(ItemSlot itemSlot)
     {
-        //EquippableItem equippableItem = itemSlot.Item as EquippableItem;
         Item item = itemSlot.GetItem();
-        // if (equippableItem != null)
-        // {
-        //     Unequip(equippableItem);
-        // }
 
         if (item != null)
         {
@@ -152,7 +147,6 @@ public class InventoryManager : MonoBehaviour
         if (backpackInventory.RemoveItem(item))
         {
             Debug.Log("Returning item");
-
             Debug.Log(item.ID);
             item.Unequip(this);
             shopInventory.AddItem(item);

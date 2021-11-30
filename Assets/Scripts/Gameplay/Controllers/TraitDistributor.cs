@@ -14,13 +14,12 @@ public class TraitDistributor : MonoBehaviour
     void Awake()
     {
         allTraitsCombined = new List<List<Trait>>{intelligenceTraits, survivabilityTraits, enduranceTraits};
-        //foreach(List<Trait> pool in allTraitsCombined) Debug.Log($"First trait in pool: {pool[0]}");
     }
 
     public void AssignTraitsToCustomer(CustomerData chosenCustomer)
     {   
         //Pick random amount of traits for a customer (Might need weights for the amounts)
-        int numTraits = Random.Range(0,3);
+        int numTraits = Random.Range(1,3);
         List<List<Trait>> traitPools = new List<List<Trait>>(allTraitsCombined);
 
         // 50/50 chance for all types of traits
@@ -36,14 +35,6 @@ public class TraitDistributor : MonoBehaviour
             traitPools.Remove(traitPool);
             
         }
-
-        // Pick the random traits
-        // Have to separate traits to categories
-        // for(int i = 0; i < numTraits; i++){
-        //     int randomTraitIndex = Random.Range(0, possibleTraits.Count);
-        //     //Debug.Log($"Chosen trait is {possibleTraits[randomTraitIndex]} with index {randomTraitIndex}");
-        //     chosenCustomer.AddTrait(possibleTraits[randomTraitIndex]);
-        // }
     }
 
     // Update is called once per frame
