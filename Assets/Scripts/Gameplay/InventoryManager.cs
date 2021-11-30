@@ -181,7 +181,7 @@ public class InventoryManager : MonoBehaviour
 
         if (itemSlot.GetItem() != null)
         {
-            //SoundManager.Instance.Play("ItemPickUp");
+            SoundManager.Instance.Play("ItemPickUp");
             dragItemSlot = itemSlot;
             draggableItem.sprite = itemSlot.GetItem().ItemObject.sprite;
             draggableItem.transform.position = Input.mousePosition;

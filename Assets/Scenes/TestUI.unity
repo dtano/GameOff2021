@@ -2694,7 +2694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -6446065306693343254, guid: 05114878d175aaf4599ed9fdcca90977, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5953,6 +5953,11 @@ MonoBehaviour:
   - name: ItemDrop
     clip: {fileID: 8300000, guid: 424293d81256a764bad84f658028c9d6, type: 3}
     volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: CustomerServed
+    clip: {fileID: 8300000, guid: 5b0b99a0c6ab427499fca4e23964e79c, type: 3}
+    volume: 0.7
     pitch: 1
     source: {fileID: 0}
   _musicSource: {fileID: 324512661}

@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
     public async void FinishServingCustomer()
     {
         if(!IsGameOver() && survivalKit.IsEligibleForCustomer()){
+            SoundManager.Instance.Play("CustomerServed");
             await HandleCustomerLeaving();
             
             Debug.Log("Transition over");
