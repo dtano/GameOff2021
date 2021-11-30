@@ -12,26 +12,16 @@ public class TraitUI : MonoBehaviour
     {
         if(traitContainerParent != null) 
             containers = traitContainerParent.GetComponentsInChildren<TraitContainer>();
-            Clear();
+            // Clear();
     }
 
     public void DisplayTraits(List<Trait> traits)
     {
-        Clear();
         for(int i = 0; i < traits.Count; i++){
             if(!containers[i].IsOccupied){
                 containers[i].SetTraitDetails(traits[i]);
             }
         }
-
-        // foreach(Trait trait in traits){
-        //     TraitContainer container = FindEmptyContainer();
-        //     if(container != null){
-        //         container.SetTraitDetails(trait);
-        //     }else{
-        //         return;
-        //     }
-        // }
     }
 
     public void Hide()

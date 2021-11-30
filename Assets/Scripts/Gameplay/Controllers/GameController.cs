@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
         // Store customer data in customer history
         customerHistory.AddCustomerData(customer.CustomerData);
         numCustomersServed++;
+        
         customerUI?.ShowNumCustomersServed(numCustomersServed);
 
         mainUIController?.HideBackpackUI();
@@ -103,7 +104,7 @@ public class GameController : MonoBehaviour
         //mainUIController?.GetNewBag();
         // customerUI?.EnterNewCustomer();
         // // Notify ui
-        customerUI.DisplayTraits(chosenCustomerData);
+        //customerUI.DisplayTraits(chosenCustomerData);
         // await CustomerTransition(2f);
 
         // customerUI?.ShowUIElements();
@@ -132,9 +133,8 @@ public class GameController : MonoBehaviour
     public async void EndSequence()
     {
         hasHandledSurvivalChances = true;
-        Debug.Log("All customers served, time to end the game");
 
-        await CustomerTransition(1f);
+        await CustomerTransition(3f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         

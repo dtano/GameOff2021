@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   enduranceModifier:
     isLocked: 0
-    _value: 0.5
+    _value: 1
     _type: 100
     _order: 0
   intelligenceModifier:
