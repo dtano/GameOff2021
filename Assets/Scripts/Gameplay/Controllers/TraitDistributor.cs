@@ -14,6 +14,7 @@ public class TraitDistributor : MonoBehaviour
     void Awake()
     {
         allTraitsCombined = new List<List<Trait>>{intelligenceTraits, survivabilityTraits, enduranceTraits};
+        //foreach(List<Trait> pool in allTraitsCombined) Debug.Log($"First trait in pool: {pool[0]}");
     }
 
     public void AssignTraitsToCustomer(CustomerData chosenCustomer)
@@ -25,12 +26,15 @@ public class TraitDistributor : MonoBehaviour
         // 50/50 chance for all types of traits
         for(int i = 0; i < numTraits; i++){
             int randomTraitPoolIndex = Random.Range(0, traitPools.Count);
-            List<Trait> traitPool = allTraitsCombined[randomTraitPoolIndex];
+            List<Trait> traitPool = traitPools[randomTraitPoolIndex];
             
-            Trait chosenTrait = traitPool[Random.Range(0, traitPools.Count)];
+            
+            
+            Trait chosenTrait = traitPool[Random.Range(0, traitPool.Count)];
             chosenCustomer.AddTrait(chosenTrait);
 
             traitPools.Remove(traitPool);
+            
         }
 
         // Pick the random traits

@@ -36,8 +36,8 @@ public class TraitUI : MonoBehaviour
 
     public void Hide()
     {
-        // Clear();
-        gameObject.SetActive(false);
+        Clear();
+        //gameObject.SetActive(false);
     }
 
     public void Show()
