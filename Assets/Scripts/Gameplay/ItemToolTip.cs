@@ -12,7 +12,6 @@ public class ItemToolTip : MonoBehaviour
 
     public void ShowTooltip (Item item)
     {
-        Debug.Log("going within the tips");
         ItemNameText.text = item.ItemObject.itemName;
 
         sb.Length = 0;

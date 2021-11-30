@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6326826919549559077}
   - component: {fileID: 6326826919549559078}
   - component: {fileID: 6326826919549559079}
+  - component: {fileID: 1219412339}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   customerUI: {fileID: 0}
   shopInventory: {fileID: 0}
   customerHistory: {fileID: 11400000, guid: 682a1c17736d4644486cef46723470d3, type: 2}
-  totalCustomers: 3
+  totalCustomers: 5
 --- !u!114 &6326826919549559079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +76,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 866c122cf66d8be47861e9144ec15a5a, type: 2}
   - {fileID: 11400000, guid: 3e3a3704aa395b94db3339b2105af738, type: 2}
   - {fileID: 11400000, guid: dc3a994dc4b05d44783329bb6b13717c, type: 2}
-  possibleTraits:
-  - {fileID: 11400000, guid: 3a6e60075bb4c8a40a700f09a3dd4ea8, type: 2}
-  - {fileID: 11400000, guid: 930c6038aefc38b4c979ea2c2560da1f, type: 2}
-  - {fileID: 11400000, guid: f9a5dbc634e2cb449ada0207e774df05, type: 2}
+  possibleTraits: []
+--- !u!114 &1219412339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326826919549559072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b6a8cd6fba4f14b8be3ebe941a0963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpackInventory: {fileID: 0}
+  shopInventory: {fileID: 0}
+  customerUI: {fileID: 0}
+  serveKitButton: {fileID: 0}

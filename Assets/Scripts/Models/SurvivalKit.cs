@@ -32,11 +32,10 @@ public class SurvivalKit : MonoBehaviour
     {
         if(allItems.Count < maxSlots){
             allItems.Add(item);
-            
             if(OnItemAddFunction != null){
                 OnItemAddFunction(item);
             }else{
-                Debug.Log("OnItemAdd is null");
+                //Debug.Log("OnItemAdd is null");
             }
             AddItemStatModifiers(item);
         }else{
@@ -48,6 +47,7 @@ public class SurvivalKit : MonoBehaviour
     {
         bool removeSuccess = allItems.Remove(item);
         if(removeSuccess){
+            Debug.Log("remove successful " + item);
             RemoveItemStatModifiers(item);
         }
     }

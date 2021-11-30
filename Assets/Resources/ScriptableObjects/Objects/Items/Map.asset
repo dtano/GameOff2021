@@ -31,4 +31,5 @@ MonoBehaviour:
     _type: 0
     _order: 0
   id: 65fd93691ab0ffc46bd713d535e9f39a
-  MaximumStacks: 1
+  MaximumStacks: 2
+  StartingAmount: 2

@@ -24,12 +24,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private Item itemMono;
     // Item slot has to hold an item object 
-    private ItemObject _item;
-    public ItemObject Item
+    /*private Item _item;*/
+   /* public Item Item
     {
-        get { return _item; }
+        get {
+            return _item; }
         set
         {
+            
             _item = value;
 
             if (_item == null)
@@ -38,11 +40,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
             else
             {
-                image.sprite = _item.sprite;
+                image.sprite = _item.ItemObject.sprite;
                 image.color = normalColor;
             }
         }
-    }
+    }*/
 
     private int _amount;
     public int Amount
@@ -50,16 +52,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         get { return _amount; }
         set
         {
+
             _amount = value;
             if (_amount < 0) _amount = 0;
             if (_amount == 0) {
-                Item = null;
-                itemMono = null;
+                //setting empty slot to null
+                SetItem(null);
             }
 
             if (amountText != null)
             {
-                amountText.enabled = _item != null && _amount > 1;
+                amountText.enabled = itemMono != null && _amount > 0;
                 if (amountText.enabled)
                 {
                     amountText.text = _amount.ToString();
@@ -117,28 +120,33 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         itemMono = item;
 
-        if(itemMono == null)
+        if(item == null)
         {
             image.color = disabledColor;
         }
         else
         {
-            itemMono = item.GetCopy();
+/*            itemMono = item;*/
             //itemMono.ItemObject = item.ItemObject;
             Debug.Log("itemMono not null, so color needs to be changed");
-            image.sprite = itemMono.ItemObject.sprite;
+            image.sprite = item.ItemObject.sprite;
             image.color = normalColor;
         }
     }
-
-/*    public virtual bool CanAddStack(ItemSO item, int amount = 1)
+/*
+    public virtual bool CanAddStack(ItemSO item, int amount = 1)
     {
         return Item != null && Item.ID == item.ID && Amount + amount <= item.MaximumStacks;
     }*/
 
-    public virtual bool CanAddStack(ItemObject item, int amount = 1)
+    public virtual bool CanAddStack(Item item, int amount = 1)
     {
-        return itemMono != null && itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.MaximumStacks;
+        return itemMono.ItemObject != null && itemMono.ID == item.ID && Amount + amount <= item.ItemObject.MaximumStacks;
+    }
+
+    public bool IsOccupied()
+    {
+        return itemMono != null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
