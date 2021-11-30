@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] ShopInventory shopInventory;
     // This is where you store the data of customers who have been served
     [SerializeField] AllCustomerStorage customerHistory;
+    [SerializeField] SoundManager soundManager;
     [SerializeField] private int totalCustomers;
 
     CustomerGenerator customerGenerator;
@@ -112,6 +113,7 @@ public class GameController : MonoBehaviour
 
     private async Task CustomerEnterSequence()
     {
+        SoundManager.Instance.Play("CustomerEnter");
         customerUI?.EnterNewCustomer();
         // Notify ui
         await CustomerTransition(2f);
