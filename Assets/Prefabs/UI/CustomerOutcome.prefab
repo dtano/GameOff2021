@@ -587,6 +587,8 @@ MonoBehaviour:
   customerName: {fileID: 3973971109844472593}
   survivalProbability: {fileID: 3973971110295979638}
   hasSurvivedSprite: {fileID: 3973971108423946447}
+  successSprite: {fileID: 21300000, guid: 08c19583117d09c4389e12e6b7aa57b3, type: 3}
+  failureSprite: {fileID: 3959922740387019359, guid: 5662265ec8b11bf4898f35ebf9dac6b0, type: 3}
 --- !u!1 &3973971110295979640
 GameObject:
   m_ObjectHideFlags: 0
