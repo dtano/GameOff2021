@@ -307,6 +307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (4)
@@ -1615,6 +1619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (9)
@@ -1825,6 +1833,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (3)
@@ -2977,6 +2989,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (13)
@@ -3393,6 +3409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (7)
@@ -3758,6 +3778,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (8)
@@ -4103,6 +4127,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (10)
@@ -4548,6 +4576,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (11)
@@ -5819,6 +5851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (1)
@@ -5932,7 +5968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1058160768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6910,6 +6946,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (6)
@@ -7060,7 +7100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1237801289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8316,6 +8356,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (5)
@@ -8671,7 +8715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1715925802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9076,6 +9120,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (2)
@@ -9810,6 +9858,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot (12)
@@ -10031,6 +10083,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543234140}
     m_Modifications:
+    - target: {fileID: 4199638907957316303, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.13069153
+      objectReference: {fileID: 0}
     - target: {fileID: 4199638908412438024, guid: 3dbe904f5fd1d534093fd1082e408fff, type: 3}
       propertyPath: m_Name
       value: ShopSlot
