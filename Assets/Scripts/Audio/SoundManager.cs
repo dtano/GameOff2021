@@ -41,4 +41,18 @@ public class SoundManager : MonoBehaviour
         Debug.Log($"Play sound {s.name}");
         s.source.Play();
     }
+
+    public IEnumerator FadeMusicOut(float fadeTime)
+    {
+        float startVolume = _musicSource.volume;
+
+        while (_musicSource.volume > 0) {
+            _musicSource.volume -= startVolume * Time.deltaTime / fadeTime;
+ 
+            yield return null;
+        }
+
+        _musicSource.Stop ();
+        _musicSource.volume = startVolume;
+    }
 }

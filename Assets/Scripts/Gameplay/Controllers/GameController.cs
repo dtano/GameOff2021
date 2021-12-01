@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
 
     CustomerGenerator customerGenerator;
     UIController mainUIController;
+    LevelLoader levelLoader;
     private int numCustomersServed = 0;
     private bool hasHandledSurvivalChances = false;
 
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
         customerHistory?.Clear();
         customerGenerator = GetComponent<CustomerGenerator>();
         mainUIController = GetComponent<UIController>();
+        levelLoader = GetComponent<LevelLoader>();
 
         //PrepareForNewCustomer();
         mainUIController.HideUIElements();
@@ -139,7 +141,7 @@ public class GameController : MonoBehaviour
 
         await CustomerTransition(3f);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        levelLoader.LoadNextLevel();
         
     }
 
